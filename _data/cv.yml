@@ -67,6 +67,7 @@ cv:
           - "Investigated gravity–capillary wave dynamics on elastic silicone films subjected to continuous air-blow loading above water"
           - "Derived dispersion relations for gas–solid–liquid interface interactions under nonlinear elastic coupling"
           - "Developed 2D ventilated supercavitation models and introduced wake-theory-based modifications, significantly improving agreement between theoretical predictions and experimental data for cavitator-driven cavity asymmetry"
+          - "Conducted vortex–wave interaction CFD simulations near free surfaces using ANSYS Fluent; analyzed free-surface-induced von Kármán vortex asymmetry mechanisms"
 
       - company: Pusan National University — Department of Naval Architecture & Ocean Engineering
         position: Undergraduate Research Assistant
@@ -74,7 +75,6 @@ cv:
         start_date: 2022
         end_date: 2024
         highlights:
-          - "Conducted vortex–wave interaction CFD simulations near free surfaces using ANSYS Fluent; analyzed vortex asymmetry mechanisms"
           - "Performed particle image velocimetry (PIV), hull resistance testing, and propulsion system design per ITTC 1957/1978 standards"
           - "Developed ANN-based defect detection models using vibration and acoustic sensor data for ship structural health monitoring (MATLAB & Python)"
 

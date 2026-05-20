@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Vortex–Wave Interaction Near a Free Surface
-description: CFD analysis of vortex asymmetry mechanisms for a cylinder near a free surface (PNU)
+description: CFD analysis of vortex–wave interaction and free-surface-induced asymmetry for a cylinder (KAIST)
 img: assets/img/research/vortex-wave.png
 importance: 4
 category: research
@@ -9,7 +9,7 @@ category: research
 
 When a cylinder sheds vortices near a free surface, the top–bottom symmetry of the von Kármán street breaks down. The upper vortices weaken; the lower ones persist. The free surface is not just a boundary condition — it is an active participant in the flow.
 
-At **Pusan National University** (Naval Architecture & Ocean Engineering, advised by Prof. Inwon Lee), I ran CFD simulations of this problem in ANSYS Fluent using the Volume of Fluid (VOF) method to simultaneously resolve the vorticity field and the deforming free surface.
+At **KAIST** (Graduate School of Mechanical Engineering, advised by Prof. Yeunwoo Cho), I ran CFD simulations of this problem in ANSYS Fluent using the Volume of Fluid (VOF) method to simultaneously resolve the vorticity field and the deforming free surface.
 
 <div class="row">
   <div class="col-sm-7 mt-3 mt-md-0">
@@ -28,8 +28,6 @@ At **Pusan National University** (Naval Architecture & Ocean Engineering, advise
 - Upper vortices are stretched and attenuated by surface deformation; lower vortices remain coherent
 - The asymmetry grows with decreasing submergence depth (Fr-dependent)
 
-I also carried out laboratory work in parallel: particle image velocimetry (PIV), hull resistance tests, and propulsion system design to ITTC 1957/1978 standards.
-
 **What this taught me:** a flow field is a connected story. Vorticity, pressure, and surface deformation are not three separate quantities — each one is a consequence of the other two. Reading them as a system, not a list, is the skill that carries across every problem I have worked on since.
 
-**Tools:** ANSYS Fluent (VOF) · PIV · hull resistance towing tank
+**Tools:** ANSYS Fluent (VOF)
