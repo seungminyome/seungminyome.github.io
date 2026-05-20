@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Literature Review] The Prescribed-Permeability Problem: Four Papers, One Bottleneck"
+title: "[Literature Review · UW #2] The Prescribed-Permeability Problem: Four Papers, One Bottleneck"
 date: 2026-05-20 14:00:00-0600
 description: A review of four recent papers on coupled flow–deformation in porous media — Dai et al. (2026), Wang et al. (2022), Ou et al. (2025), and Hilliard et al. (2024). Each paper attacks the same bottleneck from a different scale.
 tags: FSI geomechanics OpenFOAM literature-review porous-media DEM
