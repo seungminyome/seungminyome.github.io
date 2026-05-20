@@ -162,6 +162,8 @@ collections:
 # Jekyll settings
 # -----------------------------------------------------------------------------
 
+future: true  # publish posts with today's or future dates
+
 # Markdown and syntax highlight
 markdown: kramdown
 highlighter: rouge
