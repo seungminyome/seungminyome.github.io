@@ -1,28 +1,12 @@
 cv:
   name: Seungmin Yome
-  label: M.S. Student in Energy & Petroleum Engineering
+  headline: M.S. Student in Energy & Petroleum Engineering
   email: syome@uwyo.edu
   location: Laramie, WY, USA
-  image: ""
-  summary: >
-    I build computational frameworks for fluid–structure interaction problems across scales —
-    from meter-scale vortex–wave dynamics on ship hulls to sub-millimeter proppant grain contact
-    mechanics in shale fractures. The descent across scales was not a pivot but a pursuit:
-    working at Samsung Heavy Industries on structural health monitoring for large vessels, I found
-    that macro-scale failure signals originate at grain-boundary and contact scales that macro
-    sensors cannot explain. That observation directed my research toward smaller scales, first at
-    KAIST (capillary-wave dispersion on elastic films, supercavity asymmetry near free surfaces),
-    then to my current M.S. thesis at the University of Wyoming — coupled solid–fluid simulation
-    of proppant embedment and fracture conductivity in solids4Foam/OpenFOAM.
-    PhD interests: anisotropic permeability–deformation coupling in granular packs,
-    unified poromechanical frameworks linking mechanical damage to permeability loss,
-    and open-source multiphysics methods in computational geomechanics.
 
   social_networks:
     - network: GitHub
       username: seungminyome
-    - network: Email
-      username: syome@uwyo.edu
 
   sections:
     Education:
@@ -107,73 +91,71 @@ cv:
         authors:
           - Seungmin Yome
           - Soheil Saraji
-        publisher: Computers and Geotechnics
-        releaseDate: in preparation
-        summary: ""
+        journal: Computers and Geotechnics
+        date: "in preparation"
 
       - title: "Numerical Recovery of Hydroelastic Wave Dispersion in Coupled Elastic Film–Liquid Systems Using a Finite-Volume Fluid–Structure Interaction Solver"
         authors:
           - Seungmin Yome
-        publisher: Journal of Fluids and Structures
-        releaseDate: in preparation
-        summary: ""
+        journal: Journal of Fluids and Structures
+        date: "in preparation"
 
     Grants & Fellowships:
-      - title: Graduate Research Assistantship (fully funded)
-        awarder: University of Wyoming
-        date: 2025
-        summary: "2025–Present"
+      - name: Graduate Research Assistantship (fully funded)
+        date: "2025–Present"
+        highlights:
+          - "University of Wyoming"
 
-      - title: Research Scholarship
-        awarder: KAIST
-        date: 2024
-        summary: ""
+      - name: Research Scholarship
+        date: "2024"
+        highlights:
+          - "KAIST"
 
-      - title: Undergraduate Research Grants
-        awarder: Pusan National University
-        date: 2022
-        summary: "2022–2024"
+      - name: Undergraduate Research Grants
+        date: "2022–2024"
+        highlights:
+          - "Pusan National University"
 
-      - title: Academic Excellence Scholarship
-        awarder: Pusan National University
-        date: 2025
-        summary: "2nd award"
+      - name: Academic Excellence Scholarship (2nd award)
+        date: "2025"
+        highlights:
+          - "Pusan National University"
 
-      - title: Academic Excellence Scholarship
-        awarder: Pusan National University
-        date: 2024
-        summary: "1st award"
+      - name: Academic Excellence Scholarship (1st award)
+        date: "2024"
+        highlights:
+          - "Pusan National University"
 
-      - title: Foreign Language Special Lecture Consignment Program Scholarship
-        awarder: Pusan National University
-        date: 2021
-        summary: ""
+      - name: Foreign Language Special Lecture Consignment Program Scholarship
+        date: "2021"
+        highlights:
+          - "Pusan National University"
 
-      - title: Creative Human Resources Development Project Group Scholarship
-        awarder: Pusan National University
-        date: 2018
-        summary: ""
+      - name: Creative Human Resources Development Project Group Scholarship
+        date: "2018"
+        highlights:
+          - "Pusan National University"
 
     Selected Activities & Awards:
-      - title: "Invited Participant — Samsung Heavy Industries Wind Propulsion Ship Forum (travel award)"
-        date: 2024-07-01
-        awarder: Samsung Heavy Industries
-        summary: ""
+      - name: "Invited Participant — Samsung Heavy Industries Wind Propulsion Ship Forum (travel award)"
+        date: "2024"
+        highlights:
+          - "Samsung Heavy Industries"
 
-      - title: 'Invited Speaker — "Conceptual Design of Efficient Devices of a 25-tonne High-Speed Ship"'
-        date: 2024-01-01
-        awarder: Korean Society of Shipbuilding & Marine Engineering / Coast Guard
-        summary: ""
+      - name: 'Invited Speaker — "Conceptual Design of Efficient Devices of a 25-tonne High-Speed Ship"'
+        date: "2024"
+        highlights:
+          - "Korean Society of Shipbuilding & Marine Engineering / Coast Guard"
 
-      - title: "Invited Participant — Hyundai Heavy Industries Eco-Friendly Smart Ship Forum (travel award)"
-        date: 2023-04-01
-        awarder: Hyundai Heavy Industries
-        summary: ""
+      - name: "Invited Participant — Hyundai Heavy Industries Eco-Friendly Smart Ship Forum (travel award)"
+        date: "2023"
+        highlights:
+          - "Hyundai Heavy Industries"
 
-      - title: "TPC (Test Preparation Course) Certification — English Consignment Program"
-        date: 2021-07-01
-        awarder: Pusan National University
-        summary: ""
+      - name: "TPC (Test Preparation Course) Certification — English Consignment Program"
+        date: "2021"
+        highlights:
+          - "Pusan National University"
 
     Teaching & Tutoring:
       - company: Private Tutoring (Educational Volunteering)
