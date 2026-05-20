@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Research Portfolio: Five Projects, One Question"
+title: "Research Portfolio: Six Projects, One Question"
 date: 2026-05-20 12:00:00-0600
-description: A visual summary of my research across naval architecture, fluid mechanics, and petroleum engineering — each project a different scale, the same underlying question about how solids and fluids interact.
+description: A visual summary of six projects across naval architecture, fluid mechanics, and petroleum engineering — five research projects and one CFD validation benchmark that taught me how to read a simulation.
 tags: research FSI OpenFOAM solids4foam KAIST proppant
 categories: research
 related_posts: false
@@ -312,6 +312,47 @@ This was the project where I first learned to read a flow field — not as isola
 <h5>Research Reflection</h5>
 <p>
 The autoencoder reached 99.49% accuracy — but that number also revealed its own limitation. The model could tell you <em>that</em> something changed; it could not tell you <em>why</em> it changed or at what scale the change originated. A reconstruction-error spike corresponded to a fatigue crack at a grain boundary — a failure mode six orders of magnitude below the hull. That asymmetry between detectable symptom and invisible cause was the observation that redirected my research toward smaller scales. Data-driven methods are powerful exactly where physics-based models are intractable. But knowing when you are in that regime — and when you are not — requires understanding the physics well enough to recognize its limits.
+</p>
+</div>
+
+</div>
+</div>
+</div>
+
+---
+
+<!-- ======================================================= -->
+<!-- CARD 6: KCS Hull Resistance — STAR-CCM+ -->
+<!-- ======================================================= -->
+
+<div class="research-card">
+<div class="card-number">06 · PUSAN NATIONAL UNIVERSITY · 2022</div>
+<div class="card-title">KCS Hull Resistance Validation — Kelvin Wave Pattern (STAR-CCM+)</div>
+<div class="card-meta">PNU Department of Naval Architecture & Ocean Engineering · Undergraduate CFD Course Project</div>
+
+<div class="row">
+<div class="col-md-6">
+
+<img src="{{ '/assets/img/research/kcs-kelvin-wave.png' | relative_url }}" alt="KCS Kelvin wave pattern — top-view contours showing V-shaped wave system">
+<p class="fig-caption">Top-view wave elevation contours (STAR-CCM+) at Fr = 0.26. The V-shaped Kelvin wave system bounded by the ~19.5° half-angle is well-resolved. Bow and stern wave systems are clearly separated; numerical dissipation appears in the far-wake region — consistent with k-ε limitations.</p>
+
+</div>
+<div class="col-md-6">
+
+<div class="insight-block">
+<h5>Key Insight</h5>
+<ul>
+<li>Benchmark: Gothenburg 2010 Workshop Case 2-1 (FX0) — Fr = 0.26, Re = 1.4 × 10⁷, zero sinkage and trim</li>
+<li>Result: C<sub>T</sub> = 3.598 × 10⁻³ vs. experiment 3.557 × 10⁻³ — <strong>1.16% error</strong></li>
+<li>Structured hexahedral mesh (~4.4M cells), k-ε turbulence, y⁺ = 50, SIMPLE solver</li>
+<li>Contribution: structured mesh refinement at bow, stern, and free surface — the three regions where cell quality most affects accuracy</li>
+</ul>
+</div>
+
+<div class="reflection-block">
+<h5>Research Reflection</h5>
+<p>
+Resistance is easier than waves. The 1.16% error in C<sub>T</sub> looks clean — but the wave profile along the hull told a different story. Integrated forces average out local errors; spatial distributions do not. The wake discrepancy that barely moved the resistance coefficient was immediately visible in the contour plots. This is the lesson that k-ε gives you for free: it is accurate in the bulk and wrong at the boundary. Knowing which quantity to trust from which solver is the first practical skill in CFD — and this project is where I learned it. The tool here (STAR-CCM+) is different from the vortex-wave study (ANSYS Fluent); the discipline — reading what the solution is actually telling you — is the same.
 </p>
 </div>
 

@@ -178,6 +178,12 @@ layout: default
               {% elsif section_title == 'References' %}
                 {% assign entries = section_entries %}
                 {% include cv/references.liquid %}
+              {% elsif section_title == 'Research Experience' or section_title == 'Industry Experience' or section_title == 'Teaching & Tutoring' %}
+                {% assign entries = section_entries %}
+                {% include cv/experience.liquid %}
+              {% elsif section_title == 'Grants & Fellowships' or section_title == 'Selected Activities & Awards' %}
+                {% assign entries = section_entries %}
+                {% include cv/awards.liquid %}
               {% else %}
                 <!-- Generic section -->
                 {% for entry in section_entries %}

@@ -80,6 +80,7 @@ cv:
         start_date: 2022
         end_date: 2024
         highlights:
+          - "Performed RANS CFD validation of KCS hull resistance (Gothenburg 2010 Workshop benchmark) using STAR-CCM+; 1.16% error in total resistance coefficient CT; contributions: structured mesh optimization and post-processing"
           - "Performed particle image velocimetry (PIV), hull resistance testing, and propulsion system design per ITTC 1957/1978 standards"
           - "Developed ANN-based defect detection models using vibration and acoustic sensor data for ship structural health monitoring (MATLAB & Python)"
 
