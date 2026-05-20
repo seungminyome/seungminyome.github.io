@@ -101,56 +101,36 @@ cv:
         date: "in preparation"
 
     Grants & Fellowships:
-      - name: Graduate Research Assistant (Full-funded Graduate Research Assistantship)
-        date: "2025–Present"
-        highlights:
-          - "University of Wyoming"
+      - label: "Graduate Research Assistant, University of Wyoming (Full-funded Graduate Research Assistantship)"
+        details: "2025–Present"
 
-      - name: Research Scholarship
-        date: "2024"
-        highlights:
-          - "Korea Advanced Institute of Science and Technology"
+      - label: "Research Scholarship, Korea Advanced Institute of Science and Technology"
+        details: "2024"
 
-      - name: Undergraduate Research Student Grants
-        date: "2022–2024"
-        highlights:
-          - "Pusan National University"
+      - label: "Undergraduate Research Student Grants, Pusan National University"
+        details: "2022–2024"
 
-      - name: Academic Excellence Scholarship
-        date: "2022–2024"
-        highlights:
-          - "Pusan National University"
+      - label: "Academic Excellence Scholarship, Pusan National University"
+        details: "2022–2024"
 
-      - name: Foreign Language Special Lecture Consignment Program Scholarship
-        date: "2021"
-        highlights:
-          - "Pusan National University"
+      - label: "Foreign Language Special Lecture Consignment Program Scholarship, Pusan National University"
+        details: "2021"
 
-      - name: Creative Human Resources Development Project Group Scholarship
-        date: "2018"
-        highlights:
-          - "Pusan National University"
+      - label: "Creative Human Resources Development Project Group Scholarship, Pusan National University"
+        details: "2018"
 
     Selected Activities & Awards:
-      - name: "Invited to the Samsung Heavy Industries Wind Propulsion Ship Forum with travel award"
-        date: "July 2024"
-        highlights:
-          - "Samsung Heavy Industries"
+      - label: "Invited to Samsung Heavy Industries Wind Propulsion Ship Forum (travel award)"
+        details: "July 2024"
 
-      - name: "Participating in the program 'Conceptual Design of Efficient Devices of a 25-tonne High-Speed Ship'"
-        date: "Jan. 2024"
-        highlights:
-          - "Korean Society of Shipbuilding and Marine Engineering / Coast Guard"
+      - label: "Participating in 'Conceptual Design of Efficient Devices of a 25-tonne High-Speed Ship' — Korean Society of Shipbuilding and Marine Engineering / Coast Guard"
+        details: "Jan. 2024"
 
-      - name: "Invited to the Hyundai Heavy Industries Eco-Friendly Smart Ship Forum with travel award"
-        date: "Apr. 2023"
-        highlights:
-          - "Hyundai Heavy Industries"
+      - label: "Invited to Hyundai Heavy Industries Eco-Friendly Smart Ship Forum (travel award)"
+        details: "Apr. 2023"
 
-      - name: "TPC (Test Preparation Course) Certification — English Consignment Program"
-        date: "July 2021"
-        highlights:
-          - "Pusan National University"
+      - label: "TPC (Test Preparation Course) Certification — English Consignment Program, Pusan National University"
+        details: "July 2021"
 
     Teaching & Tutoring:
       - company: Private Tutoring (Educational Volunteering)
