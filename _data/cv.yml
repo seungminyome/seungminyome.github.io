@@ -130,12 +130,12 @@ cv:
 
       - title: Academic Excellence Scholarship
         awarder: Pusan National University
-        date: 2023
+        date: 2025
         summary: "2nd award"
 
       - title: Academic Excellence Scholarship
         awarder: Pusan National University
-        date: 2022
+        date: 2024
         summary: "1st award"
 
       - title: Foreign Language Special Lecture Consignment Program Scholarship
@@ -168,6 +168,24 @@ cv:
         date: 2021-07-01
         awarder: Pusan National University
         summary: ""
+
+    Teaching & Tutoring:
+      - company: Private Tutoring (Educational Volunteering)
+        position: Mathematics Instructor
+        location: South Korea
+        start_date: 2022
+        end_date: 2024
+        highlights:
+          - "Taught high school mathematics to undergraduate-level students as part of educational volunteering activities over two years"
+
+      - company: Private Tutoring
+        position: Physics & Chemistry Instructor — College Entrance Preparation
+        location: South Korea
+        start_date: 2023
+        end_date: 2024
+        highlights:
+          - "Taught physics and chemistry to 10 high school seniors (Grade 12) preparing for the Korean college entrance exam (CSAT) over a 6-month intensive period"
+          - "9 out of 10 students (90%+) gained admission to top-tier Korean universities"
 
     Skills:
       - name: Simulation & CAE
