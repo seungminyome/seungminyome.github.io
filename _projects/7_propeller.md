@@ -2,7 +2,7 @@
 layout: page
 title: MAU Propeller Design for a Container Ship
 description: Full propeller design pipeline — Bp-δ chart, MOPTI optimization, KPA4 detailed design, tip unloading, KR strength evaluation (PNU, undergraduate)
-img:
+img: assets/img/research/propeller_fig2_openwater.svg
 importance: 7
 category: research
 ---
@@ -15,15 +15,15 @@ As an undergraduate at **Pusan National University** (advised by Prof. Munchan K
 
 ### Design Specification
 
-| Parameter           | Value                     |
-| ------------------- | ------------------------- |
-| Ship type           | Container vessel          |
-| Design speed        | 22.5 knots                |
-| MCR (Max. Cont.)    | 38,570 PS × 102.0 rpm     |
-| NCR (Normal Cont.)  | 34,710 PS × 98,5 rpm      |
-| Number of blades    | 4                         |
-| Series              | MAU                       |
-| Material            | Copper alloy (CU3, 60 MPa)|
+| Parameter           | Value                      |
+| ------------------- | -------------------------- |
+| Ship type           | Container vessel           |
+| Design speed        | 22.5 knots                 |
+| MCR (Max. Cont.)    | 38,570 PS × 102.0 rpm      |
+| NCR (Normal Cont.)  | 34,710 PS × 98.5 rpm       |
+| Number of blades    | 4                          |
+| Series              | MAU                        |
+| Material            | Copper alloy (CU3, 60 MPa) |
 
 ---
 
@@ -37,12 +37,12 @@ $$B_p = \frac{N \cdot P^{0.5}}{V_A^{2.5}} = 15.667 \qquad \sqrt{B_p} = 3.958$$
 
 Reading the intersection from the optimum-efficiency curve:
 
-| Parameter | Value  |
-| --------- | ------ |
-| δ         | 48.1   |
-| P/D       | 0.884  |
-| η₀        | 0.657  |
-| D         | 8.077 m|
+| Parameter | Value   |
+| --------- | ------- |
+| δ         | 48.1    |
+| P/D       | 0.884   |
+| η₀        | 0.657   |
+| D         | 8.077 m |
 
 Blade area ratio was checked against the **Burrill cavitation criterion** (5% back-cavitation limit). At the computed thrust loading, the minimum required A_E/A₀ came out to 0.625. The MAU 4-55 series (A_E/A₀ = 0.625) sat exactly on the boundary — acceptable, but with no margin. I used this as the initial value and carried it forward for verification.
 
@@ -52,15 +52,22 @@ Blade area ratio was checked against the **Burrill cavitation criterion** (5% ba
 
 The MOPTI optimization program runs the same B_p–δ logic numerically rather than graphically, iterating over blade number, area ratio, and advance coefficient to find the efficiency peak. Running MOPTI on the same inputs returned:
 
-| Parameter | B_p–δ Chart | MOPTI  | Error  |
-| --------- | ----------- | ------ | ------ |
-| A_E/A₀    | 0.625       | 0.589  | 6.3%   |
-| P/D       | 0.884       | 0.794  | 11.5%  |
-| D (m)     | 8.077       | 8.313  | 2.8%   |
+| Parameter | B_p–δ Chart | MOPTI | Error  |
+| --------- | ----------- | ----- | ------ |
+| A_E/A₀    | 0.625       | 0.589 | 6.3%   |
+| P/D       | 0.884       | 0.794 | 11.5%  |
+| D (m)     | 8.077       | 8.313 | 2.8%   |
 
 The diameter agreed well; the pitch ratio diverged. This is a known characteristic of the B_p–δ approach — the chart optimizes graphically along a single curve, while MOPTI sweeps the full parameter space. I treated the chart result as the starting geometry and proceeded to detailed design, with MOPTI as a consistency check.
 
 **Open-water coefficients at design point:** K_T = 0.151, 10K_Q = 0.195, J_A = 0.642.
+
+<figure>
+  <img src="{{ '/assets/img/research/propeller_fig2_openwater.svg' | relative_url }}" alt="Open-water performance diagram" style="width:100%;max-width:620px;display:block;margin:1.5rem auto 0;">
+  <figcaption style="text-align:center;font-size:0.88rem;color:#555;margin-top:0.5rem;">
+    Open-water performance curves for the designed MAU 4-blade propeller. K<sub>T</sub>, 10K<sub>Q</sub>, and η₀ plotted against advance coefficient J. Filled markers indicate the NCR design point (J = 0.642, K<sub>T</sub> = 0.151, 10K<sub>Q</sub> = 0.195, η₀ = 0.657).
+  </figcaption>
+</figure>
 
 ---
 
@@ -75,29 +82,55 @@ The target radial load distribution is **elliptical** — it minimizes induced l
 3. Reduce pitch and camber near the tip (tip unloading) to shift load inboard
 4. Re-run; repeat
 
-This cycle ran **10 iterations** before the load distribution converged to within tolerance of the elliptical target. Each iteration required manually adjusting the pitch and camber values at every radial station — six to eight numbers per iteration, rechecking the Burrill criterion at each step to confirm cavitation margin was not being eroded as tip loading decreased.
+This cycle ran **10 iterations** before the load distribution converged to within tolerance of the elliptical target. Each iteration required manually adjusting the pitch and camber values at every radial station — rechecking the Burrill criterion at each step to confirm cavitation margin was not being eroded as tip loading decreased.
+
+<figure>
+  <img src="{{ '/assets/img/research/propeller_fig3_tipunloading.svg' | relative_url }}" alt="Tip unloading radial thrust distribution" style="width:100%;max-width:620px;display:block;margin:1.5rem auto 0;">
+  <figcaption style="text-align:center;font-size:0.88rem;color:#555;margin-top:0.5rem;">
+    Radial thrust distribution before and after 10 tip-unloading iterations, compared against the elliptical ideal. The initial geometry concentrates load near the tip; each iteration of pitch and camber reduction shifts the distribution inboard until it matches the minimum-induced-loss target.
+  </figcaption>
+</figure>
 
 **Final performance at NCR:**
 
-| Parameter         | Target  | Result  | Error  |
-| ----------------- | ------- | ------- | ------ |
-| Ship speed (knots)| 22.50   | 22.67   | +0.75% |
-| RPM               | 96.837  | 96.89   | 0.05%  |
+| Parameter          | Target | Result | Error  |
+| ------------------ | ------ | ------ | ------ |
+| Ship speed (knots) | 22.50  | 22.67  | +0.75% |
+| RPM                | 96.837 | 96.89  | 0.05%  |
 
 ---
 
-### Step 4 — KR Blade Strength Evaluation
+### Step 4 — Blade Geometry and KR Strength Evaluation
 
-The Korean Register requires a fatigue-based thickness check at two critical sections: 0.25R (the blade root, maximum bending moment) and 0.60R (a secondary check at higher rotational speed). The required chord-section thickness is derived from the blade torque, material fatigue allowable, and a geometry factor K_m.
+Detailed design converts pitch and load distribution into a full-offset blade: chord, thickness, and camber at every radial station. The resulting geometry is shown below alongside the Korean Register fatigue strength check.
 
-Material: copper alloy CU3, tensile strength 60 MPa. Stress concentration factor K_m = 1.3.
+<div class="row">
+  <div class="col-sm-6 mt-3 mt-md-0">
+    <figure>
+      <img src="{{ '/assets/img/research/propeller_fig1_geometry.svg' | relative_url }}" alt="Blade chord and pitch distribution" class="img-fluid">
+      <figcaption style="text-align:center;font-size:0.88rem;color:#555;margin-top:0.5rem;">
+        Chord length and pitch distribution along the blade span. Chord peaks near r/R = 0.80 and tapers to the tip; pitch increases monotonically from root to tip as the tip-unloading iteration converges.
+      </figcaption>
+    </figure>
+  </div>
+  <div class="col-sm-6 mt-3 mt-md-0">
+    <figure>
+      <img src="{{ '/assets/img/research/propeller_fig4_strength.svg' | relative_url }}" alt="KR blade strength check" class="img-fluid">
+      <figcaption style="text-align:center;font-size:0.88rem;color:#555;margin-top:0.5rem;">
+        Designed vs KR-required section thickness along the blade. Both regulatory check points (0.25R and 0.60R) clear the minimum with positive margin. Green band indicates structural reserve.
+      </figcaption>
+    </figure>
+  </div>
+</div>
 
-| Section | Required thickness | Designed thickness | Result |
-| ------- | ------------------ | ------------------ | ------ |
-| 0.25R   | 231.97 mm          | 266.53 mm          | **PASS** (+14.9%) |
-| 0.60R   | 109.45 mm          | 151.90 mm          | **PASS** (+38.8%) |
+The Korean Register requires a fatigue-based thickness check at two critical sections: 0.25R (blade root, maximum bending moment) and 0.60R (secondary check). Material: copper alloy CU3, tensile strength 60 MPa, stress concentration factor K_m = 1.3.
 
-Both sections cleared the minimum with margin. The larger margin at 0.60R reflects the fact that mid-span thickness is set primarily by hydrodynamic requirements (camber and chord for the target lift) rather than driven to its structural minimum.
+| Section | Required thickness | Designed thickness | Result              |
+| ------- | ------------------ | ------------------ | ------------------- |
+| 0.25R   | 231.97 mm          | 266.53 mm          | **PASS** (+14.9%)   |
+| 0.60R   | 109.45 mm          | 151.90 mm          | **PASS** (+38.8%)   |
+
+Both sections cleared the minimum with margin. The larger margin at 0.60R reflects the fact that mid-span thickness is set primarily by hydrodynamic requirements rather than driven to the structural minimum.
 
 ---
 
@@ -119,7 +152,7 @@ Both sections cleared the minimum with margin. The larger margin at 0.60R reflec
 
 The Bp–δ chart is disarmingly simple — locate a point, read off P/D and η₀. But everything behind that point is a century of systematic tow-tank experiments, non-dimensionalized and folded into a curve. Working through it by hand, verifying it against MOPTI, then carrying each parameter through to a blade section that either passes or fails the KR check — that sequence made the choices visible in a way that a software black-box would not.
 
-Tip unloading in particular was instructive. The elliptical load distribution is an ideal. The physical blade can only approximate it, and each iteration of pitch and camber adjustment was a negotiation between the hydrodynamic ideal and the geometric reality. At some point the distribution was close enough. Deciding what "close enough" meant, and whether the cavitation margin had been maintained, required holding the whole design in mind at once.
+Tip unloading in particular was instructive. The elliptical load distribution is an ideal. The physical blade can only approximate it, and each iteration of pitch and camber adjustment was a negotiation between the hydrodynamic ideal and the geometric reality. Deciding what "close enough" meant, and whether the cavitation margin had been maintained, required holding the whole design in mind at once.
 
 The blade is a hydrofoil — a surface under differential pressure, suction face against pressure face. Cavitation initiates at the suction face when local pressure falls below vapor pressure. The KR check asks whether the blade can sustain that pressure loading without fatigue failure at the root. These are two faces of the same object under the same load, looked at from fluid mechanics and structural mechanics in turn.
 
