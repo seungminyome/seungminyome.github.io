@@ -127,7 +127,7 @@ That observation set the trajectory: from hull-scale vortex dynamics → centime
 <p style="font-size:0.88rem; color:#666; line-height:1.7; background:#f7f9fc; border-radius:4px; padding:16px;">
 <strong>Setup.</strong> A single quartz proppant grain (dia. ~0.5 mm) pressed between two parallel shale fracture walls under 5–50 MPa closure stress.<br><br>
 <strong>Mesh.</strong> Structured O-grid around the grain–rock contact zone. The grid concentrates resolution exactly where stress gradients are steepest — at the Hertzian contact patch.<br><br>
-<strong>Key result.</strong> von Mises stress peaks at the contact patch and decays radially into the rock. Stress distribution matches Hertz contact theory. Plastic yielding (Mohr–Coulomb) initiates at ~15 MPa.
+<strong>Key result.</strong> von Mises stress peaks at the contact patch and decays radially into the rock. Stress distribution matches Hertz contact theory. Plastic yielding (J2 criterion, σ_vm ≥ σ_y) initiates at ~15 MPa.
 </p>
 <p class="fig-caption">solids4Foam / OpenFOAM-2212 · Haynesville & Eagle Ford shale parameters</p>
 
@@ -138,7 +138,7 @@ That observation set the trajectory: from hull-scale vortex dynamics → centime
 <h5>Key Insight</h5>
 <ul>
 <li>First application of solids4Foam contact mechanics to proppant–fracture interaction</li>
-<li>Penalty-based segment-to-segment contact + Mohr–Coulomb elasto-plastic rock model</li>
+<li>Penalty-based segment-to-segment contact + J2 perfect-plasticity rock constitutive model</li>
 <li>Hertz validation confirms framework correctness before introducing plasticity</li>
 <li>Fracture aperture after embedment → directly feeds permeability calculation</li>
 </ul>

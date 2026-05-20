@@ -58,7 +58,7 @@ cv:
         end_date: present
         highlights:
           - "Developing a coupled solid–fluid simulation framework in solids4Foam (OpenFOAM-based) to model proppant grain behavior under compressive loading between parallel rock fracture walls"
-          - "Implementing elasto-plastic (Mohr–Coulomb) rock constitutive models and penalty-based contact algorithms to capture proppant embedment and fracture wall deformation"
+          - "Implementing J2 perfect-plasticity rock constitutive models and penalty-based contact algorithms to capture proppant embedment and fracture wall deformation"
           - "Constructing structured O-grid meshes for proppant–rock contact problems; validated stress distributions against Hertz contact theory"
           - "Performing laboratory training on triaxial cell operation, confining/pore-pressure control, and rock compressibility (bulk modulus) testing using DCI equipment"
 

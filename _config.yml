@@ -10,7 +10,7 @@ description: Computational FSI researcher — proppant mechanics, wave dynamics,
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: computational geomechanics, hydraulic fracturing, proppant embedment, fracture conductivity, solids4Foam, OpenFOAM, finite volume method, coupled solid-fluid simulation, contact mechanics, Mohr-Coulomb plasticity, porous media flow, subsurface energy systems, fluid-structure interaction, naval architecture
+keywords: computational geomechanics, hydraulic fracturing, proppant embedment, fracture conductivity, solids4Foam, OpenFOAM, finite volume method, coupled solid-fluid simulation, contact mechanics, J2 perfect plasticity, porous media flow, subsurface energy systems, fluid-structure interaction, naval architecture
 lang: en
 icon: ⚙️
 url: https://seungminyome.github.io

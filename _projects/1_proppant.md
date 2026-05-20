@@ -19,7 +19,7 @@ At the **University of Wyoming** (advised by Prof. Soheil Saraji), I am developi
 
 **Implementation:**
 - Structured O-grid mesh concentrating resolution at the contact zone
-- Elasto-plastic Mohr–Coulomb constitutive model for Haynesville / Eagle Ford shale
+- J2 perfect-plasticity rock constitutive model for Haynesville / Eagle Ford shale
 - Penalty-based segment-to-segment contact algorithm
 - Stress distribution validated against Hertz contact theory before introducing plasticity
 - Rock material properties from triaxial cell and DCI compressibility testing (real data, not assumed values)

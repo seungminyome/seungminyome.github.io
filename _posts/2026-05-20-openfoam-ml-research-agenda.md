@@ -25,7 +25,7 @@ But fracture conductivity is not a single-point prediction. It is a **curve** �
 | Grain diameter | 100–800 μm | 8 |
 | Grain Young's modulus | 70–100 GPa (quartz) | 4 |
 | Rock Young's modulus | 5–50 GPa (shale) | 8 |
-| Mohr-Coulomb cohesion | 5–50 MPa | 6 |
+| Rock yield stress $$\sigma_y$$ | 100–500 MPa | 6 |
 | Closure stress | 5–70 MPa | 12 |
 
 A full factorial sweep is $$8 \times 4 \times 8 \times 6 \times 12 = 18{,}432$$ simulations. At hours per case, this is years of compute.
@@ -84,20 +84,33 @@ The specific benchmark I would use is the Mandel consolidation problem — an an
 
 ---
 
-### Direction 3: Learned Constitutive Models from Triaxial Data
+### Direction 3: Beyond J2 — Learning a Pressure-Dependent Yield Surface from Lab Data
 
-The third direction attacks a different weakness in my current framework: the Mohr-Coulomb constitutive model.
+The third direction addresses the most principled limitation of my current constitutive model.
 
-Mohr-Coulomb captures the yield surface of rocks reasonably well. But real rock failure is more complex — non-associative flow, pressure-dependent dilatancy, anisotropy from bedding planes, damage accumulation under cyclic loading. Adding each of these effects to the analytic constitutive model adds free parameters that require additional calibration experiments.
+My framework uses **J2 perfect plasticity** — the von Mises yield criterion with no hardening. Yield occurs when the von Mises stress reaches a material constant $$\sigma_y$$:
 
-A different approach: replace the analytic constitutive model with a *learned* one. Vlassis and Sun (2021, *CMAME* 373) showed that elastoplastic constitutive behavior can be encoded in a **Thermodynamics-Informed Neural Network (TANN)** by structuring the network architecture to satisfy the second law of thermodynamics by construction — stored elastic energy is a positive-definite output, dissipation is non-negative, plastic consistency is enforced via level-set hardening. The result is a constitutive model that is:
-- Calibrated directly from experimental stress–strain curves
-- Thermodynamically consistent
-- Not limited to the functional form of Mohr-Coulomb
+$$\sigma_{\text{vm}} = \sqrt{\tfrac{3}{2}\,\mathbf{s}:\mathbf{s}} \geq \sigma_y$$
 
-**Why I am positioned to do this:** I am already running triaxial tests and DCI compressibility tests in our laboratory. This is real experimental data — not synthetic data from another simulation. Training a TANN on direct laboratory measurements would close the loop between physical experiment and computational simulation in a way that is rarely achieved in geomechanics.
+where $$\mathbf{s}$$ is the deviatoric stress tensor. This is the correct choice for a tractable first-pass model: it is well-posed, differentiable, and gives a clean comparison with Hertz theory in the elastic regime. But J2 has a structural limitation that matters specifically for rock under geological confinement: **it is pressure-independent**.
 
-**Outcome:** A rock constitutive model calibrated from lab data, embedded in the solids4Foam constitutive law framework, that captures post-yield behavior beyond what analytic models can represent.
+The yield surface in J2 is a cylinder in principal stress space — the same diameter regardless of mean normal stress. Rock is not like this. Under higher confining pressure, rock is harder to shear. The triaxial tests I run in our laboratory measure exactly this pressure dependence — compressive strength increases with confining stress in a way that J2 cannot reproduce by construction, regardless of how $$\sigma_y$$ is calibrated.
+
+This is not just an academic concern. Under high closure stress, the mean normal stress at the contact patch is large. J2 may overpredict the plastic zone extent relative to what the real rock would exhibit — which means the predicted aperture reduction is not conservative in the right direction.
+
+**The proposal:** replace the analytic J2 yield surface with a *learned* one. Vlassis and Sun (2021, *CMAME* 373) showed that elastoplastic constitutive behavior can be encoded in a **Thermodynamics-Informed Neural Network (TANN)** by structuring the network architecture to satisfy the second law of thermodynamics by construction — stored elastic energy is a positive-definite output, dissipation is non-negative, plastic consistency is enforced via level-set representation. The yield surface is not prescribed; it is learned from data while remaining thermodynamically admissible.
+
+The result is a constitutive model that:
+- Is calibrated directly from triaxial stress–strain curves
+- Satisfies thermodynamic consistency by architecture, not by penalty
+- Captures pressure dependence that J2 ignores — naturally, from the data
+- Embeds in solids4Foam as a user-defined constitutive law (the solver does not care about the form of the material model, only its stress–strain response)
+
+**Why this is the right starting point:** J2 perfect plasticity is not a misguided choice — it is a *deliberate simplification*. Starting simple, verifying against Hertz theory, and then systematically adding complexity is the correct scientific workflow. The TANN direction is the next step in that workflow, not a correction of an error. It is only possible to argue for a data-driven model coherently if you first understand the analytic one you are replacing.
+
+**Why I am positioned to do this:** I am already running triaxial tests and DCI compressibility tests in the laboratory — real experimental data, not synthetic data from another simulation. The training set for a TANN calibrated to shale already exists in my own experimental records. Closing the loop from physical experiment → learned constitutive model → OpenFOAM simulation is, to my knowledge, something no one has done at the grain-scale contact level.
+
+**Outcome:** A shale constitutive model capturing pressure-dependent yielding, calibrated from lab data, embedded in solids4Foam — enabling contact simulations that are both computationally tractable and physically faithful beyond the J2 approximation.
 
 ---
 
