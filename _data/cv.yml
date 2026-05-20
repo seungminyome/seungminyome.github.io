@@ -5,10 +5,13 @@ cv:
   location: Laramie, WY, USA
   image: ""
   summary: >
-    Computational mechanics of granular particles interacting with deformable surrounding media —
-    contact behavior, interface deformation, and coupled fluid transport across scales.
-    Open-source multiphysics simulation (OpenFOAM, solids4Foam) applied to subsurface energy systems,
-    with broader interest in granular-structure interfaces, particle penetration, and load-partitioning interactions.
+    How do solids and fluids talk to each other when neither stays simple? I have chased this question
+    across scales — from thin elastic films to proppant grains in shale — and across disciplines,
+    from naval architecture to petroleum engineering and geomechanics. Current research:
+    coupled solid-fluid simulation (solids4Foam/OpenFOAM) of proppant embedment and fracture conductivity.
+    PhD interests: many-body granular-fluid systems, unified poromechanical frameworks linking
+    mechanical damage and permeability loss, and open-source multiphysics methods in
+    computational geomechanics, applied mechanics, and subsurface energy engineering.
 
   social_networks:
     - network: GitHub
