@@ -149,6 +149,11 @@ ninja.data = [{
           description: "RANS CFD validation against the 2010 Gothenburg Workshop benchmark — 1.16% error in total resistance (PNU, undergraduate)",
           section: "Projects",handler: () => {
               window.location.href = "/projects/6_kcs_resistance/";
+            },},{id: "projects-mau-propeller-design-for-a-container-ship",
+          title: 'MAU Propeller Design for a Container Ship',
+          description: "Full propeller design pipeline — Bp-δ chart, MOPTI optimization, KPA4 detailed design, tip unloading, KR strength evaluation (PNU, undergraduate)",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/7_propeller/";
             },},{id: "teachings-data-science-fundamentals",
           title: 'Data Science Fundamentals',
           description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
