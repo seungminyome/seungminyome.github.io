@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "From Biot to OpenFOAM: A Genealogy of Consolidation-Induced Solute Transport"
+title: "[Literature Review] From Biot to OpenFOAM: A Genealogy of Consolidation-Induced Solute Transport"
 date: 2026-05-20 10:00:00-0600
 description: A paper review tracing how 80 years of porous media theory — from Biot (1941) to Wang & Jeng (2024) — was assembled into a 3D OpenFOAM solver. Includes a synthesis table, parametric findings, and my own extension ideas.
 tags: geomechanics OpenFOAM solute-transport poromechanics literature-review
