@@ -122,6 +122,11 @@ ninja.data = [{
           description: "99.49% accuracy anomaly detection from vibration/acoustic sensor data (PNU + Samsung HI)",
           section: "Projects",handler: () => {
               window.location.href = "/projects/5_ship_defect/";
+            },},{id: "projects-kcs-hull-resistance-and-wave-pattern-analysis",
+          title: 'KCS Hull Resistance and Wave Pattern Analysis',
+          description: "RANS CFD validation against the 2010 Gothenburg Workshop benchmark — 1.16% error in total resistance (PNU, undergraduate)",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/6_kcs_resistance/";
             },},{id: "teachings-data-science-fundamentals",
           title: 'Data Science Fundamentals',
           description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
