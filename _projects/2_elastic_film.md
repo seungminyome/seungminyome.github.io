@@ -25,3 +25,19 @@ At **KAIST** (Graduate School of Mechanical Engineering, advised by Prof. Yeunwo
 **What this taught me:** the boundary condition between fluid and solid is not a technicality — it is where the physics lives. The membrane was simultaneously a structural element and an interface, and the two roles could not be separated.
 
 **Tools:** MATLAB · experimental wave tank · high-speed imaging
+
+---
+
+## How it actually happened
+
+This was the first project I carried on my own — a government-funded research task assigned to me as the sole investigator. There was almost nothing to call a reference. What I had was a single paper, a verbal description of something a senior researcher had mentioned in passing: that without the film, a nonlinear cavity forms at a certain point in the flow. Apparently the same physics is relevant to icebreaker design. That was the full briefing.
+
+I spent twelve hours a day in the lab for months, sitting with that one reference, trying to understand it. The honest conclusion I reached theoretically was just one thing: there is a lot in fluid mechanics that has not been figured out yet. I felt the wall. And standing in front of it, something ignited rather than went cold. I wanted to know what was on the other side.
+
+The experiments were blunt. I floated a thin silicone film on water, drove small oscillations into it with an air jet, and recorded the wave patterns with a high-speed camera every day. The data was rough. The gap between measured wave shapes and the theoretical dispersion curve was larger than I wanted. The nonlinear equations resisted every attempt to close them cleanly. I never reached a definitive answer from the photographs alone.
+
+But the attempts kept sharpening one thing. The more I ran the experiments, the clearer the mechanism became — not as a formula, but as a physical fact I could see: the film's elasticity bends the dispersion relation in a specific way, and that bending is not just an abstract curve on a graph. An icebreaker cutting through an ice sheet faces the same fluid–elastic interaction. The nonlinear term I was trying to solve on paper was the same force acting on a real ship in real ice. Once that connection became visible, the problem stopped feeling like an exercise and started feeling alive.
+
+This was the first time I wanted to take something theoretical and push it toward an actual engineering problem. Not because I was told to — because I could see the path, and I wanted to walk it.
+
+That feeling has not left me since.
