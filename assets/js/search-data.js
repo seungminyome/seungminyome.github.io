@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-research-portfolio-five-projects-one-question",
+        },{id: "post-literature-review-the-prescribed-permeability-problem-four-papers-one-bottleneck",
+        
+          title: "[Literature Review] The Prescribed-Permeability Problem: Four Papers, One Bottleneck",
+        
+        description: "A review of four recent papers on coupled flow–deformation in porous media — Dai et al. (2026), Wang et al. (2022), Ou et al. (2025), and Hilliard et al. (2024). Each paper attacks the same bottleneck from a different scale.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/deformable-porous-media-review/";
+          
+        },
+      },{id: "post-research-portfolio-five-projects-one-question",
         
           title: "Research Portfolio: Five Projects, One Question",
         
@@ -48,9 +59,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/research-portfolio/";
           
         },
-      },{id: "post-from-biot-to-openfoam-a-genealogy-of-consolidation-induced-solute-transport",
+      },{id: "post-literature-review-from-biot-to-openfoam-a-genealogy-of-consolidation-induced-solute-transport",
         
-          title: "From Biot to OpenFOAM: A Genealogy of Consolidation-Induced Solute Transport",
+          title: "[Literature Review] From Biot to OpenFOAM: A Genealogy of Consolidation-Induced Solute Transport",
         
         description: "A paper review tracing how 80 years of porous media theory — from Biot (1941) to Wang &amp; Jeng (2024) — was assembled into a 3D OpenFOAM solver. Includes a synthesis table, parametric findings, and my own extension ideas.",
         section: "Posts",
