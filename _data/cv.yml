@@ -130,8 +130,13 @@ cv:
 
       - title: Academic Excellence Scholarship
         awarder: Pusan National University
+        date: 2023
+        summary: "2nd award"
+
+      - title: Academic Excellence Scholarship
+        awarder: Pusan National University
         date: 2022
-        summary: "2022–2024"
+        summary: "1st award"
 
       - title: Foreign Language Special Lecture Consignment Program Scholarship
         awarder: Pusan National University
@@ -157,6 +162,11 @@ cv:
       - title: "Invited Participant — Hyundai Heavy Industries Eco-Friendly Smart Ship Forum (travel award)"
         date: 2023-04-01
         awarder: Hyundai Heavy Industries
+        summary: ""
+
+      - title: "TPC (Test Preparation Course) Certification — English Consignment Program"
+        date: 2021-07-01
+        awarder: Pusan National University
         summary: ""
 
     Skills:
