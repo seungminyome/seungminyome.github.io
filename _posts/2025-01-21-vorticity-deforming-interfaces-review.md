@@ -101,6 +101,18 @@ $$
 
 When μ₁ = μ₂ (same fluid everywhere), the vorticity jump is zero and the profile is uniformly linear — as expected for single-fluid Couette flow. When μ₁ ≠ μ₂, there is a **vorticity sheet at the interface** whose strength is proportional to the viscosity mismatch. This sheet is entirely real and physical: it is the consequence of the stress balance requiring different velocity gradients in the two fluids.
 
+<figure style="text-align:center; margin: 2rem 0;">
+  <img src="{{ '/assets/img/posts/kaist2_fig1_couette.svg' | relative_url }}" alt="Two-fluid Couette flow: velocity and vorticity profiles for three viscosity ratios" style="width:100%; max-width:700px;">
+  <figcaption style="margin-top:0.6rem; font-size:0.9rem; color:#555;">
+    <strong>Figure 1.</strong> Two-fluid Couette flow between plates at y/h = ±1 (bottom plate moves at u = −U, top plate at u = +U).
+    Interface is at y = 0, with fluid 1 (viscosity μ₁) below and fluid 2 (μ₂) above.
+    <strong>(a)</strong> Velocity profiles: all three are piecewise linear, but the slope — hence the vorticity — changes at the interface.
+    The interface velocity u<sub>int</sub>/U = (μ₁ − μ₂)/(μ₁ + μ₂) shifts away from zero when μ₁ ≠ μ₂.
+    <strong>(b)</strong> Vorticity profiles: constant per layer with a discontinuous jump at y = 0.
+    The jump strength ∝ (μ₁ − μ₂) vanishes for the equal-viscosity case (green) and reverses sign when the viscosity ratio inverts.
+  </figcaption>
+</figure>
+
 ---
 
 ## 3. Two-Fluid Taylor-Couette Flow
@@ -209,6 +221,17 @@ For a material contour enclosing both vortices and their mirror images, the tota
 
 As the vortex pair rises toward the surface, the near-surface vorticity distribution changes, but the total circulation enclosed remains conserved (Kelvin's theorem for the inviscid, uniform-density case). The surface acts as a mirror that rearranges — but does not create or destroy — the total circulation.
 
+<figure style="text-align:center; margin: 2rem 0;">
+  <img src="{{ '/assets/img/posts/kaist2_fig2_lamb.svg' | relative_url }}" alt="Streamlines of a Lamb vortex pair below a free surface, including image vortices" style="width:100%; max-width:660px;">
+  <figcaption style="margin-top:0.6rem; font-size:0.9rem; color:#555;">
+    <strong>Figure 2.</strong> Streamlines of a Lamb vortex pair in the low-Froude-number limit (flat free surface).
+    The ⊕ and ⊖ symbols mark the real counter-rotating vortex pair at depth h<sub>v</sub>/d = 1.2 below the surface (y = 0, blue line).
+    Faint mirror vortices above the surface enforce the zero-normal-velocity condition.
+    The total circulation enclosed by any contour crossing the surface is zero (Γ + (−Γ) = 0), consistent with Kelvin's theorem.
+    At higher Froude number the surface deforms, the symmetry breaks, and new vorticity is generated at the deformed interface.
+  </figcaption>
+</figure>
+
 ---
 
 ## 6. Froude Number Effects on Vorticity Distribution
@@ -272,3 +295,23 @@ The two reviews taken together define the theoretical space for interpreting the
 The silicone film on water is an **elastic interface** — it has both the compliance of a free surface (it deforms under pressure) and a stress-jump condition (it transmits both normal and tangential forces like a membrane). Its vorticity signature is therefore a **combination** of the free-surface and viscous-interface cases, weighted by the film stiffness and the driving frequency.
 
 Developing the correct vorticity boundary condition for this elastic film problem — one that recovers the free-surface limit when the film is very soft and the rigid-wall limit when the film is very stiff — is, in physical terms, the same problem as developing the correct dispersion relation. The dispersion relation and the vorticity balance are two faces of the same coin.
+
+---
+
+## References
+
+1. **Terrington, S. J., Hourigan, K., & Thompson, M. C.** (2020). The generation and conservation of vorticity: deforming interfaces and boundaries in two-dimensional flows. _Journal of Fluid Mechanics_, **890**, A5. [doi:10.1017/jfm.2020.64](https://doi.org/10.1017/jfm.2020.64)
+
+   _Primary source for this review. Develops the vorticity generation framework for moving/deforming interfaces, applies it to two-fluid Couette and Taylor-Couette flows, Lamb vortex pairs, and Froude-number-dependent surface vorticity._
+
+2. **Brøns, M., Thompson, M. C., Leweke, T., & Hourigan, K.** (2014). Vorticity generation and conservation for two-dimensional interfaces and boundaries. _Journal of Fluid Mechanics_, **758**, 63–93. [doi:10.1017/jfm.2014.520](https://doi.org/10.1017/jfm.2014.520)
+
+   _Predecessor paper (reviewed in KAIST #1) establishing the general vorticity generation formula for fixed no-slip and stress-free boundaries._
+
+3. **Sheridan, J., Lin, J.-C., & Rockwell, D.** (1997). Flow past a cylinder close to a free surface. _Journal of Fluid Mechanics_, **330**, 1–30.
+
+   _Experimental data on velocity and vorticity fields for a submerged cylinder; used in the companion paper as a reference case._
+
+4. **Reichl, P., Hourigan, K., & Thompson, M. C.** (2005). Flow past a cylinder close to a free surface. _Journal of Fluid Mechanics_, **533**, 269–296.
+
+   _Numerical counterpart to Sheridan et al. (1997)._

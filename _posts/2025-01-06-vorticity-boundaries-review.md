@@ -159,6 +159,16 @@ Vorticity is **linear in y**: it is zero at the centerline (by symmetry, the vel
 
 This linear distribution has a clean interpretation via Stokes' theorem: integrate ω over a rectangle of height 2h and length L, and you recover a circulation proportional to the velocity difference between the two walls (here, 0 − 0 = 0) plus the pressure-work done along the streamlines. The two wall vorticity sheets contribute equal and opposite circulations that sum to zero over the full channel width — consistent with the flow being pressure-driven, not circulation-driven.
 
+<figure style="text-align:center; margin: 2rem 0;">
+  <img src="{{ '/assets/img/posts/kaist1_fig1_poiseuille.svg' | relative_url }}" alt="Poiseuille flow: parabolic velocity profile (left) and linear vorticity profile (right)" style="width:100%; max-width:700px;">
+  <figcaption style="margin-top:0.6rem; font-size:0.9rem; color:#555;">
+    <strong>Figure 1.</strong> Poiseuille flow between parallel plates (y/h = ±1).
+    <strong>(a)</strong> The parabolic velocity profile u = U(1 − y²/h²), with maximum at the centreline and zero at the no-slip walls.
+    <strong>(b)</strong> The corresponding vorticity field ω·h/U = 2y/h is linear — zero at the centreline, maximum in magnitude at the walls, antisymmetric across the channel.
+    The equal and opposite wall vorticity sheets cancel in total, consistent with zero net circulation in a pressure-driven flow.
+  </figcaption>
+</figure>
+
 ---
 
 ## 5. Rotating Cylinder — Vorticity Diffusion in Time
@@ -186,6 +196,18 @@ This problem illustrates three things:
 1. **Vorticity starts at the wall** and spreads inward/outward by diffusion.
 2. **Circulation is conserved** on any material contour enclosing the same fluid — the total vorticity integrated over the growing vortical region is constant once generated.
 3. **Viscosity sets the timescale** for vorticity reorganization. In high-Re flows (small ν), vorticity remains tightly wrapped around the cylinder for a long time; in low-Re flows, it diffuses quickly into the bulk.
+
+<figure style="text-align:center; margin: 2rem 0;">
+  <img src="{{ '/assets/img/posts/kaist1_fig2_diffusion.svg' | relative_url }}" alt="Vorticity diffusion from an impulsively started wall at three successive times" style="width:100%; max-width:640px;">
+  <figcaption style="margin-top:0.6rem; font-size:0.9rem; color:#555;">
+    <strong>Figure 2.</strong> Vorticity diffusion from an impulsively started flat plate (Stokes' first problem).
+    At t = 0⁺ the plate at y = 0 suddenly moves at velocity U; the fluid above is initially at rest.
+    The exact solution ω(y,t) = (U/h)(h/δ√π) exp(−y²/4δ²), with δ = √(νt), gives Gaussian profiles that
+    broaden as δ ~ √t. Three successive times are shown (t₁ &lt; t₂ &lt; t₃); the dashed line is the
+    steady-state Couette profile ω = U/h reached as t → ∞. The wall is the only source of vorticity —
+    the interior is purely diffusive.
+  </figcaption>
+</figure>
 
 ---
 
@@ -241,3 +263,23 @@ The vorticity dynamics reviewed here connects directly to the KAIST lab's experi
 Understanding how much vorticity the film interface generates (and how that compares to a rigid bottom at the same geometry) requires exactly the framework developed here: a clear accounting of which boundaries generate vorticity, at what rate, and how that vorticity propagates into the fluid interior.
 
 The dispersion relation for gravity–capillary waves on an elastic film — which the lab is currently investigating — contains implicitly the assumption that the interface is vorticity-free at leading order. Corrections for viscosity and interface compliance are second-order in the wave steepness, but first-order in the vorticity budget.
+
+---
+
+## References
+
+1. **Brøns, M., Thompson, M. C., Leweke, T., & Hourigan, K.** (2014). Vorticity generation and conservation for two-dimensional interfaces and boundaries. _Journal of Fluid Mechanics_, **758**, 63–93. [doi:10.1017/jfm.2014.520](https://doi.org/10.1017/jfm.2014.520)
+
+   _Primary source for this review. Derives the generalised vorticity generation formula for no-slip and stress-free boundaries in planar and axisymmetric geometry, with Poiseuille flow, spinning cylinder, and submerged cylinder as worked examples._
+
+2. **Terrington, S. J., Hourigan, K., & Thompson, M. C.** (2020). The generation and conservation of vorticity: deforming interfaces and boundaries in two-dimensional flows. _Journal of Fluid Mechanics_, **890**, A5. [doi:10.1017/jfm.2020.64](https://doi.org/10.1017/jfm.2020.64)
+
+   _Companion paper (reviewed in KAIST #2) extending the framework to moving and deforming interfaces, two-fluid flows, and Froude-number-dependent vorticity redistribution._
+
+3. **Sheridan, J., Lin, J.-C., & Rockwell, D.** (1997). Flow past a cylinder close to a free surface. _Journal of Fluid Mechanics_, **330**, 1–30.
+
+   _Experimental velocity and vorticity fields for a submerged cylinder; cited in Brøns et al. (2014) as a reference case for vorticity generation near a free surface._
+
+4. **Reichl, P., Hourigan, K., & Thompson, M. C.** (2005). Flow past a cylinder close to a free surface. _Journal of Fluid Mechanics_, **533**, 269–296.
+
+   _Numerical counterpart to Sheridan et al. (1997); cited alongside the experimental data in the submerged-cylinder example of Brøns et al. (2014)._
