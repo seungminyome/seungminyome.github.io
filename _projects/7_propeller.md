@@ -9,7 +9,7 @@ category: research
 
 The KCS project asked: given this hull moving at this speed, what resistance does the fluid impose? This project asked the inverse: given that resistance, design the rotating surface that overcomes it. Same ship. Opposite direction of causality.
 
-As an undergraduate at **Pusan National University**, I carried out the full propeller design sequence for a container ship — from initial sizing through detailed blade geometry to Korean Register strength evaluation. The ship was real in the sense that matters: all specifications came from an actual design case, and the final geometry had to pass a regulatory fatigue criterion, not just look reasonable on paper.
+As an undergraduate at **Pusan National University** (advised by Prof. Munchan Kim), I carried out the full propeller design sequence for a container ship — from initial sizing through detailed blade geometry to Korean Register strength evaluation. The ship was real in the sense that matters: all specifications came from an actual design case, and the final geometry had to pass a regulatory fatigue criterion, not just look reasonable on paper.
 
 ---
 
