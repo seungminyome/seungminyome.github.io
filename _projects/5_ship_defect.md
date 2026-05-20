@@ -25,3 +25,7 @@ At **Pusan National University** and continuing at **Samsung Heavy Industries R&
 **What this taught me:** the autoencoder reached 99.49% accuracy, but that number revealed its own limitation. The model could tell you _that_ something changed; it could not tell you _why_ it changed or at what scale the change originated. The reconstruction-error spike corresponded to a fatigue crack growing along a weld — a failure mode six orders of magnitude below the hull. That asymmetry between a detectable macroscale symptom and an invisible microscale cause was the observation that redirected my research toward smaller scales. Data-driven methods are powerful exactly where physics-based models are intractable — but knowing when you are in that regime requires understanding the physics well enough to recognize its limits.
 
 **Tools:** MATLAB · Python · LSTM autoencoder · Samsung HI vibration/acoustic sensor suite
+
+---
+
+This started as undergraduate research at PNU and continued as an internship at Samsung Heavy Industries — the first time I worked with data from a real vessel program rather than a classroom dataset. The 99.49% accuracy looked clean on paper, but the moment I traced one spike back to a fatigue crack propagating along a weld, the number stopped feeling like an achievement and started feeling like a question. That shift — from "the model works" to "what is the model actually sensing?" — was not something I expected from a data-driven project. It stayed with me.

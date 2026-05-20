@@ -90,6 +90,8 @@ The resistance prediction was accurate to 1.16% — better than expected for a c
 
 2. **The frame of reference matters.** We solved a fixed-hull / moving-fluid problem rather than a moving-hull problem. In the real towing tank, the model accelerates before reaching constant speed. That start-up transient creates wave patterns that persist into the measurement region. Our constant-speed assumption removed this effect, which partly explains the wake discrepancy.
 
+This was my first real CFD project, done as an undergraduate at PNU. Most of the time went into the mesh — adjusting refinement zones, checking skewness, re-running after every change. It was tedious work, but it taught me that the result you get is a direct function of the choices you make before the solver even starts. The 1.16% resistance error felt significant at the time. It still does, a little.
+
 **Role:** literature review, mesh optimization, post-processing (wave profiles, resistance extraction)
 
 **Tools:** STAR-CCM+ · structured meshing · k-ε turbulence · SIMPLE

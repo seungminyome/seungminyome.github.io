@@ -33,3 +33,7 @@ This is contact mechanics — solid on solid — with fluid behavior determined 
 **Status:** first paper _in preparation_ — _Computers and Geotechnics_
 
 **Tools:** solids4Foam · OpenFOAM-2212 · ParaView · Ubuntu/VirtualBox
+
+---
+
+I came into this project from ocean engineering — waves, vortices, elastic films. Geomechanics was a different language. The first weeks at Wyoming were spent unlearning assumptions that had been automatic for years and rebuilding intuition around stress, plasticity, and contact. OpenFOAM itself was familiar, but solids4Foam was not, and there was no roadmap for applying it to proppant contact. Some days the only progress was understanding one more line of the source code. That kind of slow start is uncomfortable, but it is also where the understanding actually forms.

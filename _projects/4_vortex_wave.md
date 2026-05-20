@@ -32,3 +32,7 @@ At **KAIST** (Graduate School of Mechanical Engineering, advised by Prof. Yeunwo
 **What this taught me:** a flow field is a connected story. Vorticity, pressure, and surface deformation are not three separate quantities — each one is a consequence of the other two. Reading them as a system, not a list, is the skill that carries across every problem I have worked on since.
 
 **Tools:** ANSYS Fluent (VOF)
+
+---
+
+This was done at KAIST in parallel with the elastic film experiments — physical experiments in one corner of the lab, CFD in another. Running both at the same time was disorienting at first, but it turned out to be useful. When the simulation showed the upper vortex weakening, I already had an instinct for what that looked like physically, because I had been watching wave patterns in the tank every day. The two ways of seeing the same problem kept checking each other.
