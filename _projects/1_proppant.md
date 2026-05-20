@@ -12,12 +12,14 @@ A hydraulic fracture is only as productive as its conductivity — and conductiv
 At the **University of Wyoming** (advised by Prof. Soheil Saraji), I am developing a coupled solid–fluid simulation framework in [solids4Foam](https://solids4foam.github.io) (OpenFOAM-based) to model a single proppant grain pressed between two shale fracture walls under closure stress.
 
 **What makes this hard:**
+
 - The grain is elastic; the rock yields plastically under sufficient stress
 - Contact occurs at a point and spreads — the contact patch geometry determines everything
 - The deformed fracture aperture directly sets the permeability for single-phase flow
 - No prior study had applied solids4Foam contact mechanics to this class of problem
 
 **Implementation:**
+
 - Structured O-grid mesh concentrating resolution at the contact zone
 - J2 perfect-plasticity rock constitutive model for Haynesville / Eagle Ford shale
 - Penalty-based segment-to-segment contact algorithm
@@ -28,6 +30,6 @@ At the **University of Wyoming** (advised by Prof. Soheil Saraji), I am developi
 
 This is contact mechanics — solid on solid — with fluid behavior determined by the resulting geometry. The coupling is one-way at the grain scale: solid deformation sets the aperture, aperture sets the flow. The next step is two-way coupling at the fracture scale: fluid pressure changes the effective stress, which changes the embedment.
 
-**Status:** first paper *in preparation* — *Computers and Geotechnics*
+**Status:** first paper _in preparation_ — _Computers and Geotechnics_
 
 **Tools:** solids4Foam · OpenFOAM-2212 · ParaView · Ubuntu/VirtualBox

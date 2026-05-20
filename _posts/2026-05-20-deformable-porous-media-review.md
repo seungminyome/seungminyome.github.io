@@ -22,12 +22,12 @@ Most existing frameworks sidestep this by **prescribing permeability** — eithe
 
 The four papers reviewed here all attack this bottleneck, but from different angles and scales:
 
-| Paper | Scale | Approach | What they compute |
-|-------|-------|----------|-------------------|
-| Dai et al. (2026) | Macro | HM–DEM | Infiltration vs. fracturing regime transition |
-| Wang et al. (2022) | Pore | CFD–DEM | Particle transport statistics |
-| Ou et al. (2025) | Multi | Monolithic FSI | Permeability-free coupled solver |
-| Hilliard et al. (2024) | Micro→Macro | DEM→CFD→Homogenization | κ(deformation) from first principles |
+| Paper                  | Scale       | Approach               | What they compute                             |
+| ---------------------- | ----------- | ---------------------- | --------------------------------------------- |
+| Dai et al. (2026)      | Macro       | HM–DEM                 | Infiltration vs. fracturing regime transition |
+| Wang et al. (2022)     | Pore        | CFD–DEM                | Particle transport statistics                 |
+| Ou et al. (2025)       | Multi       | Monolithic FSI         | Permeability-free coupled solver              |
+| Hilliard et al. (2024) | Micro→Macro | DEM→CFD→Homogenization | κ(deformation) from first principles          |
 
 Reading them together, a clearer picture emerges: **none of them fully solves the problem**, but each one fills a gap the others leave open.
 
@@ -35,7 +35,7 @@ Reading them together, a clearer picture emerges: **none of them fully solves th
 
 ## Paper 1 — Dai et al. (2026): When Does Infiltration Become Fracturing?
 
-**Full title:** *Confinement-controlled infiltration–fracturing transition in two-phase flow through deformable porous media*
+**Full title:** _Confinement-controlled infiltration–fracturing transition in two-phase flow through deformable porous media_
 
 ### The gap they fill
 
@@ -44,6 +44,7 @@ Existing two-phase flow models in porous media treat the solid skeleton as **rig
 ### Their framework
 
 A fully coupled hydro-mechanical DEM (HM–DEM) model where:
+
 - Pore pressure ↔ grain deformation ↔ permeability evolution are all solved simultaneously
 - Two phases (e.g., water–air, brine–CO₂) compete for pore space
 - Confining stress is an explicit control parameter
@@ -70,7 +71,7 @@ Viscosity ratio $$M$$ also matters: at $$M = 9778$$ (water–air), increasing co
 
 ## Paper 2 — Wang et al. (2022): What Does a Single Particle Actually Do?
 
-**Full title:** *Numerical simulation of flow behavior of particles in a porous media based on CFD-DEM*
+**Full title:** _Numerical simulation of flow behavior of particles in a porous media based on CFD-DEM_
 
 ### The gap they fill
 
@@ -79,6 +80,7 @@ Most pore-scale studies treat the fluid only — single-phase flow through a fix
 ### Their framework
 
 CFD–DEM coupling where:
+
 - Fluid phase: Navier–Stokes (continuum)
 - Solid phase: Newton's equations for each grain + collision model
 - Granular temperature $$\Theta$$ tracks velocity fluctuation intensity:
@@ -88,15 +90,18 @@ $$\Theta = \frac{1}{3}\langle v'^2 \rangle$$
 ### Key findings
 
 **Effect of porosity (ε):**
+
 - Low ε (0.55–0.60): particle blockage and deposition; residence time peaks
 - ε ≈ 0.60: minimum residence time — the crossover between collision-dominated and mobility-dominated regimes
 - High ε: smoother transport but longer path lengths
 
 **Effect of fluid viscosity:**
+
 - ↑ viscosity → ↓ axial velocity, ↑ residence time, ↑ contact force
 - Higher viscosity damps fluctuations and pins particles near pore walls
 
 **Effect of fluid velocity:**
+
 - ↑ velocity → ↑ granular temperature (more chaotic motion)
 - ↑ velocity → ↓ residence time (drag-dominated transport)
 
@@ -106,7 +111,7 @@ $$\Theta = \frac{1}{3}\langle v'^2 \rangle$$
 
 ## Paper 3 — Ou et al. (2025): Can We Ditch Prescribed Permeability Entirely?
 
-**Full title:** *A monolithic fluid–structure interaction approach for multiscale flows with deformable porous media*
+**Full title:** _A monolithic fluid–structure interaction approach for multiscale flows with deformable porous media_
 
 ### The gap they fill
 
@@ -115,6 +120,7 @@ Every coupled flow–deformation solver eventually needs to evaluate permeabilit
 ### Their framework
 
 A **one-field monolithic FSI formulation**:
+
 - Solid and fluid share one velocity field (the mixture momentum equation)
 - Solid dynamics are embedded via **analytical penalization terms** — no explicit interface tracking or reconstruction
 - Valid from pore scale to macro scale in a single framework
@@ -131,7 +137,7 @@ Single cylinder sedimentation benchmark: settling velocity matches analytical so
 
 ## Paper 4 — Hilliard et al. (2024): Computing κ(deformation) From First Principles
 
-**Full title:** *Modeling flow and deformation in porous media from pore-scale to the Darcy-scale*
+**Full title:** _Modeling flow and deformation in porous media from pore-scale to the Darcy-scale_
 
 ### The gap they fill
 
@@ -157,12 +163,12 @@ Loading path (100 → 1000 kPa) and unloading path (1000 → 100 kPa) give **dif
 
 Reading the four papers as a system:
 
-| Paper | What they solved | What they left open |
-|-------|-----------------|---------------------|
-| Dai et al. | Macro-scale regime transition | Transition band is empirical; geometry-dependent |
-| Wang et al. | Pore-scale particle transport statistics | Fixed pore geometry; no grain rearrangement |
-| Ou et al. | Permeability-free monolithic FSI | ζ recalibration under large deformation unclear |
-| Hilliard et al. | κ(deformation) from DEM+CFD | Scalar only; no anisotropic tensor |
+| Paper           | What they solved                         | What they left open                              |
+| --------------- | ---------------------------------------- | ------------------------------------------------ |
+| Dai et al.      | Macro-scale regime transition            | Transition band is empirical; geometry-dependent |
+| Wang et al.     | Pore-scale particle transport statistics | Fixed pore geometry; no grain rearrangement      |
+| Ou et al.       | Permeability-free monolithic FSI         | ζ recalibration under large deformation unclear  |
+| Hilliard et al. | κ(deformation) from DEM+CFD              | Scalar only; no anisotropic tensor               |
 
 The gap none of them fully fills: **a framework that derives anisotropic, path-dependent permeability from the evolving grain microstructure and feeds it back into a macro-scale coupled solver — consistently, without empirical closures.** Hilliard et al. come closest on the micro-to-macro side. Ou et al. come closest on the solver side. The combination of their approaches is an open problem.
 

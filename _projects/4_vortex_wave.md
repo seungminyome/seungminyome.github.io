@@ -24,6 +24,7 @@ At **KAIST** (Graduate School of Mechanical Engineering, advised by Prof. Yeunwo
 </div>
 
 **Key findings:**
+
 - Free-surface proximity reduces the Strouhal number and shifts the shedding frequency
 - Upper vortices are stretched and attenuated by surface deformation; lower vortices remain coherent
 - The asymmetry grows with decreasing submergence depth (Fr-dependent)

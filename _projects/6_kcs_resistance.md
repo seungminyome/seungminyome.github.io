@@ -26,14 +26,14 @@ The KRISO Container Ship (KCS) is one of the most widely used benchmark hulls in
 
 ### Numerical Setup
 
-| Parameter | Setting |
-|-----------|---------|
-| Mesh type | Structured hexahedral |
-| Elements | ~4.4 million |
-| y⁺ on hull | 50 |
-| Turbulence model | k-ε |
-| Solver | SIMPLE (implicit) |
-| Timestep | 0.03 s |
+| Parameter        | Setting               |
+| ---------------- | --------------------- |
+| Mesh type        | Structured hexahedral |
+| Elements         | ~4.4 million          |
+| y⁺ on hull       | 50                    |
+| Turbulence model | k-ε                   |
+| Solver           | SIMPLE (implicit)     |
+| Timestep         | 0.03 s                |
 
 The mesh was generated with three prism layers at the hull surface. My specific contribution was **mesh optimization** — tuning the refinement zones around the bow, stern, and free surface to balance accuracy against cell count.
 
@@ -95,6 +95,7 @@ The resistance prediction was accurate to 1.16% — better than expected for a c
 **Tools:** STAR-CCM+ · structured meshing · k-ε turbulence · SIMPLE
 
 **References:**
-- Kim, W. J., Van, S. H., & Kim, D. H. (2001). Measurement of flows around modern commercial ship models. *Experiments in Fluids*.
+
+- Kim, W. J., Van, S. H., & Kim, D. H. (2001). Measurement of flows around modern commercial ship models. _Experiments in Fluids_.
 - ITTC – Recommended Procedures 7.5-03-02-03: Practical Guidelines for Ship CFD Applications.
 - Gothenburg 2010 Workshop on CFD in Ship Hydrodynamics.

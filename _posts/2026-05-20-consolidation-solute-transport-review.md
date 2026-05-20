@@ -10,7 +10,7 @@ toc:
   sidebar: left
 ---
 
-> This post is adapted from a paper review I prepared for my first research meeting with Prof. Soheil Saraji at the University of Wyoming. The central question I set out to answer: *"How were classical consolidation and porous media theories translated into a 3D OpenFOAM solver?"*
+> This post is adapted from a paper review I prepared for my first research meeting with Prof. Soheil Saraji at the University of Wyoming. The central question I set out to answer: _"How were classical consolidation and porous media theories translated into a 3D OpenFOAM solver?"_
 
 ---
 
@@ -93,7 +93,7 @@ Classical consolidation assumed fully water-filled pores. Fredlund (1993) introd
 
 This is the paper I consider the **keystone** of the entire genealogy.
 
-Smith (2000) asked: *"How does consolidation-induced flow change solute transport?"* The answer seems obvious in hindsight — consolidation changes the Darcy velocity $$\mathbf{q}$$ and the porosity $$n$$, and both appear directly in the ADE — but writing it down as a coupled, solvable algorithm required careful bookkeeping.
+Smith (2000) asked: _"How does consolidation-induced flow change solute transport?"_ The answer seems obvious in hindsight — consolidation changes the Darcy velocity $$\mathbf{q}$$ and the porosity $$n$$, and both appear directly in the ADE — but writing it down as a coupled, solvable algorithm required careful bookkeeping.
 
 The one-way coupling chain is:
 
@@ -121,16 +121,16 @@ Wang & Jeng (2024) made the move that was overdue: they implemented Smith's coup
 
 The model domain is a 3D box with a centrally loaded region. Load increases linearly over two years, then holds constant. The observable quantities are excess pore pressure $$p$$, vertical displacement $$u_z$$, and fluid-phase solute concentration $$C_f$$.
 
-| Parameter | Direction | Effect on $$p$$ | Effect on $$u_z$$ | Effect on $$C_f$$ |
-|-----------|-----------|-----------------|-------------------|-------------------|
-| Hydraulic conductivity $$K$$ ↑ | Faster drainage | Dissipates faster | Larger early deformation | Faster vertical migration |
-| Shear modulus $$G$$ ↓ | Softer skeleton | Moderate | Larger total settlement | Faster solute migration |
-| Saturation $$S_r$$ | Affects storage | Minor | Minor | Minor |
-| Poisson's ratio $$\nu$$ ↓ | More compressible | Moderate | — | Faster vertical migration |
-| Partitioning coefficient $$K_d$$ ↑ | Stronger adsorption | — | — | Reduced vertical transport; accumulation in upper layers |
-| Anisotropy ratio $$K_x/K_z \gg 1$$ | Horizontal preference | — | — | Directional plume elongation |
+| Parameter                          | Direction             | Effect on $$p$$   | Effect on $$u_z$$        | Effect on $$C_f$$                                        |
+| ---------------------------------- | --------------------- | ----------------- | ------------------------ | -------------------------------------------------------- |
+| Hydraulic conductivity $$K$$ ↑     | Faster drainage       | Dissipates faster | Larger early deformation | Faster vertical migration                                |
+| Shear modulus $$G$$ ↓              | Softer skeleton       | Moderate          | Larger total settlement  | Faster solute migration                                  |
+| Saturation $$S_r$$                 | Affects storage       | Minor             | Minor                    | Minor                                                    |
+| Poisson's ratio $$\nu$$ ↓          | More compressible     | Moderate          | —                        | Faster vertical migration                                |
+| Partitioning coefficient $$K_d$$ ↑ | Stronger adsorption   | —                 | —                        | Reduced vertical transport; accumulation in upper layers |
+| Anisotropy ratio $$K_x/K_z \gg 1$$ | Horizontal preference | —                 | —                        | Directional plume elongation                             |
 
-**The insight that stood out to me:** the concentration field is controlled through three *separate* pathways. $$K$$ acts through flow speed. $$G$$ acts through deformation magnitude. $$K_d$$ acts through chemistry. In 1D, these pathways superpose along a single axis and their effects are hard to isolate. In 3D, they produce distinct spatial signatures — which is exactly why 3D modeling matters.
+**The insight that stood out to me:** the concentration field is controlled through three _separate_ pathways. $$K$$ acts through flow speed. $$G$$ acts through deformation magnitude. $$K_d$$ acts through chemistry. In 1D, these pathways superpose along a single axis and their effects are hard to isolate. In 3D, they produce distinct spatial signatures — which is exactly why 3D modeling matters.
 
 ### The anisotropy cases
 
@@ -146,22 +146,22 @@ This third case is the most realistic for natural geologic formations, where dep
 
 ## Synthesis Table
 
-This table summarizes what each paper *defined*, *solved*, and *left open* — the three questions I used to organize the review.
+This table summarizes what each paper _defined_, _solved_, and _left open_ — the three questions I used to organize the review.
 
-| Reference | Main contribution | Dim. | Key physics | Role in chain |
-|-----------|------------------|------|-------------|---------------|
-| Biot (1941) | 3D consolidation theory; $$\mathbf{u}$$–$$p$$ coupling | 3D | Poroelastic coupling | Base: storage + elasticity |
-| Bear (1961) | Tensor form of dispersion in porous media | — | Directional dispersion | Standard ADE terms |
-| Coats & Smith (1964) | Dead-end pore volume; capacitance model | 1D exp. | Non-Fickian transport | Better transport closure |
-| Fredlund (1993) | State variables for unsaturated soils | — | Suction, compressibility | Unsaturated extension |
-| Smith (2000) | Coupled consolidation–transport algorithm | 1D | Deformation affects $$\mathbf{q}$$ and $$n$$ | **Coupling blueprint** |
-| Wang & Jeng (2024) | 3D OpenFOAM solver + sensitivity analysis | 3D | $$K$$, $$G$$, $$S_r$$, $$\nu$$, $$K_d$$, anisotropy | Reproducible 3D platform |
+| Reference            | Main contribution                                      | Dim.    | Key physics                                         | Role in chain              |
+| -------------------- | ------------------------------------------------------ | ------- | --------------------------------------------------- | -------------------------- |
+| Biot (1941)          | 3D consolidation theory; $$\mathbf{u}$$–$$p$$ coupling | 3D      | Poroelastic coupling                                | Base: storage + elasticity |
+| Bear (1961)          | Tensor form of dispersion in porous media              | —       | Directional dispersion                              | Standard ADE terms         |
+| Coats & Smith (1964) | Dead-end pore volume; capacitance model                | 1D exp. | Non-Fickian transport                               | Better transport closure   |
+| Fredlund (1993)      | State variables for unsaturated soils                  | —       | Suction, compressibility                            | Unsaturated extension      |
+| Smith (2000)         | Coupled consolidation–transport algorithm              | 1D      | Deformation affects $$\mathbf{q}$$ and $$n$$        | **Coupling blueprint**     |
+| Wang & Jeng (2024)   | 3D OpenFOAM solver + sensitivity analysis              | 3D      | $$K$$, $$G$$, $$S_r$$, $$\nu$$, $$K_d$$, anisotropy | Reproducible 3D platform   |
 
 ---
 
 ## My Extension Ideas
 
-Reading this genealogy, I immediately started thinking about what is *still* missing. A few directions that seem tractable:
+Reading this genealogy, I immediately started thinking about what is _still_ missing. A few directions that seem tractable:
 
 **1. Two-way coupling.** Wang & Jeng use one-way coupling (mechanics → transport). In systems where solute concentration affects fluid density or viscosity — dense contaminant plumes, high-salinity brines — this assumption breaks down. A two-way coupled solver would let concentration feed back into the flow field.
 
@@ -185,9 +185,9 @@ Reading Wang & Jeng carefully made one thing clear: the challenge in coupled Ope
 
 ## References
 
-- Biot, M. A. (1941). General Theory of Three-Dimensional Consolidation. *J. Appl. Phys.*, 12, 155–164.
-- Bear, J. (1961). On the Tensor Form of Dispersion in Porous Media. *Journal of Geophysical Research*, 55(4).
-- Coats, K. H., & Smith, B. D. (1964). Dead-End Pore Volume and Dispersion in Porous Media. *SPE Journal*, 4(1), 73–84.
-- Fredlund, D. G. (1993). *Soil Mechanics for Unsaturated Soils*. Wiley.
-- Smith, D. W. (2000). One-dimensional contaminant transport through a deforming porous medium. *Int. J. Numer. Anal. Meth. Geomech.*, 24, 693–722.
-- Wang, B., & Jeng, D.-S. (2024). Parametric Analysis for 3D Modeling of Consolidation-Induced Solute Transport Using OpenFOAM. *Applied Sciences*, 14, 11749. https://doi.org/10.3390/app142411749
+- Biot, M. A. (1941). General Theory of Three-Dimensional Consolidation. _J. Appl. Phys._, 12, 155–164.
+- Bear, J. (1961). On the Tensor Form of Dispersion in Porous Media. _Journal of Geophysical Research_, 55(4).
+- Coats, K. H., & Smith, B. D. (1964). Dead-End Pore Volume and Dispersion in Porous Media. _SPE Journal_, 4(1), 73–84.
+- Fredlund, D. G. (1993). _Soil Mechanics for Unsaturated Soils_. Wiley.
+- Smith, D. W. (2000). One-dimensional contaminant transport through a deforming porous medium. _Int. J. Numer. Anal. Meth. Geomech._, 24, 693–722.
+- Wang, B., & Jeng, D.-S. (2024). Parametric Analysis for 3D Modeling of Consolidation-Induced Solute Transport Using OpenFOAM. _Applied Sciences_, 14, 11749. https://doi.org/10.3390/app142411749
