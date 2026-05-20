@@ -7,6 +7,8 @@ importance: 3
 category: research
 ---
 
+Everything before this was either simulation or theory. This one was built with my hands.
+
 Classical 2D supercavity models predict a symmetric cavity. Near a free surface, the cavity is not symmetric — the upper wall contracts while the lower wall remains close to the predicted shape. This discrepancy is not numerical noise; it is real physics that the standard model ignores.
 
 At **KAIST**, in parallel with the elastic-film wave project, I built a 2D analytical model for ventilated supercavity formation in a free-surface-bounded environment and identified the source of the asymmetry.
@@ -36,12 +38,10 @@ Before every day of testing, I climbed into the tank and wiped it down with a ra
 
 So the cleaning was the research.
 
-The scientific problem — why is the cavity asymmetric? — I worked on every night with a PhD student in the lab. We would sit with the footage, draw pressure diagrams, go back and forth. My background was in naval architecture, and at some point I brought up wake theory. The argument was this: in incompressible flow, pressure disturbances propagate in all directions. A downstream geometry can theoretically influence upstream conditions. But in a cavitating flow, the cavity itself acts as a partial pressure barrier — disturbances from behind are attenuated before they reach the cavitator at the front. So the influence is real but weak. Much weaker than standard potential flow would predict.
-
-The wake, in this context, is fundamentally a downstream phenomenon. It does not directly disturb the upstream cavity. But it does modify the global pressure distribution, and through that, it acts on the cavity asymmetry indirectly. That distinction — direct versus indirect, strong versus weak — was what the existing closure models had not accounted for. I spent several nights modifying the wake correction term to capture that indirect effect.
+The scientific problem — why is the cavity asymmetric? — I worked on every night with a PhD student in the lab. We would sit with the footage, draw pressure diagrams, go back and forth. My background was in naval architecture, and at some point I brought up wake theory. The argument was this: in incompressible flow, pressure disturbances propagate in all directions. A downstream geometry can theoretically influence upstream conditions. But in a cavitating flow, the cavity itself acts as a partial pressure barrier — disturbances from behind are attenuated before they reach the cavitator at the front. So the influence is real but weak. Much weaker than standard potential flow would predict. The wake is a downstream phenomenon; it does not directly disturb the upstream cavity, but it modifies the global pressure distribution, and through that it acts on the cavity asymmetry indirectly. That distinction — direct versus indirect, strong versus weak — was what the existing closure models had not accounted for. I spent several nights modifying the wake correction term to capture that indirect effect.
 
 When the corrected model finally matched the experimental cavity outline, I stayed at the desk for a while without doing anything. I had been told by people I respected that the asymmetry was probably measurement error, or an artifact of the setup, or just something that analytical models were not meant to capture. The result said otherwise.
 
-I know this is a small result in the scope of fluid mechanics research. The correction is modest. The paper is not published. But I had built the tank, cleaned it every morning, stayed up night after night to understand a single asymmetric shape — and then I had understood it. That is the closest I have come to the feeling people describe when they talk about why they do research. I did not expect to find it in a water tank in a basement lab, but that is where it was.
+I know this is a small result in the scope of fluid mechanics research. The correction is modest. The paper is not published. But I had built the tank, cleaned it every morning, stayed up night after night to understand a single asymmetric shape — and then I had understood it. That is the closest I have come to the feeling people describe when they talk about why they do research.
 
-This remains the most thrilling moment I have had in science so far.
+This remains the most thrilling moment I have had in science so far. When I arrived at Wyoming to study proppant embedment in hydraulic fractures, the problem looked completely different — different scale, different application, different language. But the question was the same one I had been asking since the first KCS mesh: what happens at the interface between solid and fluid under stress? KAIST had taught me to ask it clearly. Wyoming is where I am learning to answer it at depth.

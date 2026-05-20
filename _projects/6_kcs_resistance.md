@@ -7,7 +7,9 @@ importance: 6
 category: research
 ---
 
-The KRISO Container Ship (KCS) is one of the most widely used benchmark hulls in ship hydrodynamics. Every major CFD code and turbulence model has been tested against it. For an undergraduate CFD course project, reproducing the 2010 Gothenburg Workshop results is a genuine validation exercise — not a toy problem.
+This is where the thread starts.
+
+As an undergraduate at Pusan National University, I sat down with STAR-CCM+ for the first time and tried to make something true come out the other end. The KRISO Container Ship benchmark — hull resistance, wave pattern, one number that either matches the experiment or doesn't — was the first time I understood that a simulation is a claim about reality, and the mesh is the argument.
 
 **Test case:** Gothenburg 2010 Workshop, Case 2-1 (FX0). The hull advances at Fr = 0.26 (model speed 2.196 m/s, Re = 1.4 × 10⁷) with zero sinkage and trim. No propeller, no rudder. Outputs: Kelvin wave pattern, wave profile along the hull, and total resistance coefficient.
 
@@ -90,7 +92,11 @@ The resistance prediction was accurate to 1.16% — better than expected for a c
 
 2. **The frame of reference matters.** We solved a fixed-hull / moving-fluid problem rather than a moving-hull problem. In the real towing tank, the model accelerates before reaching constant speed. That start-up transient creates wave patterns that persist into the measurement region. Our constant-speed assumption removed this effect, which partly explains the wake discrepancy.
 
-This was my first real CFD project, done as an undergraduate at PNU. Most of the time went into the mesh — adjusting refinement zones, checking skewness, re-running after every change. It was tedious work, but it taught me that the result you get is a direct function of the choices you make before the solver even starts. The 1.16% resistance error felt significant at the time. It still does, a little.
+---
+
+This was my first real CFD project, done as an undergraduate at PNU. Most of the time went into the mesh — adjusting refinement zones, checking skewness, re-running after every change. It was tedious, but it taught me that the result you get is a direct function of the choices you make before the solver even starts. The 1.16% resistance error felt significant at the time.
+
+But a ship is not just a hydrodynamic object — it is a structure under load, and those loads eventually leave marks on the material. Once the resistance number was in, that became the question I couldn't stop thinking about. What is the fluid actually doing to the hull?
 
 **Role:** literature review, mesh optimization, post-processing (wave profiles, resistance extraction)
 

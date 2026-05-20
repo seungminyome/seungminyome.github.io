@@ -7,6 +7,8 @@ importance: 1
 category: research
 ---
 
+Six years after first running STAR-CCM+ on the KCS benchmark, the question I have been asking all along has a new form: a single proppant grain pressed between two fracture walls in a shale reservoir, three kilometers underground. The interface between solid and fluid — which was a free surface near a cylinder in one project, a vibrating elastic membrane in another, an asymmetric cavity wall in a water tank — is now the contact patch between a sand grain and rock. The geometry has changed. The question hasn't.
+
 A hydraulic fracture is only as productive as its conductivity — and conductivity depends on how far the proppant grain sinks into the rock. This project models that process from first principles.
 
 At the **University of Wyoming** (advised by Prof. Soheil Saraji), I am developing a coupled solid–fluid simulation framework in [solids4Foam](https://solids4foam.github.io) (OpenFOAM-based) to model a single proppant grain pressed between two shale fracture walls under closure stress.
@@ -36,4 +38,6 @@ This is contact mechanics — solid on solid — with fluid behavior determined 
 
 ---
 
-I came into this project from ocean engineering — waves, vortices, elastic films. Geomechanics was a different language. The first weeks at Wyoming were spent unlearning assumptions that had been automatic for years and rebuilding intuition around stress, plasticity, and contact. OpenFOAM itself was familiar, but solids4Foam was not, and there was no roadmap for applying it to proppant contact. Some days the only progress was understanding one more line of the source code. That kind of slow start is uncomfortable, but it is also where the understanding actually forms.
+I came into this project from ocean engineering — waves, vortices, elastic films, supercavitation. Geomechanics was a different language. The first weeks at Wyoming were spent unlearning assumptions that had been automatic for years and rebuilding intuition around stress, plasticity, and contact. OpenFOAM itself was familiar from the KAIST years; solids4Foam was not, and there was no roadmap for applying it to proppant contact. Some days the only progress was understanding one more line of the source code.
+
+That kind of slow start is uncomfortable, but it is also where the understanding actually forms. Every project before this — the mesh in STAR-CCM+, the sensor data at Samsung, the vortex simulations, the film experiments, the supercavitation tank — was building toward a specific kind of question: what exactly happens at the interface between a solid and a fluid when one pushes on the other? This project is the most concentrated form of that question I have encountered. I intend to answer it.

@@ -7,9 +7,9 @@ importance: 5
 category: research
 ---
 
-Not every FSI problem is about governing equations. Sometimes the question is: given sensor data from a structure under load, can you tell when something is wrong? This project answered that question with 99.49% test accuracy.
+The KCS project taught me that CFD gives you a flow field. This project taught me what that flow field does to the structure over time.
 
-At **Pusan National University** and continuing at **Samsung Heavy Industries R&D**, I developed an LSTM autoencoder for structural health monitoring of ship hulls using vibration and acoustic sensor data from the Green Nuri vessel program.
+At **Pusan National University** and continuing at **Samsung Heavy Industries R&D**, I developed an LSTM autoencoder for structural health monitoring of ship hulls using vibration and acoustic sensor data from the Green Nuri vessel program. The question was simple: given sensor data from a structure under load, can you tell when something is wrong?
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
@@ -28,4 +28,8 @@ At **Pusan National University** and continuing at **Samsung Heavy Industries R&
 
 ---
 
-This started as undergraduate research at PNU and continued as an internship at Samsung Heavy Industries — the first time I worked with data from a real vessel program rather than a classroom dataset. The 99.49% accuracy looked clean on paper, but the moment I traced one spike back to a fatigue crack propagating along a weld, the number stopped feeling like an achievement and started feeling like a question. That shift — from "the model works" to "what is the model actually sensing?" — was not something I expected from a data-driven project. It stayed with me.
+This started as undergraduate research at PNU and continued as an internship at Samsung Heavy Industries — the first time I worked with data from a real vessel program rather than a classroom dataset. The moment one reconstruction-error spike traced back to a fatigue crack propagating along a weld, the 99.49% number stopped feeling like an achievement and started feeling like a question. The model knew something had changed. I didn't know what, or why, or at what scale it had started.
+
+I didn't have a name for the field I was being pulled toward yet. Fluid forces act on the hull; the hull responds; the response accumulates into structural change. The fluid and the structure are not two separate problems — they are the same problem told from two sides. I would spend the next two years at KAIST learning what that meant in practice.
+
+**Tools:** MATLAB · Python · LSTM autoencoder · Samsung HI vibration/acoustic sensor suite
