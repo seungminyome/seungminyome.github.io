@@ -5,13 +5,18 @@ cv:
   location: Laramie, WY, USA
   image: ""
   summary: >
-    How do solids and fluids talk to each other when neither stays simple? I have chased this question
-    across scales — from thin elastic films to proppant grains in shale — and across disciplines,
-    from naval architecture to petroleum engineering and geomechanics. Current research:
-    coupled solid-fluid simulation (solids4Foam/OpenFOAM) of proppant embedment and fracture conductivity.
-    PhD interests: many-body granular-fluid systems, unified poromechanical frameworks linking
-    mechanical damage and permeability loss, and open-source multiphysics methods in
-    computational geomechanics, applied mechanics, and subsurface energy engineering.
+    I build computational frameworks for fluid–structure interaction problems across scales —
+    from meter-scale vortex–wave dynamics on ship hulls to sub-millimeter proppant grain contact
+    mechanics in shale fractures. The descent across scales was not a pivot but a pursuit:
+    working at Samsung Heavy Industries on structural health monitoring for large vessels, I found
+    that macro-scale failure signals originate at grain-boundary and contact scales that macro
+    sensors cannot explain. That observation directed my research toward smaller scales, first at
+    KAIST (capillary-wave dispersion on elastic films, supercavity asymmetry near free surfaces),
+    then to my current M.S. thesis at the University of Wyoming — coupled solid–fluid simulation
+    of proppant embedment and fracture conductivity in solids4Foam/OpenFOAM.
+    PhD interests: anisotropic permeability–deformation coupling in granular packs,
+    unified poromechanical frameworks linking mechanical damage to permeability loss,
+    and open-source multiphysics methods in computational geomechanics.
 
   social_networks:
     - network: GitHub
