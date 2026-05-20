@@ -256,7 +256,7 @@ jekyll-archives:
   books:
     enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
 
-display_tags: ["FSI", "OpenFOAM", "geomechanics", "literature-review"]
+display_tags: ["FSI", "OpenFOAM", "geomechanics", "literature-review", "porous-media", "machine-learning"]
 display_categories: ["research"]
 
 # -----------------------------------------------------------------------------
