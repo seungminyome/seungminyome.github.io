@@ -125,7 +125,7 @@ ninja.data = [{
               window.location.href = "/projects/3_supercavitation/";
             },},{id: "projects-vortex-wave-interaction-near-a-free-surface",
           title: 'Vortex–Wave Interaction Near a Free Surface',
-          description: "CFD analysis of vortex asymmetry mechanisms for a cylinder near a free surface (PNU)",
+          description: "CFD analysis of vortex–wave interaction and free-surface-induced asymmetry for a cylinder (KAIST)",
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_vortex_wave/";
             },},{id: "projects-ship-structural-defect-detection-via-lstm-autoencoder",
