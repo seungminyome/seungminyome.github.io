@@ -81,6 +81,28 @@ ninja.data = [{
             window.location.href = "/blog/2026/consolidation-solute-transport-review/";
           
         },
+      },{id: "post-literature-review-kaist-2-vorticity-at-deforming-interfaces-free-surfaces-two-fluid-flows-and-froude-number-effects",
+        
+          title: "[Literature Review · KAIST #2] Vorticity at Deforming Interfaces: Free Surfaces, Two-Fluid Flows,...",
+        
+        description: "A review of vorticity generation at moving and deforming interfaces — two-fluid Couette and Taylor-Couette flows, free surface vs. viscous interface comparison, Lamb vortex pairs, and Froude number control of the vorticity distribution. Prepared for the KAIST Waves &amp; Fluid Mechanics Lab meeting.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/vorticity-deforming-interfaces-review/";
+          
+        },
+      },{id: "post-literature-review-kaist-1-vorticity-generation-and-conservation-at-two-dimensional-boundaries",
+        
+          title: "[Literature Review · KAIST #1] Vorticity Generation and Conservation at Two-Dimensional Boundaries",
+        
+        description: "A review of vorticity dynamics at rigid walls — how Stokes&#39; theorem, boundary conditions, and Poiseuille/rotating-cylinder flows build the physical intuition for vorticity generation and diffusion. Prepared for the KAIST Waves &amp; Fluid Mechanics Lab meeting.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/vorticity-boundaries-review/";
+          
+        },
       },{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
