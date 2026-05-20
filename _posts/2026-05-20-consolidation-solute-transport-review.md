@@ -175,6 +175,30 @@ Reading this genealogy, I immediately started thinking about what is _still_ mis
 
 ---
 
+## Personal Reflection
+
+### Why it caught my attention
+
+Honestly, I picked this paper because I had no idea what consolidation-induced solute transport even was when I walked into my first meeting with Prof. Saraji. I needed to say _something_ intelligent. But once I started reading Wang & Jeng, I got genuinely hooked by the genealogy angle — the fact that a 2024 OpenFOAM paper is basically just Biot (1941) + Bear (1961) + Smith (2000) bolted together. That relay race structure felt unusual. Most papers I had read before just cited previous work and moved on. This chain felt like a story where every paper existed _because_ the previous one left one specific thing unresolved. That's not common, and it made the whole thing easier to read.
+
+The other thing that got me: I was expecting a computational methods paper to be dry. Instead, the parametric study section was almost fun to read — you get to see what happens when you dial up the compressibility, or swap isotropic permeability for anisotropic. It reads less like a proof and more like a numerical experiment.
+
+### What I couldn't figure out
+
+The numerical coupling in the OpenFOAM solver. Wang & Jeng describe the algorithm at a high level, but I could not reconstruct what actually happens inside the code from the paper alone. Specifically: how are the solid displacement **u** and pore pressure _p_ updated relative to each other in each time step? Is it a staggered scheme? Simultaneous? How many inner iterations before moving to the next time step?
+
+I understand the governing equations. I do not understand how they are actually discretized and solved in the OpenFOAM framework without looking at the source code directly. The paper references solids4Foam, which I am now using myself, but reading the paper gave me no intuition for what the solver is doing under the hood. That gap still bothers me.
+
+I also got confused by the dead-end pore volume term from Coats & Smith. The capacitance model makes physical sense — some pore space is stagnant. But in the 3D Wang & Jeng implementation, how is the fraction of dead-end pore volume _f_ determined? It appears as a calibration parameter, not something derived from geometry. For real soil, how would you measure it?
+
+### What makes it different from other papers
+
+Almost every other computational porous media paper I read before this one started from a single set of governing equations and showed you a numerical result. Wang & Jeng do something different: they show you where every term in the governing equations came from, historically. Biot's term is from 1941. Bear's dispersion tensor is from 1961. You can see the seams.
+
+That made me realize how much of "modern" computational geomechanics is really just old physics + new mesh. It doesn't make the new work less valuable — the 3D OpenFOAM implementation genuinely matters. But it reframed how I think about reading papers. The question isn't just "what did they do?" It's "what gap are they filling, and whose gap was it originally?"
+
+---
+
 ## Why This Paper Matters for My Own Work
 
 My current research focuses on proppant embedment in hydraulic fractures — a contact mechanics problem with coupled solid–fluid behavior. The physics is different, but the OpenFOAM methodology is directly shared: implementing custom constitutive models, managing two-way (or one-way) coupling between solid and fluid solvers, and validating against analytical solutions (in my case, Hertz contact theory).

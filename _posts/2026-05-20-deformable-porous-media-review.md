@@ -174,6 +174,30 @@ The gap none of them fully fills: **a framework that derives anisotropic, path-d
 
 ---
 
+## Personal Reflection
+
+### Why it caught my attention
+
+The hysteresis result in Hilliard et al. is what got me. I was expecting the usual: compress a grain pack, permeability goes down, decompress, permeability goes back up. That's not what happens. The loading and unloading curves are different because grains that rearrange under stress don't go back to their original positions. Permeability is path-dependent.
+
+That felt important in a way I hadn't thought about before. Every model I had seen up to that point treated permeability as a function of the current state — porosity, or effective stress, or some combination. Hilliard et al. are saying the current state is not enough; you need to know the history. For hydraulic fractures that open and close under cyclic wellbore pressure, that distinction matters a lot. I kept thinking: how many field measurements of proppant pack conductivity have been done under monotonic loading versus under realistic cyclic conditions? Probably not many.
+
+The four-paper structure of this review also surprised me. I assumed I was reading four independent papers and would write four independent summaries. Instead, I realized halfway through that they were all circling the same gap — prescribed permeability — and that each one was incomplete in a way that made another paper feel necessary. That convergence was not something I planned to find; I found it by reading them together.
+
+### What I couldn't figure out
+
+The ζ parameter in Ou et al. The paper presents it as a permeability-like resistance coefficient that you tune so the penalized fluid velocity matches the grain velocity inside solid regions. That much I understand. What I don't understand is: if the grain pack deforms and the pore geometry changes, does ζ need to change too? The paper acknowledges this is an issue but doesn't resolve it. I spent a long time trying to work out whether ζ is a material constant (like viscosity) or a geometric one (like permeability), and I'm still not sure.
+
+Also, the Rayleigh criterion modification in two-fluid Taylor-Couette — I know why centrifugal instability happens in single-fluid flow. I do not fully understand how the density and viscosity jump at the interface modifies the instability threshold in a way that's analytically tractable. The paper cites it but doesn't derive it, and when I tried to look up the derivation I ended up in papers that assumed you already knew something I didn't.
+
+### What makes it different from other papers
+
+Most porous media papers I've read pick one scale and stay there. Darcy-scale models use prescribed κ(ϕ). Pore-scale simulations resolve individual pores but can't go to large domains. What struck me about this set of four papers is that each one, almost accidentally, points at the next scale. Dai et al. use a macro model that breaks down at the pore scale — Wang et al. fix that but can't handle grain rearrangement — Hilliard et al. handle grain rearrangement but produce only a scalar permeability — Ou et al. skip permeability entirely but introduce a new calibration problem.
+
+No single paper solves the problem. But reading them in sequence, you can see the shape of what a complete solution would look like. That's rarer than it sounds. Usually four papers on the same topic just feel like four papers.
+
+---
+
 ## Connection to My Own Work
 
 My proppant embedment work starts from the contact-mechanics side: how does the grain deform the rock, and what aperture does it leave? These four papers approach the same physical system from the fluid side: given a deforming grain pack, how does the fluid move through it?

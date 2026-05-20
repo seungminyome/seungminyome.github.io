@@ -284,6 +284,28 @@ This feedback loop between waves and vorticity is the physical basis for the mod
 
 ---
 
+## Personal Reflection
+
+### Why it caught my attention
+
+The vorticity sheet at a viscous interface felt surprising in a way that the no-slip wall result didn't. A no-slip wall generating vorticity makes intuitive sense — the wall grabs the fluid and shears it. But a liquid–liquid interface with no wall, no external forcing, generating vorticity just because the two fluids have different viscosities? That took me a while to accept. The stress balance equation says it clearly: μ₁(∂u₁/∂y) = μ₂(∂u₂/∂y) at the interface, so if μ₁ ≠ μ₂ the velocity gradients must be different, meaning the vorticity is different, meaning there is a jump. The math is clean. But the physical picture — a thin vorticity sheet sitting at a fluid–fluid interface with nothing solid nearby — felt strange to me until I drew the Couette velocity profiles myself and saw the kink.
+
+The Froude number discussion also caught me. I had been thinking of the free surface as a passive boundary that just reflects vorticity. Terrington et al. point out that at finite Fr, the surface deforms, and that deformation actively generates new vorticity. So the free surface is not passive at all — it's a vorticity generator that turns on as Fr increases. For the KAIST lab's oscillating film experiments, where Fr is never exactly zero, this felt directly relevant.
+
+### What I couldn't figure out
+
+The frame-dependence argument in Section 1 of the paper. Terrington et al. say that the vorticity generation rate at a moving interface depends on which reference frame you use to describe the interface — lab frame versus interface-fixed frame. The total vorticity flux must be frame-independent (it's a physical quantity), but the decomposition into different terms changes with the frame. I followed the algebra, but I could not build a clear physical picture of why a frame change would make one term vanish while another appears. I know it's a consequence of Galilean invariance, but the practical implication — that you have to be careful which frame you define your vorticity budget in — still felt slippery.
+
+Also the ζ calibration in Ou et al. appeared in the previous review too, and I have the same confusion here.
+
+### What makes it different from other papers
+
+Most free-surface papers I had read treated the free surface as a simple boundary condition — either ω = 0 (inviscid) or some Stokes-flow approximation. Terrington et al. treat it as a _dynamical participant_: it generates or destroys vorticity, it responds to what the fluid does, and its response feeds back. That two-way picture is fundamentally different from using the free surface as just a boundary condition.
+
+The comparison table between free surface and viscous interface (Table in Section 4) was the thing I found most useful to have written down explicitly. I knew intuitively that a liquid–liquid interface was different from a free surface, but I had never seen the exact differences laid out side by side like that — stress condition, vorticity condition, wave speed modification. That table alone made the paper worth reading.
+
+---
+
 ## 8. Connection to the Lab's Research
 
 The two reviews taken together define the theoretical space for interpreting the KAIST film experiments:

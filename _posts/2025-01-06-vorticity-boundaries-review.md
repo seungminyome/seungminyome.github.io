@@ -256,6 +256,28 @@ This perspective — vorticity as a boundary-generated quantity transported into
 
 ---
 
+## Personal Reflection
+
+### Why it caught my attention
+
+The claim that vorticity cannot be created inside the fluid — only at boundaries — sounds obvious once you hear it, but I genuinely had not thought about it that way before. I had been treating vorticity as something that just... appears in the flow, the way turbulence appears. The boundary origin idea reframes everything. It means if you want to understand where the vorticity in a complicated flow came from, you don't look at the interior — you trace it back to a surface.
+
+For the KAIST lab context, this felt directly useful. We were studying oscillating elastic films above water. The whole time I had been thinking about the film as a boundary that separates two fluid domains. Brøns et al. made me think of it as a _vorticity source_ whose strength depends on the stress condition at the film surface. That's a different way to think about the same geometry, and it turned out to be more useful when I tried to interpret the dispersion relation.
+
+### What I couldn't figure out
+
+The axisymmetric case. In the planar (Cartesian) case, everything is clean: circulation is the area integral of ω, Stokes' theorem applies directly, the formula for vorticity flux at a boundary is straightforward. In the axisymmetric case, there are extra factors of r that come in from the cylindrical geometry, and I kept losing track of whether I was computing the right thing.
+
+Specifically: in the rotating cylinder problem, when the vorticity diffuses outward, is the _total circulation_ on a circle of radius r conserved, or is it the _vorticity integrated over the annular area_? I know the answer involves the difference between these two quantities, but when I tried to write it out for the axisymmetric case I kept getting confused by whether to use ω or ω/r or rω as the relevant density. The paper addresses this but the notation switch between planar and axisymmetric cases required me to re-read those pages three times.
+
+### What makes it different from other papers
+
+Most fluid mechanics papers I had read before were about solving a specific flow problem. This paper is about a framework — a way of _accounting_ for vorticity that applies to any flow, not just a particular geometry. That meta-level perspective was new to me.
+
+The closest thing I had read before was Batchelor's textbook, which covers similar material but much more tersely. Brøns et al. slow down and show you each case — planar, axisymmetric, no-slip, stress-free — with explicit worked examples. The Poiseuille flow and rotating cylinder calculations are presented not as exercises but as illustrations of the general principle. Reading it felt like being shown why a theorem is true, not just that it is true. I don't encounter that often in journal papers.
+
+---
+
 ## Connection to Lab Research
 
 The vorticity dynamics reviewed here connects directly to the KAIST lab's experimental work on oscillating elastic films. When a thin silicone film is loaded by an air jet above a water layer, the film deforms and oscillates. The film–water interface is neither a rigid no-slip wall nor a clean stress-free surface — it lies in between, with a compliance determined by the film's elastic properties.
