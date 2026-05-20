@@ -104,7 +104,11 @@ toc:
 }
 </style>
 
-The question I have carried since undergraduate is a simple one: **how do solids and fluids talk to each other when neither stays simple?** Below are five projects where I chased that question — from ship hulls to silicone films to shale fractures. The scale changes every time. The mechanics do not.
+The question I have carried since undergraduate is a simple one: **how do solids and fluids talk to each other when neither stays simple?** Below are five projects where I chased that question — from ship hulls to silicone films to shale fractures. The scale changes every time. The structure of the problem does not.
+
+The descent across scales was not a pivot. It was a pursuit. At **Samsung Heavy Industries**, building a defect-detection autoencoder for large vessels, I encountered the central limitation of macroscale structural monitoring: the system could detect anomalies with high accuracy, but it had no vocabulary for why defects formed. The sensor signals were macroscale fingerprints of microscale events — fatigue cracks propagating at weld grain boundaries, contact-zone yielding under cyclic load. That gap between detectable symptom and invisible cause was not a data problem. It was a mechanics problem. Understanding failure required descending to the scale where failure originates.
+
+That observation set the trajectory: from hull-scale vortex dynamics → centimeter-scale cavity asymmetry → millimeter-scale wave–solid coupling → sub-millimeter grain contact mechanics. At each step, the dominant forces changed. The coupling did not.
 
 ---
 
@@ -240,9 +244,9 @@ Theory and experiment disagreed — the predicted cavity was symmetric, the obse
 <!-- ======================================================= -->
 
 <div class="research-card">
-<div class="card-number">04 · PUSAN NATIONAL UNIVERSITY · 2022–2024</div>
+<div class="card-number">04 · KAIST · 2024–2025</div>
 <div class="card-title">Vortex–Wave Interaction Near a Free Surface (ANSYS Fluent)</div>
-<div class="card-meta">PNU Department of Naval Architecture & Ocean Engineering · Advisor: Prof. Inwon Lee</div>
+<div class="card-meta">KAIST Graduate School of Mechanical Engineering · Advisor: Prof. Yeunwoo Cho</div>
 
 <div class="row">
 <div class="col-md-6">
@@ -307,7 +311,7 @@ This was the project where I first learned to read a flow field — not as isola
 <div class="reflection-block">
 <h5>Research Reflection</h5>
 <p>
-Data-driven methods and physics-based methods ask opposite questions. Physics asks: <em>given these equations, what will happen?</em> Data asks: <em>given these measurements, what is different?</em> For structural health monitoring, the data approach wins because you cannot write a governing equation for every failure mode. What this project gave me was respect for both approaches — and a clearer sense of when each one belongs. For well-understood physics, build the equation. For systems too complex to model from first principles, let the data define normal.
+The autoencoder reached 99.49% accuracy — but that number also revealed its own limitation. The model could tell you <em>that</em> something changed; it could not tell you <em>why</em> it changed or at what scale the change originated. A reconstruction-error spike corresponded to a fatigue crack at a grain boundary — a failure mode six orders of magnitude below the hull. That asymmetry between detectable symptom and invisible cause was the observation that redirected my research toward smaller scales. Data-driven methods are powerful exactly where physics-based models are intractable. But knowing when you are in that regime — and when you are not — requires understanding the physics well enough to recognize its limits.
 </p>
 </div>
 
