@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Proppant Embedment and Fracture Conductivity
-description: Coupled solid–fluid simulation of proppant-rock contact mechanics using solids4Foam (UW, current)
+description: Finite-volume contact mechanics of proppant embedment using solids4Foam (UW, current)
 img:
 importance: 1
 category: research
@@ -11,30 +11,39 @@ Six years after first running STAR-CCM+ on the KCS benchmark, the question I hav
 
 A hydraulic fracture is only as productive as its conductivity — and conductivity depends on how far the proppant grain sinks into the rock. This project models that process from first principles.
 
-At the **University of Wyoming** (advised by Prof. Soheil Saraji), I am developing a coupled solid–fluid simulation framework in [solids4Foam](https://solids4foam.github.io) (OpenFOAM-based) to model a single proppant grain pressed between two shale fracture walls under closure stress.
+At the **University of Wyoming** (advised by Prof. Soheil Saraji), I am developing a finite-volume solid-mechanics framework in [solids4Foam](https://solids4foam.github.io) (OpenFOAM-based) for proppant–rock contact. The current study treats a deformable particle and a Montney siltstone specimen through loading and unloading. Fracture conductivity is the motivating application; fluid flow and conductivity are not calculated in the current study.
 
 **What makes this hard:**
 
 - The grain is elastic; the rock yields plastically under sufficient stress
 - Contact occurs at a point and spreads — the contact patch geometry determines everything
-- The deformed fracture aperture directly sets the permeability for single-phase flow
-- No prior study had applied solids4Foam contact mechanics to this class of problem
+- Embedment changes the geometry available for flow; predicting conductivity requires a separate flow model
+- The original claim of a first solids4Foam application to this problem remains a literature-review question, not an established result
 
 **Implementation:**
 
-- Structured O-grid mesh concentrating resolution at the contact zone
-- J2 perfect-plasticity rock constitutive model for Haynesville / Eagle Ford shale
-- Penalty-based segment-to-segment contact algorithm
-- Stress distribution validated against Hertz contact theory before introducing plasticity
-- Rock material properties from triaxial cell and DCI compressibility testing (real data, not assumed values)
+- Axisymmetric wedge mesh with refinement near the contact zone
+- Mohr–Coulomb elastoplastic rock model for Montney siltstone and a deformable elastic particle
+- Penalty-based normal contact with a loading–unloading cycle
+- Comparison with published indentation measurements, with mesh and contact convergence still under investigation
+- Published experimental material properties, with unreported quantities identified as modeling assumptions; no refitting to the target indentation measurements
 
 **Where this sits in the FSI picture:**
 
-This is contact mechanics — solid on solid — with fluid behavior determined by the resulting geometry. The coupling is one-way at the grain scale: solid deformation sets the aperture, aperture sets the flow. The next step is two-way coupling at the fracture scale: fluid pressure changes the effective stress, which changes the embedment.
+The current calculation is solid–solid contact mechanics. It separates deformation under load from residual indentation after unloading. Passing the resulting geometry to a flow solver is a planned one-way coupling step. Two-way coupling, in which fluid pressure changes effective stress and embedment, is a further extension.
 
 **Status:** first paper _in preparation_ — _Computers and Geotechnics_
 
 **Tools:** solids4Foam · OpenFOAM-2212 · ParaView · Ubuntu/VirtualBox
+
+<details>
+<summary>Earlier project description — retained for verification</summary>
+
+The earlier overview referred to a J2 perfect-plasticity model for Haynesville / Eagle Ford shale, a structured O-grid, segment-to-segment contact, Hertz stress validation, and material inputs from triaxial and DCI compressibility testing. These descriptions are retained as historical project notes. Their supporting cases and relationship to the current Montney study still need to be checked; they should not be read as verified features or validation results of the current implementation.
+
+The earlier overview also described a coupled solid–fluid framework and claimed that no prior study had applied solids4Foam contact mechanics to this problem. Coupling is an extension goal of the current contact study, and the priority claim requires a literature check.
+
+</details>
 
 ---
 
