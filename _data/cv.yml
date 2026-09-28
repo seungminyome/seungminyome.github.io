@@ -9,33 +9,6 @@ cv:
       username: seungminyome
 
   sections:
-    Education:
-      - institution: University of Wyoming
-        location: Laramie, WY, USA
-        url: https://www.uwyo.edu
-        area: Energy & Petroleum Engineering
-        studyType: M.S.
-        start_date: 2025
-        end_date: present
-        score: "3.8/4.0"
-        highlights:
-          - "Advisor: Dr. Soheil Saraji (Department Head)"
-          - "Minor: Computer Science (in progress)"
-          - "Thesis: Numerical modeling of proppant-supported fracture systems — embedment, rock deformation, and single-phase fluid transport using solids4Foam"
-          - "Coursework: Rock Mechanics, Enhanced Oil Recovery, Geostatistics, Python for Engineers"
-          - "Current coursework (Fall 2026): ML for Computational Solid Mechanics, Practical Machine Learning"
-
-      - institution: Pusan National University
-        location: South Korea
-        area: Naval Architecture & Ocean Engineering
-        studyType: B.S.
-        start_date: 2018
-        end_date: 2024
-        score: "3.73/4.5"
-        highlights:
-          - "Advisor: Dr. Inwon Lee"
-          - "Coursework: Solid Mechanics, Fluid Mechanics, Linear Algebra, Thermodynamics, Ocean Wave Mechanics, FEM, Offshore Structural Design, CFD"
-
     Research Experience:
       - company: University of Wyoming
         position: Graduate Research Assistant
@@ -107,6 +80,54 @@ cv:
         journal: Journal of Fluids and Structures
         date: "in preparation"
 
+    Skills:
+      - name: Simulation & CAE
+        level: Advanced
+        icon: fa-solid fa-computer
+        keywords: "solids4Foam, OpenFOAM, ANSYS Fluent, ABAQUS, STAR-CCM+, ParaView"
+
+      - name: Programming
+        level: Advanced
+        icon: fa-solid fa-code
+        keywords: "Python, MATLAB, C++, LaTeX"
+
+      - name: Design & Engineering Tools
+        level: Intermediate
+        icon: fa-solid fa-drafting-compass
+        keywords: "AutoCAD, AVEVA Marine, TTM, VATIA, Google Cloud Platform"
+
+      - name: Laboratory
+        level: Intermediate
+        icon: fa-solid fa-flask
+        keywords: "Micro-indentation (rig built in-house), load cell, laser vibrometry, NI DAQ/LabVIEW, PIV, hull resistance testing; triaxial and DCI testing (trained)"
+
+    Education:
+      - institution: University of Wyoming
+        location: Laramie, WY, USA
+        url: https://www.uwyo.edu
+        area: Energy & Petroleum Engineering
+        studyType: M.S.
+        start_date: 2025
+        end_date: present
+        score: "3.8/4.0"
+        highlights:
+          - "Advisor: Dr. Soheil Saraji (Department Head)"
+          - "Minor: Computer Science (in progress)"
+          - "Thesis: Numerical modeling of proppant-supported fracture systems — embedment, rock deformation, and single-phase fluid transport using solids4Foam"
+          - "Coursework: Rock Mechanics, Enhanced Oil Recovery, Geostatistics, Python for Engineers"
+          - "Current coursework (Fall 2026): ML for Computational Solid Mechanics, Practical Machine Learning"
+
+      - institution: Pusan National University
+        location: South Korea
+        area: Naval Architecture & Ocean Engineering
+        studyType: B.S.
+        start_date: 2018
+        end_date: 2024
+        score: "3.73/4.5"
+        highlights:
+          - "Advisor: Dr. Inwon Lee"
+          - "Coursework: Solid Mechanics, Fluid Mechanics, Linear Algebra, Thermodynamics, Ocean Wave Mechanics, FEM, Offshore Structural Design, CFD"
+
     Grants & Fellowships:
       - name: "Graduate Research Assistant, University of Wyoming (Full-funded Graduate Research Assistantship)"
         date: "2025–Present"
@@ -176,27 +197,6 @@ cv:
         highlights:
           - "Taught physics and chemistry to 10 high school seniors (Grade 12) preparing for the Korean college entrance exam (CSAT) over a 6-month intensive period"
           - "9 out of 10 students (90%+) gained admission to top-tier Korean universities"
-
-    Skills:
-      - name: Simulation & CAE
-        level: Advanced
-        icon: fa-solid fa-computer
-        keywords: "solids4Foam, OpenFOAM, ANSYS Fluent, ABAQUS, STAR-CCM+, ParaView"
-
-      - name: Programming
-        level: Advanced
-        icon: fa-solid fa-code
-        keywords: "Python, MATLAB, C++, LaTeX"
-
-      - name: Design & Engineering Tools
-        level: Intermediate
-        icon: fa-solid fa-drafting-compass
-        keywords: "AutoCAD, AVEVA Marine, TTM, VATIA, Google Cloud Platform"
-
-      - name: Laboratory
-        level: Intermediate
-        icon: fa-solid fa-flask
-        keywords: "Micro-indentation (rig built in-house), load cell, laser vibrometry, NI DAQ/LabVIEW, PIV, hull resistance testing; triaxial and DCI testing (trained)"
 
     Languages:
       - name: Korean
