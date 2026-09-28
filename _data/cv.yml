@@ -43,16 +43,16 @@ cv:
         start_date: 2025
         end_date: present
         highlights:
-          - "To predict how deep a proppant grain permanently sinks into a fracture wall, built an axisymmetric finite-volume model (OpenFOAM + solids4Foam) of a 1 mm tungsten-carbide ball loaded into and unloaded from Mohr–Coulomb rock through penalty contact on a Hertz-checked O-grid mesh; unloading separates permanent embedment from elastic recovery, and every rock input is a published Montney siltstone measurement, nothing fitted"
-          - "Validated it against published Brinell indentation data (22 Montney samples, 35 N) on a mesh ladder of 12, 24, 36 cells per contact radius: peak depth 15.2, 16.6, 17.1 µm vs. 15.2 ± 2.4 µm measured (sample range 9.7–19.2 µm)"
-          - "Predicted the same paper’s eight proppant-pack embedment tests blind (two rocks × four proppant types, inputs frozen beforehand): 69% mean absolute error; re-running all eight on a uniform mesh and at ψ = 10° showed that neither mesh error nor dilation explains the grain-size mismatch (model depth exponent ≈1.0 vs. 0.47 measured, 95% CI 0.32–0.61)"
-          - "Mapped which inputs control permanent embedment with one-at-a-time sweeps: a 10° dilation angle cuts residual depth 45% and moves the permanent fraction h_res/h_max from 67% to 44% (measured ≈40%); softening the grain from 600 to 13 GPa raises total closure 74% but cuts permanent rock damage 49%"
-          - "Condensed the sweeps into a screening correlation h_res/R = 0.0031 Π^0.72, Π = P/(cR²) (R² = 0.88), then stress-tested a multi-parameter version by nested group cross-validation (79 runs, 60 leave-one-family-out folds, 5.2% error) and found a mesh-resolution bias in its training set (h_res ×1.31 on a uniform fine mesh), now being re-solved"
-          - "Trained in triaxial cell operation and DCI rock-compressibility (bulk modulus) testing"
-          - "Run simulation campaigns through an AI coding agent (Claude Code) with the test matrix and pass/fail gates (convergence, force balance) committed to Git before execution: 426 runs, ≈1,400 core-hours, E 18–85 GPa, c 4–30 MPa, φ 26–55°, ψ 0–10°, R 0.07–1.3 mm; manuscript runs released with meshes and scripts that regenerate the figures and statistics; runs now containerized on UW’s MedicineBow cluster"
-          - "Worked the manuscript through three rounds of adversarial AI review (15, 37 and 60 items), accepting every item that repository evidence supported and rejecting two, including retracting a single-mesh −0.8% validation claim once the mesh ladder showed it was not converged"
-          - "Now training inverse models (kNN, quantile gradient-boosted trees, TabPFN, 1-D CNN) on ≈250 new simulations with split-conformal 90% intervals to find which indentation measurement (two depths, full force–depth curve, dent profile, or curves at several loads) identifies the dilation angle when modulus and cohesion are unknown; the answer decides whether the rig needs a profilometer (Fall 2026)"
-          - "Designed and built a displacement-controlled micro-indentation rig to record P–h curves on rock and metal (parametric CAD, 3D-printed fixtures refined through 20 design revisions, 1 mm tungsten-carbide ball on a screw-press stage); matched a 445 N piezoelectric load cell (0.004 N resolution) and a laser Doppler vibrometer to 35 N tests, recorded both at 2 kHz through an NI USB-6341 DAQ in LabVIEW, and debugged interference between them"
+          - "Question: how deep does a grain permanently sink into rock, and which rock property decides it?"
+          - "To predict how deep a proppant grain permanently sinks into a fracture wall, built an axisymmetric finite-volume model (OpenFOAM + solids4Foam) that presses a 1 mm tungsten-carbide ball into Mohr–Coulomb rock and then unloads it, so permanent embedment separates from elastic recovery; every rock input is a published Montney siltstone measurement, with nothing tuned to fit"
+          - "Validated it against published Brinell tests (22 Montney samples, 35 N) on three successively finer meshes: peak depth 15.2, 16.6 and 17.1 µm against 15.2 ± 2.4 µm measured, all inside the sample range"
+          - "Predicted eight published proppant-pack tests blind (69% mean absolute error), then reran all eight on a uniform mesh and with dilation turned on: the misfit grows with grain size (depth exponent ≈1.0 in the model vs. 0.47 measured) and neither change removes it, so I report it as an open problem instead of tuning it away"
+          - "Found through one-at-a-time sweeps that the least-measured input matters most: a 10° dilation angle cuts residual depth by 45% and moves the permanent fraction from 67% to 44%, near the ≈40% measured, yet no one has measured that angle for these samples"
+          - "Condensed the sweeps into a screening correlation (h_res/R = 0.0031 Π^0.72, R² = 0.88), then stress-tested a richer version by nested cross-validation (60 folds, 5.2% error); the test exposed a mesh bias in its training data (×1.31), so it stays out of the manuscript until the data are re-solved"
+          - "Now turning that dilation-angle gap into a machine-learning question: training inverse models (kNN, gradient-boosted trees, TabPFN, 1-D CNN) on ≈250 new simulations with split-conformal 90% intervals to learn which indentation measurement can pin the angle down; the answer decides whether my rig needs a profilometer (Fall 2026)"
+          - "Designed and built the rig that will supply those measurements: a displacement-controlled micro-indentation setup with 3D-printed fixtures refined through up to 20 revisions per part, a 445 N load cell (0.004 N resolution) and a laser Doppler vibrometer read through an NI DAQ in LabVIEW; debugged the interference between the two channels"
+          - "Run every campaign through an AI coding agent (Claude Code) under test plans and pass/fail rules committed to Git before any run: 426 runs and ≈1,400 core-hours so far, now containerized on UW’s MedicineBow cluster"
+          - "Put my own manuscript through three rounds of adversarial AI review (15, 37 and 60 items); one outcome was retracting my headline −0.8% validation figure once finer meshes showed it had not converged"
 
       - company: KAIST — Graduate School of Mechanical Engineering
         position: Research Intern (6-month full-time)
@@ -61,9 +61,10 @@ cv:
         end_date: 2025
         highlights:
           - "Advisor: Dr. Yeunwoo Cho"
-          - "Sole investigator on a government-funded study of gravity–capillary waves driven by a continuous air jet over a thin elastic silicone film on water (a three-phase gas–solid–liquid FSI problem): derived the dispersion relation including film bending stiffness and tension, located the minimum phase speed that marks the Kelvin-wave transition, and confirmed it with high-speed imaging across six jet speeds (19–44 cm/s; transition near 34 cm/s)"
-          - "Assembled a free-surface cavitation tank from parts (frame, custom-cut glass panels, seals) and explained why ventilated supercavities contract on the upper wall near a free surface: a wake-theory correction to the closure condition of a 2D analytical model substantially closed the gap between predicted and photographed cavity outlines"
-          - "Simulated von Kármán vortex shedding near a free surface (ANSYS Fluent, VOF) and showed that shallower submergence lowers the Strouhal number and weakens the upper vortices while the lower ones stay coherent"
+          - "Question: how does a boundary that bends or opens change the flow next to it?"
+          - "Sole investigator on a government-funded study of waves driven by an air jet over a thin elastic film on water: derived the dispersion relation with the film’s bending stiffness and tension, located the minimum phase speed where the pattern turns into Kelvin waves, and confirmed it on high-speed video at six jet speeds (19–44 cm/s)"
+          - "Assembled a free-surface cavitation tank from parts and worked out why a ventilated supercavity contracts on its upper wall near the surface: adding a wake-theory term to the closure condition of a 2D model substantially narrowed the gap between predicted and photographed outlines"
+          - "Simulated von Kármán vortex shedding near a free surface (ANSYS Fluent, VOF): the closer the surface, the lower the Strouhal number and the weaker the upper vortices"
 
       - company: Pusan National University — Department of Naval Architecture & Ocean Engineering
         position: Undergraduate Research Assistant
@@ -71,10 +72,11 @@ cv:
         start_date: 2022
         end_date: 2024
         highlights:
-          - "Validated RANS CFD of KCS hull resistance against the Gothenburg 2010 benchmark (STAR-CCM+, ≈4.4 M structured hexahedral cells, k-ε, y⁺ = 50): 1.16% error in total resistance coefficient; my part was mesh refinement at the bow, stern and free surface, plus wave-profile and resistance post-processing"
+          - "Question: what does the water do to the hull?"
+          - "My first CFD project: validated RANS CFD of KCS hull resistance against the Gothenburg 2010 benchmark (STAR-CCM+, ≈4.4 M cells) to within 1.16% of the measured total resistance coefficient; my part was the mesh, refining the bow, stern and free surface and re-running after every change"
           - "Evaluated how an airfoil appendage changes a small vessel’s hull attitude and resistance (ANSYS Fluent)"
           - "Ran PIV and hull-resistance tests and designed a propulsion system to ITTC 1957/1978 standards"
-          - "Started the vibration/acoustic anomaly-detection model (MATLAB, Python) finished at Samsung (see Industry Experience)"
+          - "Started the vibration/acoustic anomaly-detection model (MATLAB, Python) that I later finished at Samsung"
 
     Industry Experience:
       - company: Samsung Heavy Industries Laboratory
@@ -83,7 +85,9 @@ cv:
         start_date: 2024
         end_date: 2024
         highlights:
-          - "Trained an LSTM autoencoder on healthy-condition vibration and acoustic data only (Green Nuri vessel program), so anomalies appear as reconstruction error: 621 of 622 caught, 8 false alarms, 99.49% test accuracy; one flag traced to a weld fatigue crack"
+          - "Question: can a hull’s own vibrations tell us when it starts to fail?"
+          - "Trained an LSTM autoencoder only on healthy-condition vibration and acoustic data (Green Nuri vessel program), so anything unusual shows up as reconstruction error: 621 of 622 anomalies caught, 8 false alarms, 99.49% accuracy"
+          - "One flag traced to a fatigue crack growing along a weld; the model could tell that something had changed but not why, and that gap is what pulled me toward smaller-scale mechanics"
 
       - company: Pusan National University
         position: Capstone Design Project
