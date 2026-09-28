@@ -10,6 +10,8 @@ toc:
   sidebar: left
 ---
 
+> **Update (September 2026):** the current model uses a Mohr–Coulomb elasto-plastic rock law with published Montney siltstone properties, so the J2 discussion below does not describe the current work. My triaxial and DCI work so far has been laboratory training, and no model input comes from my own triaxial tests.
+
 > This post is a research statement, not a literature review. I am writing it to make explicit something I have been thinking about since finishing the proppant embedment framework: the most important limitation of what I have built is not physics — it is _compute_. And that is a machine learning problem.
 
 ---

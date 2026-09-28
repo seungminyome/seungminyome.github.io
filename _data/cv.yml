@@ -20,8 +20,10 @@ cv:
         score: "3.8/4.0"
         highlights:
           - "Advisor: Dr. Soheil Saraji"
+          - "Minor: Computer Science (in progress)"
           - "Thesis: Numerical modeling of proppant-supported fracture systems — embedment, rock deformation, and single-phase fluid transport using solids4Foam"
           - "Coursework: Rock Mechanics, Enhanced Oil Recovery, Graduate English Writing, Geostatistics, Python for Engineers"
+          - "Current coursework (Fall 2026): ML for Computational Solid Mechanics, Practical Machine Learning"
 
       - institution: Pusan National University
         location: South Korea
@@ -41,10 +43,14 @@ cv:
         start_date: 2025
         end_date: present
         highlights:
-          - "Developing a coupled solid–fluid simulation framework in solids4Foam (OpenFOAM-based) to model proppant grain behavior under compressive loading between parallel rock fracture walls"
-          - "Implementing J2 perfect-plasticity rock constitutive models and penalty-based contact algorithms to capture proppant embedment and fracture wall deformation"
-          - "Constructing structured O-grid meshes for proppant–rock contact problems; validated stress distributions against Hertz contact theory"
-          - "Performing laboratory training on triaxial cell operation, confining/pore-pressure control, and rock compressibility (bulk modulus) testing using DCI equipment"
+          - "Built an axisymmetric solids4Foam (FVM) model of a proppant grain pressed into a rock wall (Mohr–Coulomb rock, penalty contact, O-grid mesh checked against Hertz theory) that runs a full loading–unloading cycle, separating permanent embedment from elastic recovery; being extended to fracture flow"
+          - "Validated the model against published Brinell indentation data on Montney siltstone (22 samples, 35 N) with no parameter fitting: the finest-mesh peak depth (17.1 µm, +12.5% vs. the 15.2 µm mean) lies within the measured 9.7–19.2 µm range"
+          - "Predicted eight published proppant-embedment tests blind (69% mean absolute error) and identified a grain-size scaling mismatch that mesh error does not explain: size exponent ≈1 predicted vs. 0.47 measured"
+          - "Ran nested group cross-validation (60 folds) of a dimensionless residual-depth correlation (5.2% error on simulations) and traced a mesh-resolution bias in its training data, now being re-solved on a uniform mesh"
+          - "Run my simulation campaigns through an AI coding agent (Claude Code), committing test matrices and pass/fail rules to Git before each campaign (426 runs archived); set up container runs on UW’s HPC cluster"
+          - "Training simulation-based inverse models with split-conformal 90% intervals to find which indentation measurement can identify the dilation angle; the answer will decide whether the rig needs a profilometer"
+          - "Trained in triaxial cell operation (confining and pore-pressure control) and rock compressibility (bulk modulus) testing on DCI equipment"
+          - "Designed and built a displacement-controlled micro-indentation rig in-house (parametric CAD, 3D-printed fixtures, 1 mm tungsten-carbide ball on a screw-press stage) to record P–h curves of rock and metal specimens; picked a 445 N load cell (0.004 N resolution) for 35 N tests, paired it with laser Doppler vibrometry, recorded both channels through an NI USB-6341 DAQ in LabVIEW, and debugged interference between them"
 
       - company: KAIST — Graduate School of Mechanical Engineering
         position: Research Intern (6-month full-time)
@@ -87,11 +93,11 @@ cv:
           - "Proposed a cloud-based ML-integrated design platform (Google Cloud) balancing system scalability with market viability"
 
     Publications:
-      - title: "Computational analysis of proppant embedment and fracture conductivity in deformable rock using solids4Foam"
+      - title: "Grain-scale finite-volume modeling of proppant embedment in rock fracture walls"
         authors:
           - Seungmin Yome
           - Soheil Saraji
-        journal: Computers and Geotechnics
+        journal: Acta Geotechnica
         date: "in preparation"
 
       - title: "Numerical Recovery of Hydroelastic Wave Dispersion in Coupled Elastic Film–Liquid Systems Using a Finite-Volume Fluid–Structure Interaction Solver"
@@ -189,7 +195,7 @@ cv:
       - name: Laboratory
         level: Intermediate
         icon: fa-solid fa-flask
-        keywords: "Triaxial testing, rock compressibility (DCI), PIV, hull resistance testing"
+        keywords: "Triaxial and DCI compressibility testing (trained), micro-indentation (rig built in-house), NI DAQ/LabVIEW, PIV, hull resistance testing"
 
     Languages:
       - name: Korean

@@ -2,7 +2,7 @@
 layout: page
 permalink: /publications/
 title: publications
-description: Two manuscripts in preparation — proppant embedment mechanics (Computers and Geotechnics) and hydroelastic wave dispersion (Journal of Fluids and Structures).
+description: Two manuscripts in preparation — proppant embedment mechanics (Acta Geotechnica) and hydroelastic wave dispersion (Journal of Fluids and Structures).
 nav: true
 nav_order: 2
 ---
