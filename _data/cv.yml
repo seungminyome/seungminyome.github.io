@@ -9,31 +9,6 @@ cv:
       username: seungminyome
 
   sections:
-    Education:
-      - institution: University of Wyoming
-        location: Laramie, WY, USA
-        url: https://www.uwyo.edu
-        area: Energy & Petroleum Engineering
-        studyType: M.S.
-        start_date: 2025
-        end_date: present
-        score: "3.8/4.0"
-        highlights:
-          - "Advisor: Dr. Soheil Saraji"
-          - "Thesis: Numerical modeling of proppant-supported fracture systems — embedment, rock deformation, and single-phase fluid transport using solids4Foam"
-          - "Coursework: Rock Mechanics, Enhanced Oil Recovery, Graduate English Writing, Geostatistics, Python for Engineers"
-
-      - institution: Pusan National University
-        location: South Korea
-        area: Naval Architecture & Ocean Engineering
-        studyType: B.S.
-        start_date: 2018
-        end_date: 2024
-        score: "3.73/4.5"
-        highlights:
-          - "Advisor: Dr. Inwon Lee"
-          - "Coursework: Solid Mechanics, Fluid Mechanics, Linear Algebra, Thermodynamics, Ocean Wave Mechanics, FEM, Offshore Structural Design, CFD"
-
     Research Experience:
       - company: University of Wyoming
         position: Graduate Research Assistant
@@ -41,10 +16,16 @@ cv:
         start_date: 2025
         end_date: present
         highlights:
-          - "Developing a coupled solid–fluid simulation framework in solids4Foam (OpenFOAM-based) to model proppant grain behavior under compressive loading between parallel rock fracture walls"
-          - "Implementing J2 perfect-plasticity rock constitutive models and penalty-based contact algorithms to capture proppant embedment and fracture wall deformation"
-          - "Constructing structured O-grid meshes for proppant–rock contact problems; validated stress distributions against Hertz contact theory"
-          - "Performing laboratory training on triaxial cell operation, confining/pore-pressure control, and rock compressibility (bulk modulus) testing using DCI equipment"
+          - "Built the data generator: an axisymmetric finite-volume model (OpenFOAM + solids4Foam) of a 1 mm ball pressed into and unloaded from Mohr–Coulomb rock; every rock input is a published Montney strength value, none adjusted to indentation data"
+          - "Checked it on three finer meshes against published Brinell tests (22 samples, 35 N): peak depth 15.2–17.1 µm vs. 15.2 ± 2.4 µm measured, not yet converged; a Hertz elastic benchmark recovered only 79% of the load"
+          - "Predicted eight published proppant-pack tests blind (69% mean absolute error) and traced the misfit to grain size: R^1.0 scaling in the model vs. R^0.47 measured, unchanged by mesh or dilation"
+          - "Found that a one-group correlation (h/R = 0.0031 Π^0.72, R² = 0.88 on 8 runs) collapses to R² = 0.11 once rock properties vary, so a single dimensionless group cannot carry the law"
+          - "Replaced it with a joint surrogate: peak depth as a power law in normalized load, modulus ratio, compliance ratio, tan φ and tan ψ; end depth as peak times a logistic recovery ratio; 1.45% / 2.29% nested-CV error, stated as a surrogate, not a validated law"
+          - "Showed by sweeps that the input this law needs most is the one nobody has measured: a 10° dilation angle cuts the end depth 45% and moves the retained fraction from 67% to 44% (measured ≈40%)"
+          - "So the dilation angle became an inverse-ML problem: kNN, gradient-boosted trees, TabPFN and a 1-D CNN on ≈250 new simulations with split-conformal 90% intervals, to learn which indentation measurement pins it down"
+          - "Designed and built the rig for those measurements: displacement-controlled micro-indentation, 3D-printed fixtures through up to 20 revisions, 445 N load cell (0.004 N) and laser vibrometer at 2 kHz via NI DAQ/LabVIEW; fixed their cross-talk"
+          - "Run every campaign through an AI coding agent (Claude Code) with test plans and pass/fail rules committed to Git before any run: 426 runs, ≈1,400 core-hours, every manuscript number traceable to a hashed table and script"
+          - "Put the manuscript through a dozen adversarial AI review passes: retracted a headline −0.8% validation figure, disclosed the failed elastic benchmark, and separated the computed end depth from the physical residual depth"
 
       - company: KAIST — Graduate School of Mechanical Engineering
         position: Research Intern (6-month full-time)
@@ -53,10 +34,9 @@ cv:
         end_date: 2025
         highlights:
           - "Advisor: Dr. Yeunwoo Cho"
-          - "Investigated gravity–capillary wave dynamics on elastic silicone films subjected to continuous air-blow loading above water"
-          - "Derived dispersion relations for gas–solid–liquid interface interactions under nonlinear elastic coupling"
-          - "Developed 2D ventilated supercavitation models and introduced wake-theory-based modifications, significantly improving agreement between theoretical predictions and experimental data for cavitator-driven cavity asymmetry"
-          - "Conducted vortex–wave interaction CFD simulations near free surfaces using ANSYS Fluent; analyzed free-surface-induced von Kármán vortex asymmetry mechanisms"
+          - "Sole investigator on a government-funded study of air-jet-driven waves on a thin elastic film: derived the dispersion relation with film stiffness and tension and confirmed the Kelvin-wave transition on high-speed video"
+          - "Assembled a free-surface cavitation tank from parts and explained the upper-wall contraction of ventilated supercavities with a wake-theory term in a 2D model’s closure condition, closing most of the gap to the photos"
+          - "Simulated von Kármán vortex shedding near a free surface (ANSYS Fluent, VOF): the closer the surface, the lower the Strouhal number and the weaker the upper vortices"
 
       - company: Pusan National University — Department of Naval Architecture & Ocean Engineering
         position: Undergraduate Research Assistant
@@ -64,9 +44,9 @@ cv:
         start_date: 2022
         end_date: 2024
         highlights:
-          - "Performed RANS CFD validation of KCS hull resistance (Gothenburg 2010 Workshop benchmark) using STAR-CCM+; 1.16% error in total resistance coefficient CT; contributions: structured mesh optimization and post-processing"
-          - "Performed particle image velocimetry (PIV), hull resistance testing, and propulsion system design per ITTC 1957/1978 standards"
-          - "Developed ANN-based defect detection models using vibration and acoustic sensor data for ship structural health monitoring (MATLAB & Python)"
+          - "First CFD project: validated KCS hull resistance against the Gothenburg 2010 benchmark (STAR-CCM+, ≈4.4 M cells) to 1.16%; owned the mesh, refining bow, stern and free surface after every run"
+          - "PIV and hull-resistance tests, ITTC 1957/1978 propulsion design, and an ANSYS Fluent study of an airfoil appendage on hull attitude and resistance"
+          - "Started the vibration/acoustic anomaly-detection model (MATLAB, Python) finished at Samsung"
 
     Industry Experience:
       - company: Samsung Heavy Industries Laboratory
@@ -75,7 +55,8 @@ cv:
         start_date: 2024
         end_date: 2024
         highlights:
-          - "Trained and evaluated artificial neural network architectures for Green Nuri vessel defect classification using MATLAB and Python"
+          - "Trained an LSTM autoencoder on healthy-condition vibration and acoustic data only (Green Nuri vessel program): 621 of 622 anomalies caught, 8 false alarms, 99.49% accuracy"
+          - "One flag traced to a fatigue crack along a weld; the model saw that something changed but not why, which is what pulled me toward smaller-scale mechanics"
 
       - company: Pusan National University
         position: Capstone Design Project
@@ -87,11 +68,11 @@ cv:
           - "Proposed a cloud-based ML-integrated design platform (Google Cloud) balancing system scalability with market viability"
 
     Publications:
-      - title: "Computational analysis of proppant embedment and fracture conductivity in deformable rock using solids4Foam"
+      - title: "Joint prediction of peak proppant embedment and post-unloading residual depth: a dimensionless candidate model and its verification status"
         authors:
           - Seungmin Yome
           - Soheil Saraji
-        journal: Computers and Geotechnics
+        journal: Acta Geotechnica
         date: "in preparation"
 
       - title: "Numerical Recovery of Hydroelastic Wave Dispersion in Coupled Elastic Film–Liquid Systems Using a Finite-Volume Fluid–Structure Interaction Solver"
@@ -99,6 +80,54 @@ cv:
           - Seungmin Yome
         journal: Journal of Fluids and Structures
         date: "in preparation"
+
+    Skills:
+      - name: Simulation & CAE
+        level: Advanced
+        icon: fa-solid fa-computer
+        keywords: "solids4Foam, OpenFOAM, ANSYS Fluent, ABAQUS, STAR-CCM+, ParaView"
+
+      - name: Programming
+        level: Advanced
+        icon: fa-solid fa-code
+        keywords: "Python, MATLAB, C++, LaTeX"
+
+      - name: Design & Engineering Tools
+        level: Intermediate
+        icon: fa-solid fa-drafting-compass
+        keywords: "AutoCAD, AVEVA Marine, TTM, VATIA, Google Cloud Platform"
+
+      - name: Laboratory
+        level: Intermediate
+        icon: fa-solid fa-flask
+        keywords: "Micro-indentation (rig built in-house), load cell, laser vibrometry, NI DAQ/LabVIEW, PIV, hull resistance testing; triaxial and DCI testing (trained)"
+
+    Education:
+      - institution: University of Wyoming
+        location: Laramie, WY, USA
+        url: https://www.uwyo.edu
+        area: Energy & Petroleum Engineering
+        studyType: M.S.
+        start_date: 2025
+        end_date: present
+        score: "3.8/4.0"
+        highlights:
+          - "Advisor: Dr. Soheil Saraji (Department Head)"
+          - "Minor: Computer Science (in progress)"
+          - "Thesis: Numerical modeling of proppant-supported fracture systems — embedment, rock deformation, and single-phase fluid transport using solids4Foam"
+          - "Coursework: Rock Mechanics, Enhanced Oil Recovery, Geostatistics, Python for Engineers"
+          - "Current coursework (Fall 2026): ML for Computational Solid Mechanics, Practical Machine Learning"
+
+      - institution: Pusan National University
+        location: South Korea
+        area: Naval Architecture & Ocean Engineering
+        studyType: B.S.
+        start_date: 2018
+        end_date: 2024
+        score: "3.73/4.5"
+        highlights:
+          - "Advisor: Dr. Inwon Lee"
+          - "Coursework: Solid Mechanics, Fluid Mechanics, Linear Algebra, Thermodynamics, Ocean Wave Mechanics, FEM, Offshore Structural Design, CFD"
 
     Grants & Fellowships:
       - name: "Graduate Research Assistant, University of Wyoming (Full-funded Graduate Research Assistantship)"
@@ -169,27 +198,6 @@ cv:
         highlights:
           - "Taught physics and chemistry to 10 high school seniors (Grade 12) preparing for the Korean college entrance exam (CSAT) over a 6-month intensive period"
           - "9 out of 10 students (90%+) gained admission to top-tier Korean universities"
-
-    Skills:
-      - name: Simulation & CAE
-        level: Advanced
-        icon: fa-solid fa-computer
-        keywords: "solids4Foam, OpenFOAM, ANSYS Fluent, ABAQUS, STAR-CCM+, ParaView"
-
-      - name: Programming
-        level: Advanced
-        icon: fa-solid fa-code
-        keywords: "Python, MATLAB, C++, LaTeX"
-
-      - name: Design & Engineering Tools
-        level: Intermediate
-        icon: fa-solid fa-drafting-compass
-        keywords: "AutoCAD, AVEVA Marine, TTM, VATIA, Google Cloud Platform"
-
-      - name: Laboratory
-        level: Intermediate
-        icon: fa-solid fa-flask
-        keywords: "Triaxial testing, rock compressibility (DCI), PIV, hull resistance testing"
 
     Languages:
       - name: Korean

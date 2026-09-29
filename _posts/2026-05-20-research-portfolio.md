@@ -10,6 +10,8 @@ toc:
   sidebar: left
 ---
 
+> **Update (September 2026):** the current model uses a Mohr–Coulomb elasto-plastic rock law with published Montney siltstone properties. The J2 and Haynesville / Eagle Ford details below do not describe the current work.
+
 <style>
 .research-card {
   border: 1px solid #e0e0e0;
