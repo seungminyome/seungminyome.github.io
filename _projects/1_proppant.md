@@ -18,21 +18,21 @@ At the **University of Wyoming** (advised by Prof. Soheil Saraji), I am developi
 - The grain is elastic; the rock yields plastically under sufficient stress
 - Contact occurs at a point and spreads — the contact patch geometry determines everything
 - The deformed fracture aperture directly sets the permeability for single-phase flow
-- No prior study had applied solids4Foam contact mechanics to this class of problem
+- The target is a dimensionless law for peak-load and post-unloading depth; the finite-volume model is the data generator, not the claim
 
 **Implementation:**
 
 - Structured O-grid mesh concentrating resolution at the contact zone
 - Mohr–Coulomb elasto-plastic rock model for Montney siltstone
 - Penalty-based segment-to-segment contact algorithm
-- Stress distribution validated against Hertz contact theory before introducing plasticity
+- Checked against a Hertz elastic benchmark; it currently recovers only 79% of the applied load, and that is reported as an open check
 - Every rock input taken from published Montney siltstone measurements (Zheng et al., 2020), with no parameter fitting
 
 **Where this sits in the FSI picture:**
 
 This is contact mechanics — solid on solid — with fluid behavior determined by the resulting geometry. The coupling is one-way at the grain scale: solid deformation sets the aperture, aperture sets the flow. The next step is two-way coupling at the fracture scale: fluid pressure changes the effective stress, which changes the embedment.
 
-**Status:** first paper _in preparation_ — _Acta Geotechnica_
+**Status:** first manuscript _in preparation_ — _Acta Geotechnica_; a joint peak/end-depth surrogate reproduces the finite-volume data to 1.45% / 2.29% in 19-group nested cross-validation
 
 **Tools:** solids4Foam · OpenFOAM-2212 · ParaView · Ubuntu/VirtualBox
 
