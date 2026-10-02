@@ -10,15 +10,15 @@ toc:
   sidebar: left
 ---
 
-> **Update (September 2026):** the current model uses a Mohr–Coulomb elasto-plastic rock law with published Montney siltstone properties, so the J2 discussion below does not describe the current work. My triaxial and DCI work so far has been laboratory training, and no model input comes from my own triaxial tests.
+> **Update (September 2026):** I wrote this agenda in May 2026 for an earlier version of the model. The rock law has since changed from J2 perfect plasticity to a Mohr–Coulomb elasto-plastic model with published Montney siltstone properties, so the parameter table and Direction 3 describe the earlier model. Statements about my own work have been corrected in place: the model is not yet fully verified (mesh convergence is still open, and a Hertz elastic benchmark recovers only 79% of the load), and my triaxial and DCI work so far has been laboratory training, so no model input comes from my own tests. Current status is on the [project page]({% link _projects/1_proppant.md %}).
 
-> This post is a research statement, not a literature review. I am writing it to make explicit something I have been thinking about since finishing the proppant embedment framework: the most important limitation of what I have built is not physics — it is _compute_. And that is a machine learning problem.
+> This post is a research statement, not a literature review. I am writing it to make explicit something I have been thinking about since building the proppant embedment framework: the most important limitation of what I have built is not physics — it is _compute_. And that is a machine learning problem.
 
 ---
 
 ## The Bottleneck I Am Staring At
 
-My current solids4Foam framework can simulate one proppant grain pressing into one rock surface under one closure stress with one set of material parameters. A single converged case takes on the order of hours on a workstation. The framework is correct — stress distributions match Hertz contact theory, plastic yielding initiates at the right load, aperture reduction agrees with analytical estimates.
+My current solids4Foam framework can simulate one proppant grain pressing into one rock surface under one closure stress with one set of material parameters. A single case takes on the order of hours on a workstation.
 
 But fracture conductivity is not a single-point prediction. It is a **curve** — conductivity as a function of closure stress — and that curve depends on at least five parameters that matter:
 
@@ -32,7 +32,7 @@ But fracture conductivity is not a single-point prediction. It is a **curve** �
 
 A full factorial sweep is $$8 \times 4 \times 8 \times 6 \times 12 = 18{,}432$$ simulations. At hours per case, this is years of compute.
 
-This is not a physics problem. The physics is solved. This is a **sampling problem** — and the right tool for sampling a high-dimensional parameter space defined by an expensive simulator is _machine learning_.
+Even once the model is fully verified, this remains a **sampling problem** — and the right tool for sampling a high-dimensional parameter space defined by an expensive simulator is _machine learning_.
 
 ---
 
@@ -72,7 +72,7 @@ The first direction is the most direct extension of what I already have.
 
 The second direction inverts the problem.
 
-My current framework solves the _forward problem_: given material properties, predict deformation. The _inverse problem_ — given measured fracture conductivity data, infer the in-situ rock properties — is what operators actually need in the field. Conductivity can be measured in the lab (I am doing this with DCI equipment). Rock moduli can be estimated from triaxial tests. But the in-situ effective stress, the pore pressure, the fracture geometry — these are not directly observable. The question is whether they can be inferred.
+My current framework solves the _forward problem_: given material properties, predict deformation. The _inverse problem_ — given measured fracture conductivity data, infer the in-situ rock properties — is what operators actually need in the field. Conductivity can be measured in the lab. Rock moduli can be estimated from triaxial tests. But the in-situ effective stress, the pore pressure, the fracture geometry — these are not directly observable. The question is whether they can be inferred.
 
 **Physics-Informed Neural Networks (PINNs)**, introduced by Raissi, Perdikaris, and Karniadakis (2019, _J. Comput. Phys._ 378), encode the governing PDE residuals as penalty terms in the neural network loss function:
 
@@ -88,15 +88,17 @@ The specific benchmark I would use is the Mandel consolidation problem — an an
 
 ### Direction 3: Beyond J2 — Learning a Pressure-Dependent Yield Surface from Lab Data
 
-The third direction addresses the most principled limitation of my current constitutive model.
+_This section was written for the earlier J2 model. The current Mohr–Coulomb model is already pressure-dependent; see the update at the top._
 
-My framework uses **J2 perfect plasticity** — the von Mises yield criterion with no hardening. Yield occurs when the von Mises stress reaches a material constant $$\sigma_y$$:
+The third direction addresses the most principled limitation of that earlier constitutive model.
+
+That model used **J2 perfect plasticity** — the von Mises yield criterion with no hardening. Yield occurs when the von Mises stress reaches a material constant $$\sigma_y$$:
 
 $$\sigma_{\text{vm}} = \sqrt{\tfrac{3}{2}\,\mathbf{s}:\mathbf{s}} \geq \sigma_y$$
 
 where $$\mathbf{s}$$ is the deviatoric stress tensor. This is the correct choice for a tractable first-pass model: it is well-posed, differentiable, and gives a clean comparison with Hertz theory in the elastic regime. But J2 has a structural limitation that matters specifically for rock under geological confinement: **it is pressure-independent**.
 
-The yield surface in J2 is a cylinder in principal stress space — the same diameter regardless of mean normal stress. Rock is not like this. Under higher confining pressure, rock is harder to shear. The triaxial tests I run in our laboratory measure exactly this pressure dependence — compressive strength increases with confining stress in a way that J2 cannot reproduce by construction, regardless of how $$\sigma_y$$ is calibrated.
+The yield surface in J2 is a cylinder in principal stress space — the same diameter regardless of mean normal stress. Rock is not like this. Under higher confining pressure, rock is harder to shear. Triaxial tests measure exactly this pressure dependence — compressive strength increases with confining stress in a way that J2 cannot reproduce by construction, regardless of how $$\sigma_y$$ is calibrated.
 
 This is not just an academic concern. Under high closure stress, the mean normal stress at the contact patch is large. J2 may overpredict the plastic zone extent relative to what the real rock would exhibit — which means the predicted aperture reduction is not conservative in the right direction.
 
@@ -111,7 +113,7 @@ The result is a constitutive model that:
 
 **Why this is the right starting point:** J2 perfect plasticity is not a misguided choice — it is a _deliberate simplification_. Starting simple, verifying against Hertz theory, and then systematically adding complexity is the correct scientific workflow. The TANN direction is the next step in that workflow, not a correction of an error. It is only possible to argue for a data-driven model coherently if you first understand the analytic one you are replacing.
 
-**Why I am positioned to do this:** I am already running triaxial tests and DCI compressibility tests in the laboratory — real experimental data, not synthetic data from another simulation. The training set for a TANN calibrated to shale already exists in my own experimental records. Closing the loop from physical experiment → learned constitutive model → OpenFOAM simulation is, to my knowledge, something no one has done at the grain-scale contact level.
+**Why I am positioned to do this:** I have trained on triaxial and DCI compressibility testing in our laboratory, and I designed and built a displacement-controlled micro-indentation rig — so I can work on the experimental side of the loop, not only the simulation side. Closing the loop from physical experiment → learned constitutive model → OpenFOAM simulation is, to my knowledge, something no one has done at the grain-scale contact level.
 
 **Outcome:** A shale constitutive model capturing pressure-dependent yielding, calibrated from lab data, embedded in solids4Foam — enabling contact simulations that are both computationally tractable and physically faithful beyond the J2 approximation.
 
@@ -143,7 +145,7 @@ The researchers whose work most directly intersects this agenda:
 
 **George Em Karniadakis** (Brown) — the PINN framework (Raissi, Perdikaris, Karniadakis, _J. Comput. Phys._ 2019) and its extensions to operator learning (DeepONet, Kovachki et al. _JMLR_ 2023) define the methodological foundation for everything in Direction 2. The Mandel consolidation benchmark I want to use first appeared in Karniadakis group's early work on PINNs for poromechanics.
 
-**Anima Anandkumar** (Caltech) — the FNO architecture (Li et al., ICLR 2021) is the architecture I would train for Direction 1. The discretization-invariance property matters specifically because my training data is on a structured O-grid mesh, but I want the trained surrogate to be deployable on unstructured meshes from industrial fracture simulators.
+**Anima Anandkumar** (Caltech) — the FNO architecture (Li et al., ICLR 2021) is the architecture I would train for Direction 1. The discretization-invariance property matters specifically because my training data comes from one specific simulation mesh, but I want the trained surrogate to be deployable on unstructured meshes from industrial fracture simulators.
 
 **Louis Durlofsky** (Stanford) — Tang, Liu, and Durlofsky (_CMAME_ 376, 2021) demonstrated deep learning surrogates for 3D subsurface flow systems. The multi-fidelity training strategy (combining expensive high-fidelity runs with many cheap low-fidelity runs) they use is applicable to my problem: I can use coarse-mesh solids4Foam runs for volume data and fine-mesh runs for accuracy calibration.
 

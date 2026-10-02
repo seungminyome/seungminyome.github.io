@@ -10,7 +10,7 @@ toc:
   sidebar: left
 ---
 
-> **Update (September 2026):** the current model uses a Mohr–Coulomb elasto-plastic rock law with published Montney siltstone properties. The J2 and Haynesville / Eagle Ford details below do not describe the current work.
+> **Update (September 2026):** the proppant card below was revised to match the current Montney siltstone study; the other cards are unchanged from May 2026.
 
 <style>
 .research-card {
@@ -120,18 +120,18 @@ That observation set the trajectory: from hull-scale vortex dynamics → centime
 
 <div class="research-card">
 <div class="card-number">01 · CURRENT RESEARCH</div>
-<div class="card-title">Proppant Embedment and Fracture Conductivity in Deformable Shale</div>
+<div class="card-title">Proppant Embedment and Fracture Conductivity in Deformable Rock</div>
 <div class="card-meta">University of Wyoming · 2025–Present · Advisor: Prof. Soheil Saraji</div>
 
 <div class="row">
 <div class="col-md-6">
 
 <p style="font-size:0.88rem; color:#666; line-height:1.7; background:#f7f9fc; border-radius:4px; padding:16px;">
-<strong>Setup.</strong> A single quartz proppant grain (dia. ~0.5 mm) pressed between two parallel shale fracture walls under 5–50 MPa closure stress.<br><br>
-<strong>Mesh.</strong> Structured O-grid around the grain–rock contact zone. The grid concentrates resolution exactly where stress gradients are steepest — at the Hertzian contact patch.<br><br>
-<strong>Key result.</strong> von Mises stress peaks at the contact patch and decays radially into the rock. Stress distribution matches Hertz contact theory. Plastic yielding (J2 criterion, σ_vm ≥ σ_y) initiates at ~15 MPa.
+<strong>Setup.</strong> An axisymmetric finite-volume model of a 1 mm ball pressed into, and then unloaded from, Montney siltstone with a Mohr–Coulomb elasto-plastic rock law. Measured rock properties come from published data; nothing is fitted to the indentation measurements.<br><br>
+<strong>Verification.</strong> Against published Brinell tests (22 samples, 35 N), peak depth on three finer meshes is 15.2–17.1 µm vs. 15.2 ± 2.4 µm measured, not yet converged. A Hertz elastic benchmark recovers only 79% of the load and is reported as an open check.<br><br>
+<strong>Result so far.</strong> A joint surrogate for peak and post-unloading depth reproduces the finite-volume data to 1.45% / 2.29% in nested cross-validation. It is a surrogate, not a validated law.
 </p>
-<p class="fig-caption">solids4Foam / OpenFOAM-2212 · Haynesville & Eagle Ford shale parameters</p>
+<p class="fig-caption">solids4Foam / OpenFOAM-2212 · published Montney siltstone properties (Zheng et al., 2020)</p>
 
 </div>
 <div class="col-md-6">
@@ -139,10 +139,10 @@ That observation set the trajectory: from hull-scale vortex dynamics → centime
 <div class="insight-block">
 <h5>Key Insight</h5>
 <ul>
-<li>First application of solids4Foam contact mechanics to proppant–fracture interaction</li>
-<li>Penalty-based segment-to-segment contact + J2 perfect-plasticity rock constitutive model</li>
-<li>Hertz validation confirms framework correctness before introducing plasticity</li>
-<li>Fracture aperture after embedment → directly feeds permeability calculation</li>
+<li>The finite-volume model is the data generator; the target is a dimensionless law for peak and post-unloading embedment depth</li>
+<li>A single dimensionless group fits 8 runs (R² = 0.88) but collapses to R² = 0.11 once rock properties vary, so the law needs a joint form</li>
+<li>The input the law needs most has never been measured: a 10° dilation angle cuts the end depth by 45%</li>
+<li>Embedment sets the geometry available for flow; conductivity needs a separate flow model, which is the planned next step</li>
 </ul>
 </div>
 
