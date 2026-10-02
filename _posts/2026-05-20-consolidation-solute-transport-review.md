@@ -201,7 +201,7 @@ That made me realize how much of "modern" computational geomechanics is really j
 
 ## Why This Paper Matters for My Own Work
 
-My current research focuses on proppant embedment in hydraulic fractures — a contact mechanics problem with coupled solid–fluid behavior. The physics is different, but the OpenFOAM methodology is directly shared: implementing custom constitutive models, managing two-way (or one-way) coupling between solid and fluid solvers, and checking against analytical solutions (in my case, a Hertz contact benchmark).
+My current research focuses on proppant embedment in hydraulic fractures — a contact mechanics problem with coupled solid–fluid behavior. The physics is different, but the OpenFOAM methodology is directly shared: implementing custom constitutive models, coupling solid and fluid solvers (my planned next step), and checking against analytical solutions (in my case, a Hertz contact benchmark).
 
 Reading Wang & Jeng carefully made one thing clear: the challenge in coupled OpenFOAM work is almost never the physics. It is the **numerical coupling strategy** — when to update which field, how to ensure convergence, and how to handle the mesh near regions of high gradient. Smith's 1D blueprint and Wang & Jeng's 3D implementation are both fundamentally about that challenge. So is my own work.
 

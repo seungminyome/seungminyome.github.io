@@ -2,7 +2,7 @@
 layout: post
 title: "OpenFOAM as a Physics Engine: A Research Agenda for Neural Operator–Accelerated Solid–Fluid Simulation"
 date: 2026-05-20 16:00:00-0600
-description: A forward-looking research agenda connecting my solids4Foam simulation work to neural operators, physics-informed learning, and data-driven constitutive modeling — and why this is the right next problem to solve.
+description: A forward-looking research agenda connecting my solids4Foam simulation work to neural operators and physics-informed learning — and why this is the right next problem to solve.
 tags: OpenFOAM solids4Foam machine-learning neural-operators PINN geomechanics FSI research-agenda
 categories: research
 related_posts: false
@@ -10,27 +10,15 @@ toc:
   sidebar: left
 ---
 
-> **Update (September 2026):** I wrote this agenda in May 2026 for an earlier version of the model. The rock law has since changed from J2 perfect plasticity to a Mohr–Coulomb elasto-plastic model with published Montney siltstone properties, so the parameter table and Direction 3 describe the earlier model. Statements about my own work have been corrected in place: the model is not yet fully verified (mesh convergence is still open, and a Hertz elastic benchmark recovers only 79% of the load), and my triaxial and DCI work so far has been laboratory training, so no model input comes from my own tests. Current status is on the [project page]({% link _projects/1_proppant.md %}).
-
 > This post is a research statement, not a literature review. I am writing it to make explicit something I have been thinking about since building the proppant embedment framework: the most important limitation of what I have built is not physics — it is _compute_. And that is a machine learning problem.
 
 ---
 
 ## The Bottleneck I Am Staring At
 
-My current solids4Foam framework can simulate one proppant grain pressing into one rock surface under one closure stress with one set of material parameters. A single case takes on the order of hours on a workstation.
+My current solids4Foam framework can simulate one proppant grain pressing into one rock surface under one load with one set of material parameters. A single case takes on the order of hours on a workstation.
 
-But fracture conductivity is not a single-point prediction. It is a **curve** — conductivity as a function of closure stress — and that curve depends on at least five parameters that matter:
-
-| Parameter                      | Physically relevant range | # of values to sweep |
-| ------------------------------ | ------------------------- | -------------------- |
-| Grain diameter                 | 100–800 μm                | 8                    |
-| Grain Young's modulus          | 70–100 GPa (quartz)       | 4                    |
-| Rock Young's modulus           | 5–50 GPa (shale)          | 8                    |
-| Rock yield stress $$\sigma_y$$ | 100–500 MPa               | 6                    |
-| Closure stress                 | 5–70 MPa                  | 12                   |
-
-A full factorial sweep is $$8 \times 4 \times 8 \times 6 \times 12 = 18{,}432$$ simulations. At hours per case, this is years of compute.
+But embedment is not a single-point prediction. The current joint surrogate already needs five inputs — normalized load, modulus ratio, compliance ratio, $$\tan\phi$$ and $$\tan\psi$$ — and the simulation campaigns behind it took 426 runs and about 1,400 core-hours. Every added input multiplies that count, and fracture conductivity, the quantity the field actually needs, is a **curve** over closure stress built from many such grain-scale answers.
 
 Even once the model is fully verified, this remains a **sampling problem** — and the right tool for sampling a high-dimensional parameter space defined by an expensive simulator is _machine learning_.
 
@@ -54,7 +42,7 @@ A trained $$\mathcal{F}$$ would replace the solids4Foam solver entirely for pred
 
 ---
 
-## Three Research Directions I Want to Pursue
+## Two Research Directions I Want to Pursue
 
 ### Direction 1: solids4Foam as a Data Engine for Neural Operators
 
@@ -86,39 +74,6 @@ The specific benchmark I would use is the Mandel consolidation problem — an an
 
 ---
 
-### Direction 3: Beyond J2 — Learning a Pressure-Dependent Yield Surface from Lab Data
-
-_This section was written for the earlier J2 model. The current Mohr–Coulomb model is already pressure-dependent; see the update at the top._
-
-The third direction addresses the most principled limitation of that earlier constitutive model.
-
-That model used **J2 perfect plasticity** — the von Mises yield criterion with no hardening. Yield occurs when the von Mises stress reaches a material constant $$\sigma_y$$:
-
-$$\sigma_{\text{vm}} = \sqrt{\tfrac{3}{2}\,\mathbf{s}:\mathbf{s}} \geq \sigma_y$$
-
-where $$\mathbf{s}$$ is the deviatoric stress tensor. This is the correct choice for a tractable first-pass model: it is well-posed, differentiable, and gives a clean comparison with Hertz theory in the elastic regime. But J2 has a structural limitation that matters specifically for rock under geological confinement: **it is pressure-independent**.
-
-The yield surface in J2 is a cylinder in principal stress space — the same diameter regardless of mean normal stress. Rock is not like this. Under higher confining pressure, rock is harder to shear. Triaxial tests measure exactly this pressure dependence — compressive strength increases with confining stress in a way that J2 cannot reproduce by construction, regardless of how $$\sigma_y$$ is calibrated.
-
-This is not just an academic concern. Under high closure stress, the mean normal stress at the contact patch is large. J2 may overpredict the plastic zone extent relative to what the real rock would exhibit — which means the predicted aperture reduction is not conservative in the right direction.
-
-**The proposal:** replace the analytic J2 yield surface with a _learned_ one. Vlassis and Sun (2021, _CMAME_ 373) showed that elastoplastic constitutive behavior can be encoded in a **Thermodynamics-Informed Neural Network (TANN)** by structuring the network architecture to satisfy the second law of thermodynamics by construction — stored elastic energy is a positive-definite output, dissipation is non-negative, plastic consistency is enforced via level-set representation. The yield surface is not prescribed; it is learned from data while remaining thermodynamically admissible.
-
-The result is a constitutive model that:
-
-- Is calibrated directly from triaxial stress–strain curves
-- Satisfies thermodynamic consistency by architecture, not by penalty
-- Captures pressure dependence that J2 ignores — naturally, from the data
-- Embeds in solids4Foam as a user-defined constitutive law (the solver does not care about the form of the material model, only its stress–strain response)
-
-**Why this is the right starting point:** J2 perfect plasticity is not a misguided choice — it is a _deliberate simplification_. Starting simple, verifying against Hertz theory, and then systematically adding complexity is the correct scientific workflow. The TANN direction is the next step in that workflow, not a correction of an error. It is only possible to argue for a data-driven model coherently if you first understand the analytic one you are replacing.
-
-**Why I am positioned to do this:** I have trained on triaxial and DCI compressibility testing in our laboratory, and I designed and built a displacement-controlled micro-indentation rig — so I can work on the experimental side of the loop, not only the simulation side. Closing the loop from physical experiment → learned constitutive model → OpenFOAM simulation is, to my knowledge, something no one has done at the grain-scale contact level.
-
-**Outcome:** A shale constitutive model capturing pressure-dependent yielding, calibrated from lab data, embedded in solids4Foam — enabling contact simulations that are both computationally tractable and physically faithful beyond the J2 approximation.
-
----
-
 ## Why I Am the Right Person to Do This
 
 The gap between simulation and machine learning in computational geomechanics is not primarily a methods gap — it is a _data gap_. Most researchers who work on neural operators for PDEs do not have physical simulation data from their own solvers; they generate synthetic data from simple benchmarks (Darcy flow, Navier-Stokes). Researchers who run physics-accurate coupled simulations (solids4Foam, ABAQUS, commercial HF codes) rarely know the neural operator literature well enough to build the training pipeline.
@@ -139,9 +94,9 @@ I sit at the intersection:
 
 The researchers whose work most directly intersects this agenda:
 
-**Romit Maulik** (Purdue, formerly Argonne) — the `TensorFlowFoam` module (Maulik et al., AIAA SciTech 2021) demonstrates in-situ deployment of TensorFlow models inside the OpenFOAM solver using the C API. This is exactly the integration layer I would need to run a neural constitutive model inside solids4Foam without rewriting the solver.
+**Romit Maulik** (Purdue, formerly Argonne) — the `TensorFlowFoam` module (Maulik et al., AIAA SciTech 2021) demonstrates in-situ deployment of TensorFlow models inside the OpenFOAM solver using the C API. This is exactly the integration layer I would need to call a trained grain-scale surrogate from inside an OpenFOAM pack-scale simulation without rewriting the solver.
 
-**WaiChing Sun** (Columbia) — the TANN framework for data-driven constitutive models (Vlassis & Sun, _CMAME_ 2021) is, to my knowledge, the most rigorous approach to thermodynamics-preserving learned constitutive laws in geomechanics. The inverse problem direction I outlined above — inferring in-situ properties from conductivity measurements — connects directly to his group's work on data-driven poromechanics.
+**WaiChing Sun** (Columbia) — the inverse problem in Direction 2, inferring in-situ properties from conductivity measurements, connects directly to his group's work on data-driven poromechanics.
 
 **George Em Karniadakis** (Brown) — the PINN framework (Raissi, Perdikaris, Karniadakis, _J. Comput. Phys._ 2019) and its extensions to operator learning (DeepONet, Kovachki et al. _JMLR_ 2023) define the methodological foundation for everything in Direction 2. The Mandel consolidation benchmark I want to use first appeared in Karniadakis group's early work on PINNs for poromechanics.
 
@@ -161,9 +116,7 @@ This is **not** "apply machine learning to geomechanics." Every proposal says th
 
 2. The inverse version of this problem — inferring rock properties from conductivity measurements — is a well-posed Bayesian inference problem that PINNs with Biot constraints can solve.
 
-3. The constitutive modeling problem — learning the rock yield surface from triaxial data while preserving thermodynamic consistency — is solved in principle by TANN (Vlassis & Sun), but has never been applied to shale under the loading conditions relevant to hydraulic fracturing.
-
-These are three _specific_ research problems, each with a _specific_ methodology, each grounded in a _specific_ limitation of my current framework. The connections to existing literature are not decorative — they define the baseline I intend to extend.
+These are two _specific_ research problems, each with a _specific_ methodology, each grounded in a _specific_ limitation of my current framework. The connections to existing literature are not decorative — they define the baseline I intend to extend.
 
 ---
 
@@ -172,7 +125,6 @@ These are three _specific_ research problems, each with a _specific_ methodology
 - Li, Z., Kovachki, N., Azizzadenesheli, K., Liu, B., Bhattacharya, K., Stuart, A., & Anandkumar, A. (2021). Fourier Neural Operator for Parametric Partial Differential Equations. _ICLR 2021_. arXiv:2010.08895
 - Lu, L., Jin, P., Pang, G., Zhang, Z., & Karniadakis, G.E. (2021). Learning nonlinear operators via DeepONet based on the universal approximation theorem of operators. _Nature Machine Intelligence_, 3, 218–229. doi:10.1038/s42256-021-00302-5
 - Raissi, M., Perdikaris, P., & Karniadakis, G.E. (2019). Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations. _Journal of Computational Physics_, 378, 686–707. doi:10.1016/j.jcp.2018.10.045
-- Vlassis, N.N., & Sun, W.C. (2021). Sobolev training of thermodynamic-informed neural networks for interpretable elasto-plasticity models with level set hardening. _Computer Methods in Applied Mechanics and Engineering_, 373, 113695. doi:10.1016/j.cma.2021.113695
 - Maulik, R., Sharma, H., Patel, S., Lusch, B., & Jennings, E. (2021). Deploying deep learning in OpenFOAM with TensorFlow. _AIAA SciTech 2021 Forum_. arXiv:2012.00900
 - Kovachki, N., Li, Z., Liu, B., Azizzadenesheli, K., Bhattacharya, K., Stuart, A., & Anandkumar, A. (2023). Neural Operator: Learning Maps Between Function Spaces With Applications to PDEs. _Journal of Machine Learning Research_, 24(1). doi:10.5555/3648699.3648788
 - Tang, M., Liu, Y., & Durlofsky, L.J. (2021). A deep-learning-based surrogate model for data assimilation in dynamic subsurface flow problems. _Journal of Computational Physics_, 413, 109456. doi:10.1016/j.jcp.2020.109456

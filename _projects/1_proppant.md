@@ -7,7 +7,7 @@ importance: 1
 category: research
 ---
 
-Six years after first running STAR-CCM+ on the KCS benchmark, the question I have been asking all along has a new form: a single proppant grain pressed between two fracture walls in a shale reservoir, three kilometers underground. The interface between solid and fluid — which was a free surface near a cylinder in one project, a vibrating elastic membrane in another, an asymmetric cavity wall in a water tank — is now the contact patch between a sand grain and rock. The geometry has changed. The question hasn't.
+Six years after first running STAR-CCM+ on the KCS benchmark, the question I have been asking all along has a new form: a single proppant grain pressed between two fracture walls in a tight reservoir, three kilometers underground. The interface between solid and fluid — which was a free surface near a cylinder in one project, a vibrating elastic membrane in another, an asymmetric cavity wall in a water tank — is now the contact patch between a sand grain and rock. The geometry has changed. The question hasn't.
 
 A hydraulic fracture is only as productive as its conductivity — and conductivity depends on how far the proppant grain sinks into the rock. This project models that process from first principles.
 

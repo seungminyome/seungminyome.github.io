@@ -10,8 +10,6 @@ toc:
   sidebar: left
 ---
 
-> **Update (September 2026):** the proppant card below was revised to match the current Montney siltstone study; the other cards are unchanged from May 2026.
-
 <style>
 .research-card {
   border: 1px solid #e0e0e0;
@@ -106,7 +104,7 @@ toc:
 }
 </style>
 
-The question I have carried since undergraduate is a simple one: **how do solids and fluids talk to each other when neither stays simple?** Below are five projects where I chased that question — from ship hulls to silicone films to shale fractures. The scale changes every time. The structure of the problem does not.
+The question I have carried since undergraduate is a simple one: **how do solids and fluids talk to each other when neither stays simple?** Below are five projects where I chased that question — from ship hulls to silicone films to rock fractures. The scale changes every time. The structure of the problem does not.
 
 The descent across scales was not a pivot. It was a pursuit. At **Samsung Heavy Industries**, building a defect-detection autoencoder for large vessels, I encountered the central limitation of macroscale structural monitoring: the system could detect anomalies with high accuracy, but it had no vocabulary for why defects formed. The sensor signals were macroscale fingerprints of microscale events — fatigue cracks propagating at weld grain boundaries, contact-zone yielding under cyclic load. That gap between detectable symptom and invisible cause was not a data problem. It was a mechanics problem. Understanding failure required descending to the scale where failure originates.
 
