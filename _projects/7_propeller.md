@@ -15,15 +15,15 @@ As an undergraduate at **Pusan National University** (advised by Prof. Munchan K
 
 ### Design Specification
 
-| Parameter           | Value                      |
-| ------------------- | -------------------------- |
-| Ship type           | Container vessel           |
-| Design speed        | 22.5 knots                 |
-| MCR (Max. Cont.)    | 38,570 PS × 102.0 rpm      |
-| NCR (Normal Cont.)  | 34,710 PS × 98.5 rpm       |
-| Number of blades    | 4                          |
-| Series              | MAU                        |
-| Material            | Copper alloy (CU3, 60 MPa) |
+| Parameter          | Value                      |
+| ------------------ | -------------------------- |
+| Ship type          | Container vessel           |
+| Design speed       | 22.5 knots                 |
+| MCR (Max. Cont.)   | 38,570 PS × 102.0 rpm      |
+| NCR (Normal Cont.) | 34,710 PS × 98.5 rpm       |
+| Number of blades   | 4                          |
+| Series             | MAU                        |
+| Material           | Copper alloy (CU3, 60 MPa) |
 
 ---
 
@@ -52,11 +52,11 @@ Blade area ratio was checked against the **Burrill cavitation criterion** (5% ba
 
 The MOPTI optimization program runs the same B_p–δ logic numerically rather than graphically, iterating over blade number, area ratio, and advance coefficient to find the efficiency peak. Running MOPTI on the same inputs returned:
 
-| Parameter | B_p–δ Chart | MOPTI | Error  |
-| --------- | ----------- | ----- | ------ |
-| A_E/A₀    | 0.625       | 0.589 | 6.3%   |
-| P/D       | 0.884       | 0.794 | 11.5%  |
-| D (m)     | 8.077       | 8.313 | 2.8%   |
+| Parameter | B_p–δ Chart | MOPTI | Error |
+| --------- | ----------- | ----- | ----- |
+| A_E/A₀    | 0.625       | 0.589 | 6.3%  |
+| P/D       | 0.884       | 0.794 | 11.5% |
+| D (m)     | 8.077       | 8.313 | 2.8%  |
 
 The diameter agreed well; the pitch ratio diverged. This is a known characteristic of the B_p–δ approach — the chart optimizes graphically along a single curve, while MOPTI sweeps the full parameter space. I treated the chart result as the starting geometry and proceeded to detailed design, with MOPTI as a consistency check.
 
@@ -125,10 +125,10 @@ Detailed design converts pitch and load distribution into a full-offset blade: c
 
 The Korean Register requires a fatigue-based thickness check at two critical sections: 0.25R (blade root, maximum bending moment) and 0.60R (secondary check). Material: copper alloy CU3, tensile strength 60 MPa, stress concentration factor K_m = 1.3.
 
-| Section | Required thickness | Designed thickness | Result              |
-| ------- | ------------------ | ------------------ | ------------------- |
-| 0.25R   | 231.97 mm          | 266.53 mm          | **PASS** (+14.9%)   |
-| 0.60R   | 109.45 mm          | 151.90 mm          | **PASS** (+38.8%)   |
+| Section | Required thickness | Designed thickness | Result            |
+| ------- | ------------------ | ------------------ | ----------------- |
+| 0.25R   | 231.97 mm          | 266.53 mm          | **PASS** (+14.9%) |
+| 0.60R   | 109.45 mm          | 151.90 mm          | **PASS** (+38.8%) |
 
 Both sections cleared the minimum with margin. The larger margin at 0.60R reflects the fact that mid-span thickness is set primarily by hydrodynamic requirements rather than driven to the structural minimum.
 

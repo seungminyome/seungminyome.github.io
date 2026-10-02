@@ -39,9 +39,7 @@ function tr(xMin, xMax, yMin, yMax, sl, sr, st, sb) {
 }
 
 function pts(arr) {
-  return arr
-    .map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(2)},${y.toFixed(2)}`)
-    .join("");
+  return arr.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(2)},${y.toFixed(2)}`).join("");
 }
 
 function rng(a, b, n) {
@@ -51,10 +49,7 @@ function rng(a, b, n) {
 function erfc(x) {
   // Abramowitz & Stegun approximation
   const t = 1 / (1 + 0.3275911 * Math.abs(x));
-  const poly =
-    t *
-    (0.254829592 +
-      t * (-0.284496736 + t * (1.421413741 + t * (-1.453152027 + t * 1.061405429))));
+  const poly = t * (0.254829592 + t * (-0.284496736 + t * (1.421413741 + t * (-1.453152027 + t * 1.061405429))));
   const result = poly * Math.exp(-x * x);
   return x >= 0 ? result : 2 - result;
 }
@@ -121,10 +116,8 @@ function fig1a() {
     g += `<line x1="${P1.l}" y1="${T1.y(y)}" x2="${P1.r}" y2="${T1.y(y)}" class="grid"/>`;
     g += `<line x1="${P2.l}" y1="${T2.y(y)}" x2="${P2.r}" y2="${T2.y(y)}" class="grid"/>`;
   }
-  for (const u of [0.25, 0.5, 0.75, 1.0])
-    g += `<line x1="${T1.x(u)}" y1="${P1.t}" x2="${T1.x(u)}" y2="${P1.b}" class="grid"/>`;
-  for (const w of [-2, -1, 1, 2])
-    g += `<line x1="${T2.x(w)}" y1="${P2.t}" x2="${T2.x(w)}" y2="${P2.b}" class="grid"/>`;
+  for (const u of [0.25, 0.5, 0.75, 1.0]) g += `<line x1="${T1.x(u)}" y1="${P1.t}" x2="${T1.x(u)}" y2="${P1.b}" class="grid"/>`;
+  for (const w of [-2, -1, 1, 2]) g += `<line x1="${T2.x(w)}" y1="${P2.t}" x2="${T2.x(w)}" y2="${P2.b}" class="grid"/>`;
 
   // walls + hatches
   let walls = "";
@@ -155,10 +148,8 @@ function fig1a() {
     ticks += `<text x="${P1.l - 5}" y="${T1.y(y) + 4}" text-anchor="end" class="tick">${y}</text>`;
     ticks += `<text x="${P2.l - 5}" y="${T2.y(y) + 4}" text-anchor="end" class="tick">${y}</text>`;
   }
-  for (const u of [0, 0.5, 1.0])
-    ticks += `<text x="${T1.x(u)}" y="${P1.b + 16}" text-anchor="middle" class="tick">${u.toFixed(1)}</text>`;
-  for (const w of [-2, -1, 0, 1, 2])
-    ticks += `<text x="${T2.x(w)}" y="${P2.b + 16}" text-anchor="middle" class="tick">${w}</text>`;
+  for (const u of [0, 0.5, 1.0]) ticks += `<text x="${T1.x(u)}" y="${P1.b + 16}" text-anchor="middle" class="tick">${u.toFixed(1)}</text>`;
+  for (const w of [-2, -1, 0, 1, 2]) ticks += `<text x="${T2.x(w)}" y="${P2.b + 16}" text-anchor="middle" class="tick">${w}</text>`;
 
   // labels
   const cx1 = (P1.l + P1.r) / 2,
@@ -225,10 +216,8 @@ function fig1b() {
 
   // Grid
   let g = "";
-  for (const y of [0.2, 0.4, 0.6, 0.8, 1.0])
-    g += `<line x1="${P.l}" y1="${T.y(y)}" x2="${P.r}" y2="${T.y(y)}" class="grid"/>`;
-  for (const w of [1, 2, 3, 4, 5])
-    g += `<line x1="${T.x(w)}" y1="${P.t}" x2="${T.x(w)}" y2="${P.b}" class="grid"/>`;
+  for (const y of [0.2, 0.4, 0.6, 0.8, 1.0]) g += `<line x1="${P.l}" y1="${T.y(y)}" x2="${P.r}" y2="${T.y(y)}" class="grid"/>`;
+  for (const w of [1, 2, 3, 4, 5]) g += `<line x1="${T.x(w)}" y1="${P.t}" x2="${T.x(w)}" y2="${P.b}" class="grid"/>`;
 
   // Wall (y=0)
   const wall = `<line x1="${P.l}" y1="${T.y(0)}" x2="${P.r}" y2="${T.y(0)}" class="wall"/>`;
@@ -244,10 +233,8 @@ function fig1b() {
 
   // Ticks
   let ticks = "";
-  for (const y of [0.2, 0.4, 0.6, 0.8, 1.0])
-    ticks += `<text x="${P.l - 6}" y="${T.y(y) + 4}" text-anchor="end" class="tick">${y.toFixed(1)}</text>`;
-  for (const w of [0, 1, 2, 3, 4, 5])
-    ticks += `<text x="${T.x(w)}" y="${P.b + 16}" text-anchor="middle" class="tick">${w}</text>`;
+  for (const y of [0.2, 0.4, 0.6, 0.8, 1.0]) ticks += `<text x="${P.l - 6}" y="${T.y(y) + 4}" text-anchor="end" class="tick">${y.toFixed(1)}</text>`;
+  for (const w of [0, 1, 2, 3, 4, 5]) ticks += `<text x="${T.x(w)}" y="${P.b + 16}" text-anchor="middle" class="tick">${w}</text>`;
 
   // Legend
   let legend = "";
@@ -271,12 +258,7 @@ function fig1b() {
 <text x="${T.x(wMax * 0.48)}" y="${T.y(0.03)}" text-anchor="middle" class="ann">moving wall (u = U at y = 0)</text>
 <text x="${T.x(wMax * 0.05)}" y="${T.y(yMax * 0.9)}" class="ann" fill="${C.mid}">fluid</text>`;
 
-  const curveSVG = curves
-    .map(
-      (d, i) =>
-        `<path d="${d}" class="curve" stroke="${colors[i]}"/>`
-    )
-    .join("");
+  const curveSVG = curves.map((d, i) => `<path d="${d}" class="curve" stroke="${colors[i]}"/>`).join("");
 
   return svgWrap(
     W,
@@ -351,7 +333,10 @@ function fig2a() {
     ];
     vorCurves += `<path d="${pts(vorPts)}" class="curve" stroke="${color}"/>`;
     // vertical jump at interface
-    vorCurves += `<path d="${pts([[T2.x(w1), T2.y(0)], [T2.x(w2), T2.y(0)]])}" class="thin" stroke="${color}" stroke-dasharray="4,2"/>`;
+    vorCurves += `<path d="${pts([
+      [T2.x(w1), T2.y(0)],
+      [T2.x(w2), T2.y(0)],
+    ])}" class="thin" stroke="${color}" stroke-dasharray="4,2"/>`;
   });
 
   // Interface line
@@ -366,20 +351,15 @@ function fig2a() {
   ]) {
     walls += `<line x1="${P.l}" y1="${T.y(1)}" x2="${P.r}" y2="${T.y(1)}" class="wall"/>`;
     walls += `<line x1="${P.l}" y1="${T.y(-1)}" x2="${P.r}" y2="${T.y(-1)}" class="wall"/>`;
-    for (let f = 0; f <= 1.02; f += 0.06)
-      walls += hatchLine(P.l + f * (P.r - P.l), T.y(1), T.y(-1), -5, -7);
+    for (let f = 0; f <= 1.02; f += 0.06) walls += hatchLine(P.l + f * (P.r - P.l), T.y(1), T.y(-1), -5, -7);
   }
 
   // Grid
   let g = "";
-  for (const y of [-0.5, 0, 0.5])
-    g += `<line x1="${P1.l}" y1="${T1.y(y)}" x2="${P1.r}" y2="${T1.y(y)}" class="grid"/>`;
-  for (const u of [-0.5, 0, 0.5])
-    g += `<line x1="${T1.x(u)}" y1="${P1.t}" x2="${T1.x(u)}" y2="${P1.b}" class="grid"/>`;
-  for (const y of [-0.5, 0.5])
-    g += `<line x1="${P2.l}" y1="${T2.y(y)}" x2="${P2.r}" y2="${T2.y(y)}" class="grid"/>`;
-  for (const w of [-2, -1, 0, 1, 2])
-    g += `<line x1="${T2.x(w)}" y1="${P2.t}" x2="${T2.x(w)}" y2="${P2.b}" class="grid"/>`;
+  for (const y of [-0.5, 0, 0.5]) g += `<line x1="${P1.l}" y1="${T1.y(y)}" x2="${P1.r}" y2="${T1.y(y)}" class="grid"/>`;
+  for (const u of [-0.5, 0, 0.5]) g += `<line x1="${T1.x(u)}" y1="${P1.t}" x2="${T1.x(u)}" y2="${P1.b}" class="grid"/>`;
+  for (const y of [-0.5, 0.5]) g += `<line x1="${P2.l}" y1="${T2.y(y)}" x2="${P2.r}" y2="${T2.y(y)}" class="grid"/>`;
+  for (const w of [-2, -1, 0, 1, 2]) g += `<line x1="${T2.x(w)}" y1="${P2.t}" x2="${T2.x(w)}" y2="${P2.b}" class="grid"/>`;
 
   // Axes
   const axes = `
@@ -395,10 +375,8 @@ function fig2a() {
     ticks += `<text x="${P1.l - 5}" y="${T1.y(y) + 4}" text-anchor="end" class="tick">${y}</text>`;
     ticks += `<text x="${P2.l - 5}" y="${T2.y(y) + 4}" text-anchor="end" class="tick">${y}</text>`;
   }
-  for (const u of [-1, 0, 1])
-    ticks += `<text x="${T1.x(u)}" y="${P1.b + 16}" text-anchor="middle" class="tick">${u}</text>`;
-  for (const w of [-2, -1, 0, 1, 2])
-    ticks += `<text x="${T2.x(w)}" y="${P2.b + 16}" text-anchor="middle" class="tick">${w}</text>`;
+  for (const u of [-1, 0, 1]) ticks += `<text x="${T1.x(u)}" y="${P1.b + 16}" text-anchor="middle" class="tick">${u}</text>`;
+  for (const w of [-2, -1, 0, 1, 2]) ticks += `<text x="${T2.x(w)}" y="${P2.b + 16}" text-anchor="middle" class="tick">${w}</text>`;
 
   // Legend
   const lx = T1.x(0.55),
@@ -581,10 +559,8 @@ function fig2b() {
 
   // Ticks
   let ticks = "";
-  for (const x of [-3, -2, -1, 0, 1, 2, 3])
-    ticks += `<text x="${T.x(x)}" y="${P.b + 16}" text-anchor="middle" class="tick">${x}</text>`;
-  for (const y of [-2, -1, 0])
-    ticks += `<text x="${T.x(0) - 7}" y="${T.y(y) + 4}" text-anchor="end" class="tick">${y}</text>`;
+  for (const x of [-3, -2, -1, 0, 1, 2, 3]) ticks += `<text x="${T.x(x)}" y="${P.b + 16}" text-anchor="middle" class="tick">${x}</text>`;
+  for (const y of [-2, -1, 0]) ticks += `<text x="${T.x(0) - 7}" y="${T.y(y) + 4}" text-anchor="end" class="tick">${y}</text>`;
 
   const cx = (P.l + P.r) / 2;
   const labs = `
@@ -595,11 +571,7 @@ function fig2b() {
 <text x="${T.x(-3.5)}" y="${T.y(0.1) - 6}" class="ann" fill="${C.blue}">free surface</text>
 <text x="${T.x(2.6)}" y="${T.y(-h_v)}" class="ann" fill="${C.mid}">real vortices</text>`;
 
-  return svgWrap(
-    W,
-    H,
-    `${panelRect(P)}${imgRegion}${streamlines}${surface}${surfHatch}${axes}${vSymbols}${ticks}${labs}`
-  );
+  return svgWrap(W, H, `${panelRect(P)}${imgRegion}${streamlines}${surface}${surfHatch}${axes}${vSymbols}${ticks}${labs}`);
 }
 
 // ── Write files ──────────────────────────────────────────────────────────────
