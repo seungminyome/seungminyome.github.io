@@ -16,7 +16,7 @@ cv:
         start_date: 2025
         end_date: present
         highlights:
-          - "Built the data generator: an axisymmetric finite-volume model (OpenFOAM + solids4Foam) of a 1 mm ball pressed into and unloaded from Mohr–Coulomb rock; every rock input is a published Montney strength value, none adjusted to indentation data"
+          - "Built the data generator: an axisymmetric finite-volume model (OpenFOAM + solids4Foam) of a 1 mm ball pressed into and unloaded from Mohr–Coulomb rock; measured rock inputs are published Montney strength values, none adjusted to indentation data"
           - "Checked it on three finer meshes against published Brinell tests (22 samples, 35 N): peak depth 15.2–17.1 µm vs. 15.2 ± 2.4 µm measured, not yet converged; a Hertz elastic benchmark recovered only 79% of the load"
           - "Predicted eight published proppant-pack tests blind (69% mean absolute error) and traced the misfit to grain size: R^1.0 scaling in the model vs. R^0.47 measured, unchanged by mesh or dilation"
           - "Found that a one-group correlation (h/R = 0.0031 Π^0.72, R² = 0.88 on 8 runs) collapses to R² = 0.11 once rock properties vary, so a single dimensionless group cannot carry the law"
