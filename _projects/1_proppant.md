@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Proppant Embedment and Fracture Conductivity
-description: Coupled solid–fluid simulation of proppant-rock contact mechanics using solids4Foam (UW, current)
+description: Finite-volume contact mechanics of proppant embedment using solids4Foam (UW, current)
 img:
 importance: 1
 category: research
@@ -11,26 +11,31 @@ Six years after first running STAR-CCM+ on the KCS benchmark, the question I hav
 
 A hydraulic fracture is only as productive as its conductivity — and conductivity depends on how far the proppant grain sinks into the rock. This project models that process from first principles.
 
-At the **University of Wyoming** (advised by Prof. Soheil Saraji), I am developing a coupled solid–fluid simulation framework in [solids4Foam](https://solids4foam.github.io) (OpenFOAM-based) to model a single proppant grain pressed between two shale fracture walls under closure stress.
+At the **University of Wyoming** (advised by Prof. Soheil Saraji), I am developing a finite-volume solid-mechanics framework in [solids4Foam](https://solids4foam.github.io) (OpenFOAM-based) for proppant–rock contact. The current study presses a 1 mm deformable ball into a Montney siltstone specimen and then unloads it. Fracture conductivity is the motivating application; fluid flow and conductivity are not calculated in the current study.
 
 **What makes this hard:**
 
 - The grain is elastic; the rock yields plastically under sufficient stress
 - Contact occurs at a point and spreads — the contact patch geometry determines everything
-- The deformed fracture aperture directly sets the permeability for single-phase flow
+- Embedment changes the geometry available for flow; predicting conductivity requires a separate flow model
 - The target is a dimensionless law for peak-load and post-unloading depth; the finite-volume model is the data generator, not the claim
 
 **Implementation:**
 
-- Structured O-grid mesh concentrating resolution at the contact zone
-- Mohr–Coulomb elasto-plastic rock model for Montney siltstone
-- Penalty-based segment-to-segment contact algorithm
-- Checked against a Hertz elastic benchmark; it currently recovers only 79% of the applied load, and that is reported as an open check
-- Every rock input taken from published Montney siltstone measurements (Zheng et al., 2020), with no parameter fitting
+- Axisymmetric wedge mesh refined near the contact zone
+- Mohr–Coulomb elasto-plastic rock model for Montney siltstone and a deformable elastic particle
+- Penalty-based normal contact through a loading–unloading cycle
+- Measured rock properties taken from published Montney siltstone data (Zheng et al., 2020); quantities that were never measured, such as the dilation angle, are stated as modeling assumptions, and nothing is fitted to the indentation data
+
+**Verification status:**
+
+- Against published Brinell tests (22 samples, 35 N), the computed peak depth on three finer meshes is 15.2–17.1 µm vs. 15.2 ± 2.4 µm measured; mesh and contact convergence are still under investigation
+- A Hertz elastic benchmark currently recovers only 79% of the applied load; this is reported as an open check
+- Blind predictions of eight published proppant-pack tests have a 69% mean absolute error, traced to grain-size scaling (R<sup>1.0</sup> in the model vs. R<sup>0.47</sup> measured, unchanged by mesh or dilation)
 
 **Where this sits in the FSI picture:**
 
-This is contact mechanics — solid on solid — with fluid behavior determined by the resulting geometry. The coupling is one-way at the grain scale: solid deformation sets the aperture, aperture sets the flow. The next step is two-way coupling at the fracture scale: fluid pressure changes the effective stress, which changes the embedment.
+The current calculation is solid–solid contact mechanics. It separates deformation under load from residual indentation after unloading. Passing the resulting geometry to a flow solver is a planned one-way coupling step. Two-way coupling, in which fluid pressure changes effective stress and embedment, is a further extension.
 
 **Status:** first manuscript _in preparation_ — _Acta Geotechnica_; a joint peak/end-depth surrogate reproduces the finite-volume data to 1.45% / 2.29% in 19-group nested cross-validation
 
