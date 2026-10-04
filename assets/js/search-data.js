@@ -11,14 +11,14 @@ ninja.data = [{
     },
   },{id: "nav-publications",
           title: "publications",
-          description: "Two manuscripts in preparation — proppant embedment mechanics (Computers and Geotechnics) and hydroelastic wave dispersion (Journal of Fluids and Structures).",
+          description: "Two manuscripts in preparation — proppant embedment mechanics (Acta Geotechnica) and hydroelastic wave dispersion (Journal of Fluids and Structures).",
           section: "Navigation",
           handler: () => {
             window.location.href = "/publications/";
           },
         },{id: "nav-projects",
           title: "projects",
-          description: "FSI research across scales — from proppant grains in shale to elastic films on water to ship hull vortex dynamics.",
+          description: "FSI research across scales — from proppant grains in rock fractures to elastic films on water to ship hull vortex dynamics.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
@@ -41,7 +41,7 @@ ninja.data = [{
         
           title: "OpenFOAM as a Physics Engine: A Research Agenda for Neural Operator–Accelerated Solid–Fluid Simulation...",
         
-        description: "A forward-looking research agenda connecting my solids4Foam simulation work to neural operators, physics-informed learning, and data-driven constitutive modeling — and why this is the right next problem to solve.",
+        description: "A forward-looking research agenda connecting my solids4Foam simulation work to neural operators and physics-informed learning — and why this is the right next problem to solve.",
         section: "Posts",
         handler: () => {
           
@@ -103,25 +103,9 @@ ninja.data = [{
             window.location.href = "/blog/2025/vorticity-boundaries-review/";
           
         },
-      },{id: "books-the-godfather",
-          title: 'The Godfather',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/the_godfather/";
-            },},{id: "news-a-simple-inline-announcement",
-          title: 'A simple inline announcement.',
-          description: "",
-          section: "News",},{id: "news-a-long-announcement-with-details",
-          title: 'A long announcement with details',
-          description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_2/";
-            },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
-          title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
-          description: "",
-          section: "News",},{id: "projects-proppant-embedment-and-fracture-conductivity",
+      },{id: "projects-proppant-embedment-and-fracture-conductivity",
           title: 'Proppant Embedment and Fracture Conductivity',
-          description: "Coupled solid–fluid simulation of proppant-rock contact mechanics using solids4Foam (UW, current)",
+          description: "Finite-volume contact mechanics of proppant embedment using solids4Foam (UW, current)",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_proppant/";
             },},{id: "projects-gravity-capillary-waves-on-an-elastic-film",
@@ -154,16 +138,6 @@ ninja.data = [{
           description: "Full propeller design pipeline — Bp-δ chart, MOPTI optimization, KPA4 detailed design, tip unloading, KR strength evaluation (PNU, undergraduate)",
           section: "Projects",handler: () => {
               window.location.href = "/projects/7_propeller/";
-            },},{id: "teachings-data-science-fundamentals",
-          title: 'Data Science Fundamentals',
-          description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
-          section: "Teachings",handler: () => {
-              window.location.href = "/teachings/data-science-fundamentals/";
-            },},{id: "teachings-introduction-to-machine-learning",
-          title: 'Introduction to Machine Learning',
-          description: "This course provides an introduction to machine learning concepts, algorithms, and applications. Students will learn about supervised and unsupervised learning, model evaluation, and practical implementations.",
-          section: "Teachings",handler: () => {
-              window.location.href = "/teachings/introduction-to-machine-learning/";
             },},{
         id: 'social-email',
         title: 'email',
