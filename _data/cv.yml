@@ -77,21 +77,29 @@ cv:
         level: Advanced
         icon: fa-solid fa-computer
         keywords: "solids4Foam, OpenFOAM, ANSYS Fluent, ABAQUS, STAR-CCM+, ParaView"
+        label: Simulation & CAE
+        details: "solids4Foam, OpenFOAM, ANSYS Fluent, ABAQUS, STAR-CCM+, ParaView"
 
       - name: Programming
         level: Advanced
         icon: fa-solid fa-code
         keywords: "Python, MATLAB, C++, LaTeX"
+        label: Programming
+        details: "Python, MATLAB, C++, LaTeX"
 
       - name: Design & Engineering Tools
         level: Intermediate
         icon: fa-solid fa-drafting-compass
         keywords: "AutoCAD, AVEVA Marine, TTM, VATIA, Google Cloud Platform"
+        label: Design & Engineering Tools
+        details: "AutoCAD, AVEVA Marine, TTM, VATIA, Google Cloud Platform"
 
       - name: Laboratory
         level: Intermediate
         icon: fa-solid fa-flask
         keywords: "Micro-indentation (rig built in-house), load cell, laser vibrometry, NI DAQ/LabVIEW, PIV, hull resistance testing; triaxial and DCI testing (trained)"
+        label: Laboratory
+        details: "Micro-indentation (rig built in-house), load cell, laser vibrometry, NI DAQ/LabVIEW, PIV, hull resistance testing; triaxial and DCI testing (trained)"
 
     Education:
       - institution: University of Wyoming
@@ -103,6 +111,7 @@ cv:
         end_date: present
         score: "3.8/4.0"
         highlights:
+          - "GPA 3.8/4.0"
           - "Advisor: Dr. Soheil Saraji (Department Head)"
           - "Minor: Computer Science (in progress)"
           - "Thesis: Numerical modeling of proppant-supported fracture systems — embedment, rock deformation, and single-phase fluid transport using solids4Foam"
@@ -117,6 +126,7 @@ cv:
         end_date: 2024
         score: "3.73/4.5"
         highlights:
+          - "GPA 3.73/4.5"
           - "Advisor: Dr. Inwon Lee"
           - "Coursework: Solid Mechanics, Fluid Mechanics, Linear Algebra, Thermodynamics, Ocean Wave Mechanics, FEM, Offshore Structural Design, CFD"
 
@@ -192,6 +202,10 @@ cv:
     Languages:
       - name: Korean
         summary: "Native"
+        label: Korean
+        details: "Native"
 
       - name: English
         summary: "Fluent"
+        label: English
+        details: "Fluent"
