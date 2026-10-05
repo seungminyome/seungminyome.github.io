@@ -125,7 +125,7 @@ ninja.data = [{
               window.location.href = "/projects/4_vortex_wave/";
             },},{id: "projects-ship-structural-defect-detection-via-lstm-autoencoder",
           title: 'Ship Structural Defect Detection via LSTM Autoencoder',
-          description: "99.49% accuracy anomaly detection from vibration/acoustic sensor data (PNU + Samsung HI)",
+          description: "Anomaly detection from vibration/acoustic sensor data, trained on healthy-condition data only (PNU + Samsung HI)",
           section: "Projects",handler: () => {
               window.location.href = "/projects/5_ship_defect/";
             },},{id: "projects-kcs-hull-resistance-and-wave-pattern-analysis",
