@@ -29,15 +29,15 @@ At the **University of Wyoming** (advised by Prof. Soheil Saraji), I am developi
 
 **Verification status:**
 
-- Against published Brinell tests (22 samples, 35 N), the computed peak depth on three finer meshes is 15.2–17.1 µm vs. 15.2 ± 2.4 µm measured; mesh and contact convergence are still under investigation
-- A Hertz elastic benchmark currently recovers only 79% of the applied load; this is reported as an open check
-- Blind predictions of eight published proppant-pack tests have a 69% mean absolute error, traced to grain-size scaling (R<sup>1.0</sup> in the model vs. R<sup>0.47</sup> measured, unchanged by mesh or dilation)
+- Residual depth converges slowly with mesh; every condition is being re-run on three mesh levels with Richardson extrapolation and uncertainty bands (≈750 runs, UW MedicineBow, Oct. 2026)
+- The Hertz elastic benchmark passes with the revised contact settings (depth within 1% of the analytical solution, full load recovered)
+- Blind predictions of eight published proppant-pack tests show a grain-size-dependent mismatch (R<sup>1.0</sup> scaling in the model vs. R<sup>0.47</sup> measured) that neither mesh refinement nor dilation angle removes; reported as a model limit
 
 **Where this sits in the FSI picture:**
 
 The current calculation is solid–solid contact mechanics. It separates deformation under load from residual indentation after unloading. Passing the resulting geometry to a flow solver is a planned one-way coupling step. Two-way coupling, in which fluid pressure changes effective stress and embedment, is a further extension.
 
-**Status:** first manuscript _in preparation_ — _Acta Geotechnica_; a joint peak/end-depth surrogate reproduces the finite-volume data to 1.45% / 2.29% in 19-group nested cross-validation
+**Status:** manuscript _in preparation_ — a dimensionless predictive equation for residual embedment, fitted by nested leave-family-out cross-validation, with its range of validity stated by factor
 
 **Tools:** solids4Foam · OpenFOAM-2212 · ParaView · Ubuntu/VirtualBox
 

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Ship Structural Defect Detection via LSTM Autoencoder
-description: 99.49% accuracy anomaly detection from vibration/acoustic sensor data (PNU + Samsung HI)
+description: Anomaly detection from vibration/acoustic sensor data, trained on healthy-condition data only (PNU + Samsung HI)
 img: assets/img/research/lstm-anomaly.png
 importance: 5
 category: research

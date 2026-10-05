@@ -16,16 +16,14 @@ cv:
         start_date: 2025
         end_date: present
         highlights:
-          - "Built the data generator: an axisymmetric finite-volume model (OpenFOAM + solids4Foam) of a 1 mm ball pressed into and unloaded from Mohr–Coulomb rock; measured rock inputs are published Montney strength values, none adjusted to indentation data"
-          - "Checked it on three finer meshes against published Brinell tests (22 samples, 35 N): peak depth 15.2–17.1 µm vs. 15.2 ± 2.4 µm measured, not yet converged; a Hertz elastic benchmark recovered only 79% of the load"
-          - "Predicted eight published proppant-pack tests blind (69% mean absolute error) and traced the misfit to grain size: R^1.0 scaling in the model vs. R^0.47 measured, unchanged by mesh or dilation"
-          - "Found that a one-group correlation (h/R = 0.0031 Π^0.72, R² = 0.88 on 8 runs) collapses to R² = 0.11 once rock properties vary, so a single dimensionless group cannot carry the law"
-          - "Replaced it with a joint surrogate: peak depth as a power law in normalized load, modulus ratio, compliance ratio, tan φ and tan ψ; end depth as peak times a logistic recovery ratio; 1.45% / 2.29% nested-CV error, stated as a surrogate, not a validated law"
-          - "Showed by sweeps that the input this law needs most is the one nobody has measured: a 10° dilation angle cuts the end depth 45% and moves the retained fraction from 67% to 44% (measured ≈40%)"
-          - "So the dilation angle became an inverse-ML problem: kNN, gradient-boosted trees, TabPFN and a 1-D CNN on ≈250 new simulations with split-conformal 90% intervals, to learn which indentation measurement pins it down"
-          - "Designed and built the rig for those measurements: displacement-controlled micro-indentation, 3D-printed fixtures through up to 20 revisions, 445 N load cell (0.004 N) and laser vibrometer at 2 kHz via NI DAQ/LabVIEW; fixed their cross-talk"
-          - "Run every campaign through an AI coding agent (Claude Code) with test plans and pass/fail rules committed to Git before any run: 426 runs, ≈1,400 core-hours, every manuscript number traceable to a hashed table and script"
-          - "Put the manuscript through a dozen adversarial AI review passes: retracted a headline −0.8% validation figure, disclosed the failed elastic benchmark, and separated the computed end depth from the physical residual depth"
+          - "Built an axisymmetric finite-volume model (OpenFOAM + solids4Foam) of a spherical proppant grain loaded into and unloaded from Mohr–Coulomb rock through penalty contact; unloading separates permanent embedment from elastic recovery. All rock inputs are published Montney siltstone measurements; nothing is fitted to indentation data"
+          - "Compared the model with published Brinell indentation (35 N) and with eight proppant-pack embedment tests predicted blind; the pack comparison shows a grain-size-dependent mismatch that neither mesh refinement nor dilation angle removes, reported as a model limit rather than tuned away"
+          - "Showed that residual depth converges slowly with mesh and that the earlier training set carried a mesh bias; now re-running every condition on three mesh levels with Richardson extrapolation and uncertainty bands (≈750 runs on UW’s MedicineBow cluster, Oct. 2026)"
+          - "Fitting a dimensionless residual-depth equation (load, cohesion, friction and dilation angles, grain/rock stiffness) by nested leave-family-out cross-validation; added 60 conditions chosen by a pre-registered balance rule so the equation’s range of validity can be stated factor by factor"
+          - "Pre-registered the test matrix and pass/fail checks (convergence, force balance) in Git before running, and automated the post-processing so every figure and statistic regenerates from the archived runs"
+          - "Trained in triaxial cell operation and DCI rock-compressibility (bulk modulus) testing"
+          - "Planned next: inverse models with prediction intervals to find which indentation measurement identifies the dilation angle; preparing the indentation experiments that will supply the data"
+          - "Designed and built a displacement-controlled micro-indentation rig for P–h curves on rock and metal (parametric CAD, 3D-printed fixtures, 1 mm tungsten-carbide ball) with a piezoelectric load cell and a laser Doppler vibrometer recorded through an NI DAQ in LabVIEW"
 
       - company: KAIST — Graduate School of Mechanical Engineering
         position: Research Intern (6-month full-time)
@@ -44,7 +42,7 @@ cv:
         start_date: 2022
         end_date: 2024
         highlights:
-          - "First CFD project: validated KCS hull resistance against the Gothenburg 2010 benchmark (STAR-CCM+, ≈4.4 M cells) to 1.16%; owned the mesh, refining bow, stern and free surface after every run"
+          - "Validated RANS CFD of KCS hull resistance against the Gothenburg 2010 benchmark (STAR-CCM+): 1.2% error in total resistance; responsible for mesh refinement at the bow, stern and free surface and for post-processing"
           - "PIV and hull-resistance tests, ITTC 1957/1978 propulsion design, and an ANSYS Fluent study of an airfoil appendage on hull attitude and resistance"
           - "Started the vibration/acoustic anomaly-detection model (MATLAB, Python) finished at Samsung"
 
@@ -55,8 +53,7 @@ cv:
         start_date: 2024
         end_date: 2024
         highlights:
-          - "Trained an LSTM autoencoder on healthy-condition vibration and acoustic data only (Green Nuri vessel program): 621 of 622 anomalies caught, 8 false alarms, 99.49% accuracy"
-          - "One flag traced to a fatigue crack along a weld; the model saw that something changed but not why, which is what pulled me toward smaller-scale mechanics"
+          - "Trained an LSTM autoencoder on healthy-condition vibration and acoustic data only (Green Nuri vessel program) so anomalies appear as reconstruction error; detected 621 of 622 test anomalies, one traced to a weld fatigue crack"
 
       - company: Pusan National University
         position: Capstone Design Project
@@ -68,18 +65,12 @@ cv:
           - "Proposed a cloud-based ML-integrated design platform (Google Cloud) balancing system scalability with market viability"
 
     Publications:
-      - title: "Joint prediction of peak proppant embedment and post-unloading residual depth: a dimensionless candidate model and its verification status"
+      - title: "Development of a dimensionless predictive equation for residual proppant embedment from finite-volume simulations of Montney siltstone"
         authors:
           - Seungmin Yome
           - Soheil Saraji
-        journal: Acta Geotechnica
-        date: "in preparation"
-
-      - title: "Numerical Recovery of Hydroelastic Wave Dispersion in Coupled Elastic Film–Liquid Systems Using a Finite-Volume Fluid–Structure Interaction Solver"
-        authors:
-          - Seungmin Yome
-        journal: Journal of Fluids and Structures
-        date: "in preparation"
+        journal: "in preparation"
+        date: "2026"
 
     Skills:
       - name: Simulation & CAE
@@ -130,7 +121,7 @@ cv:
           - "Coursework: Solid Mechanics, Fluid Mechanics, Linear Algebra, Thermodynamics, Ocean Wave Mechanics, FEM, Offshore Structural Design, CFD"
 
     Grants & Fellowships:
-      - name: "Graduate Research Assistant, University of Wyoming (Full-funded Graduate Research Assistantship)"
+      - name: "Graduate Research Assistant, University of Wyoming (fully funded)"
         date: "2025–Present"
         highlights:
           - "University of Wyoming"
@@ -188,7 +179,7 @@ cv:
         start_date: 2022
         end_date: 2024
         highlights:
-          - "Taught high school mathematics to undergraduate-level students as part of educational volunteering activities over two years"
+          - "Taught high-school mathematics as an educational volunteer for two years"
 
       - company: Private Tutoring
         position: Physics & Chemistry Instructor — College Entrance Preparation
@@ -196,8 +187,7 @@ cv:
         start_date: 2023
         end_date: 2024
         highlights:
-          - "Taught physics and chemistry to 10 high school seniors (Grade 12) preparing for the Korean college entrance exam (CSAT) over a 6-month intensive period"
-          - "9 out of 10 students (90%+) gained admission to top-tier Korean universities"
+          - "Taught physics and chemistry to ten high-school seniors preparing for the Korean college entrance exam (CSAT) over six months"
 
     Languages:
       - name: Korean
