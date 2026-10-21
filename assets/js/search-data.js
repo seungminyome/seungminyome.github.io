@@ -9,7 +9,14 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-publications",
+  },{id: "nav-research",
+          title: "research",
+          description: "What I work on, how the scale descent happened, and where it is going.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/research/";
+          },
+        },{id: "nav-publications",
           title: "publications",
           description: "Two manuscripts in preparation — proppant embedment mechanics (Acta Geotechnica) and hydroelastic wave dispersion (Journal of Fluids and Structures).",
           section: "Navigation",
