@@ -4,7 +4,7 @@ title: projects
 permalink: /projects/
 description: FSI research across scales — from proppant grains in rock fractures to elastic films on water to ship hull vortex dynamics.
 nav: true
-nav_order: 3
+nav_order: 4
 ---
 
 {% assign sorted_projects = site.projects | sort: "importance" %}
